@@ -9,15 +9,14 @@ Open `index.html` in a browser, or serve the folder with any static server.
 
 ## Deploy on GitHub Pages
 
-This repository includes a GitHub Actions workflow that publishes the static site
-from the repository root to GitHub Pages.
+This site is published from the `gh-pages` branch.
 
-After pushing to GitHub:
+If you need to reconnect Pages manually:
 
 1. Open repository settings.
 2. Go to Pages.
-3. Set Source to GitHub Actions.
-4. Run or wait for the `Deploy static site to Pages` workflow.
+3. Set Source to `Deploy from a branch`.
+4. Select branch `gh-pages` and folder `/ (root)`.
 
 The site uses only relative local assets, so it works under either a root domain or
 a repository subpath such as `https://username.github.io/repository-name/`.
