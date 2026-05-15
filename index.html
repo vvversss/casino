@@ -58,24 +58,24 @@
         </nav>
 
         <div class="sidebar-group">
-          <button class="nav-item" type="button">
+          <button id="promoBtn" class="nav-item" type="button">
             <span class="nav-icon" aria-hidden="true">▤</span>
             <span>Промо</span>
           </button>
-          <button class="nav-item" type="button">
+          <button id="vipBtn" class="nav-item" type="button">
             <span class="nav-icon" aria-hidden="true">♛</span>
             <span>VIP клуб</span>
           </button>
-          <button class="nav-item" type="button">
+          <button id="settingsBtn" class="nav-item" type="button">
             <span class="nav-icon" aria-hidden="true">⚙</span>
             <span>Настройки</span>
           </button>
         </div>
 
         <div class="demo-card">
-          <div class="demo-toggle" aria-hidden="true"><span></span></div>
+          <button id="demoModeBtn" class="demo-toggle" type="button" aria-label="Переключить режим счета"><span></span></button>
           <strong>Демо-режим</strong>
-          <small>Все игры используют только виртуальные кредиты.</small>
+          <small id="modeText">Все игры используют только виртуальные кредиты.</small>
         </div>
       </aside>
 
@@ -96,7 +96,7 @@
               <span class="coin">VC</span>
               <div>
                 <output id="balance">100 000.00</output>
-                <small>Демо-баланс · виртуальные кредиты</small>
+                <small id="walletModeLabel">Демо-баланс · виртуальные кредиты</small>
               </div>
               <button id="topUpBtn" class="top-up" type="button">+10 000</button>
             </section>
@@ -244,6 +244,14 @@
         <button id="authSubmit" class="auth-submit" type="submit">Войти</button>
         <button id="authToggle" class="auth-toggle" type="button">Создать аккаунт</button>
       </form>
+    </dialog>
+
+    <dialog id="utilityDialog" class="utility-dialog" aria-labelledby="utilityTitle">
+      <section class="utility-card">
+        <button id="utilityClose" class="modal-close" type="button" aria-label="Закрыть">×</button>
+        <h2 id="utilityTitle">Настройки</h2>
+        <div id="utilityContent"></div>
+      </section>
     </dialog>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

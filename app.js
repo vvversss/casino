@@ -106,6 +106,8 @@ const state = {
   profile: null,
   authMode: "signin",
   authReady: false,
+  walletMode: localStorage.getItem("velora-wallet-mode") || "demo",
+  settings: JSON.parse(localStorage.getItem("velora-settings") || "{}"),
   activeGame: "plinko",
   filter: "all",
   provider: "all",
@@ -175,6 +177,16 @@ const els = {
   authSubmit: document.querySelector("#authSubmit"),
   authToggle: document.querySelector("#authToggle"),
   modalClose: document.querySelector(".modal-close"),
+  walletModeLabel: document.querySelector("#walletModeLabel"),
+  modeText: document.querySelector("#modeText"),
+  demoModeBtn: document.querySelector("#demoModeBtn"),
+  promoBtn: document.querySelector("#promoBtn"),
+  vipBtn: document.querySelector("#vipBtn"),
+  settingsBtn: document.querySelector("#settingsBtn"),
+  utilityDialog: document.querySelector("#utilityDialog"),
+  utilityTitle: document.querySelector("#utilityTitle"),
+  utilityContent: document.querySelector("#utilityContent"),
+  utilityClose: document.querySelector("#utilityClose"),
 };
 
 const supabaseSettings = window.VELORA_SUPABASE || {};
@@ -202,6 +214,22 @@ function saveState() {
     localStorage.setItem("velora-balance", String(state.balance));
   }
   localStorage.setItem("velora-bet", String(state.bet));
+}
+
+function saveSettings() {
+  localStorage.setItem("velora-settings", JSON.stringify(state.settings));
+}
+
+function getPromoStorageKey() {
+  return `velora-promos-${state.user?.id || "guest"}`;
+}
+
+function getRedeemedPromos() {
+  return JSON.parse(localStorage.getItem(getPromoStorageKey()) || "[]");
+}
+
+function setRedeemedPromos(codes) {
+  localStorage.setItem(getPromoStorageKey(), JSON.stringify(codes));
 }
 
 function setBalance(value) {
@@ -270,6 +298,170 @@ function updateAccountUi() {
   const name = state.profile?.display_name || state.user.email?.split("@")[0] || "Player";
   els.accountName.textContent = name;
   els.accountStatus.textContent = state.user.email || "Аккаунт активен";
+}
+
+function updateModeUi() {
+  const demo = state.walletMode === "demo";
+  els.walletModeLabel.textContent = demo ? "Демо-баланс · виртуальные кредиты" : "Real mode unavailable";
+  els.modeText.textContent = demo
+    ? "Все игры используют только виртуальные кредиты."
+    : "Реальный счет заблокирован до лицензии и KYC.";
+  els.demoModeBtn.classList.toggle("is-off", !demo);
+  document.body.classList.toggle("reduced-motion", Boolean(state.settings.reducedMotion));
+  document.body.classList.toggle("compact-ui", Boolean(state.settings.compactUi));
+}
+
+function openUtility(title, html) {
+  els.utilityTitle.textContent = title;
+  els.utilityContent.innerHTML = html;
+  els.utilityDialog.showModal();
+}
+
+function getVipInfo() {
+  const gamesPlayed = Number(state.profile?.games_played || localStorage.getItem("velora-games-played") || 0);
+  const totalWon = Number(state.profile?.total_won || localStorage.getItem("velora-total-won") || 0);
+  const points = Math.floor(gamesPlayed * 120 + totalWon / 20);
+  const levels = [
+    { name: "Bronze", min: 0, perks: "Базовые промо и ежедневный демо-бонус" },
+    { name: "Silver", min: 2500, perks: "+5% к промо-бонусам и быстрые турниры" },
+    { name: "Gold", min: 9000, perks: "+10% к промо-бонусам и VIP миссии" },
+    { name: "Platinum", min: 22000, perks: "+15% к промо-бонусам и персональные акции" },
+  ];
+  const current = [...levels].reverse().find((level) => points >= level.min) || levels[0];
+  const next = levels.find((level) => level.min > points);
+  return { gamesPlayed, totalWon, points, current, next };
+}
+
+function showVipClub() {
+  const vip = getVipInfo();
+  const progress = vip.next ? Math.min(100, Math.round(((vip.points - vip.current.min) / (vip.next.min - vip.current.min)) * 100)) : 100;
+  openUtility(
+    "VIP клуб",
+    `
+      <div class="vip-hero">
+        <span class="vip-crown">♛</span>
+        <div>
+          <strong>${vip.current.name}</strong>
+          <small>${vip.current.perks}</small>
+        </div>
+      </div>
+      <div class="vip-progress">
+        <span>${vip.points.toLocaleString("ru-RU")} VIP points</span>
+        <span>${vip.next ? `До ${vip.next.name}: ${(vip.next.min - vip.points).toLocaleString("ru-RU")}` : "Максимальный уровень"}</span>
+        <div><i style="width:${progress}%"></i></div>
+      </div>
+      <div class="utility-grid">
+        <article><strong>${vip.gamesPlayed}</strong><span>Игр сыграно</span></article>
+        <article><strong>VC ${format(vip.totalWon)}</strong><span>Всего выиграно</span></article>
+        <article><strong>Daily</strong><span>Бонусы только виртуальные</span></article>
+      </div>
+      <p class="utility-note">VIP клуб не связан с реальными деньгами. Уровни дают только демо-бонусы и визуальные преимущества.</p>
+    `,
+  );
+}
+
+function showPromos() {
+  const redeemed = getRedeemedPromos();
+  openUtility(
+    "Промо",
+    `
+      <form id="promoForm" class="promo-form">
+        <label>Промокод
+          <input id="promoCode" type="text" placeholder="WELCOME" autocomplete="off" />
+        </label>
+        <button type="submit">Активировать</button>
+      </form>
+      <div class="promo-list">
+        ${[
+          ["WELCOME", "10 000 VC", "Стартовый бонус"],
+          ["VIP5000", "5 000 VC", "VIP демо-бонус"],
+          ["LUCKY", "3 000 VC", "Быстрый бонус"],
+        ]
+          .map(
+            ([code, amount, label]) => `
+              <article class="${redeemed.includes(code) ? "is-used" : ""}">
+                <strong>${code}</strong>
+                <span>${label}</span>
+                <small>${redeemed.includes(code) ? "Уже активирован" : amount}</small>
+              </article>
+            `,
+          )
+          .join("")}
+      </div>
+      <p class="utility-note">Промо начисляют только виртуальные кредиты. Реальные депозиты и выводы не подключены.</p>
+    `,
+  );
+  document.querySelector("#promoForm").addEventListener("submit", redeemPromo);
+}
+
+function redeemPromo(event) {
+  event.preventDefault();
+  const input = document.querySelector("#promoCode");
+  const code = input.value.trim().toUpperCase();
+  const promos = { WELCOME: 10000, VIP5000: 5000, LUCKY: 3000 };
+  if (!promos[code]) {
+    toast("Промокод не найден");
+    return;
+  }
+  const redeemed = getRedeemedPromos();
+  if (redeemed.includes(code)) {
+    toast("Промокод уже активирован");
+    return;
+  }
+  setRedeemedPromos([...redeemed, code]);
+  setBalance(state.balance + promos[code]);
+  toast(`Промо ${code}: +${format(promos[code])} VC`);
+  showPromos();
+}
+
+function showSettings() {
+  openUtility(
+    "Настройки",
+    `
+      <div class="settings-list">
+        <label>
+          <span><strong>Звук интерфейса</strong><small>Подготовлено для будущих эффектов</small></span>
+          <input type="checkbox" data-setting="sound" ${state.settings.sound ? "checked" : ""} />
+        </label>
+        <label>
+          <span><strong>Меньше анимаций</strong><small>Упрощает движение интерфейса</small></span>
+          <input type="checkbox" data-setting="reducedMotion" ${state.settings.reducedMotion ? "checked" : ""} />
+        </label>
+        <label>
+          <span><strong>Компактный режим</strong><small>Более плотные карточки игр</small></span>
+          <input type="checkbox" data-setting="compactUi" ${state.settings.compactUi ? "checked" : ""} />
+        </label>
+      </div>
+      <div class="real-mode-card">
+        <strong>Реальный счет</strong>
+        <p>Реальные ставки, депозиты и выводы отключены. Для такого режима нужны лицензия, KYC/AML, платежный провайдер и юридическая проверка.</p>
+        <button id="realModeBtn" type="button">Запросить подключение</button>
+      </div>
+    `,
+  );
+  document.querySelectorAll("[data-setting]").forEach((input) => {
+    input.addEventListener("change", () => {
+      state.settings[input.dataset.setting] = input.checked;
+      saveSettings();
+      updateModeUi();
+    });
+  });
+  document.querySelector("#realModeBtn").addEventListener("click", attemptRealMode);
+}
+
+function attemptRealMode() {
+  state.walletMode = "demo";
+  localStorage.setItem("velora-wallet-mode", "demo");
+  updateModeUi();
+  openUtility(
+    "Реальный счет недоступен",
+    `
+      <div class="real-mode-card">
+        <strong>Режим реальных денег заблокирован</strong>
+        <p>Я могу оставить интерфейс и подготовить легальный checklist интеграции, но не буду подключать реальные ставки или платежи без лицензирования, KYC/AML и регулируемого платежного провайдера.</p>
+      </div>
+    `,
+  );
 }
 
 function setAuthMode(mode) {
@@ -435,9 +627,15 @@ function settleRound({ won, multiplier, message, game }) {
 }
 
 function recordProfileRound(payout = 0) {
-  if (!state.profile) return;
-  state.profile.games_played = Number(state.profile.games_played || 0) + 1;
-  state.profile.total_won = Number(state.profile.total_won || 0) + Number(payout || 0);
+  if (state.profile) {
+    state.profile.games_played = Number(state.profile.games_played || 0) + 1;
+    state.profile.total_won = Number(state.profile.total_won || 0) + Number(payout || 0);
+    return;
+  }
+  const gamesPlayed = Number(localStorage.getItem("velora-games-played") || 0) + 1;
+  const totalWon = Number(localStorage.getItem("velora-total-won") || 0) + Number(payout || 0);
+  localStorage.setItem("velora-games-played", String(gamesPlayed));
+  localStorage.setItem("velora-total-won", String(totalWon));
 }
 
 function chargeBet(customBet = state.bet) {
@@ -1036,6 +1234,11 @@ function bindEvents() {
   els.navFilters.forEach((btn) => btn.addEventListener("click", () => selectFilter(btn.dataset.filter)));
   els.playBtn.addEventListener("click", playActiveGame);
   els.cashoutBtn.addEventListener("click", cashoutCrash);
+  els.promoBtn.addEventListener("click", showPromos);
+  els.vipBtn.addEventListener("click", showVipClub);
+  els.settingsBtn.addEventListener("click", showSettings);
+  els.demoModeBtn.addEventListener("click", attemptRealMode);
+  els.utilityClose.addEventListener("click", () => els.utilityDialog.close());
   els.authOpenBtn.addEventListener("click", () => {
     if (!supabaseClient) {
       toast("Supabase publishable key is missing");
@@ -1068,6 +1271,7 @@ async function init() {
   syncFilterButtons();
   bindEvents();
   setAuthMode("signin");
+  updateModeUi();
   await loadSession();
 }
 
