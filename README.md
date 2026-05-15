@@ -20,3 +20,18 @@ If you need to reconnect Pages manually:
 
 The site uses only relative local assets, so it works under either a root domain or
 a repository subpath such as `https://username.github.io/repository-name/`.
+
+## Supabase Auth setup
+
+The frontend reads Supabase settings from `supabase-config.js`.
+
+To enable accounts in a fresh Supabase project:
+
+1. Open Supabase SQL Editor.
+2. Run `supabase-schema.sql`.
+3. Go to Authentication -> URL Configuration.
+4. Set Site URL to `https://vvversss.github.io/casino/`.
+5. Add `https://vvversss.github.io/casino/` to Redirect URLs.
+
+Use a publishable key only in `supabase-config.js`. Never expose a service role key
+in this static frontend.

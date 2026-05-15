@@ -102,6 +102,10 @@ const recentSeed = [
 const state = {
   balance: Number(localStorage.getItem("velora-balance")) || 100000,
   bet: Number(localStorage.getItem("velora-bet")) || 1000,
+  user: null,
+  profile: null,
+  authMode: "signin",
+  authReady: false,
   activeGame: "plinko",
   filter: "all",
   provider: "all",
@@ -155,7 +159,33 @@ const els = {
   autoRounds: document.querySelector("#autoRounds"),
   autoStop: document.querySelector("#autoStop"),
   navFilters: document.querySelectorAll("[data-filter]"),
+  accountChip: document.querySelector("#accountChip"),
+  accountName: document.querySelector("#accountName"),
+  accountStatus: document.querySelector("#accountStatus"),
+  authOpenBtn: document.querySelector("#authOpenBtn"),
+  signOutBtn: document.querySelector("#signOutBtn"),
+  authDialog: document.querySelector("#authDialog"),
+  authForm: document.querySelector("#authForm"),
+  authEmail: document.querySelector("#authEmail"),
+  authPassword: document.querySelector("#authPassword"),
+  displayNameRow: document.querySelector("#displayNameRow"),
+  displayName: document.querySelector("#displayName"),
+  authTitle: document.querySelector("#authTitle"),
+  authCopy: document.querySelector("#authCopy"),
+  authSubmit: document.querySelector("#authSubmit"),
+  authToggle: document.querySelector("#authToggle"),
+  modalClose: document.querySelector(".modal-close"),
 };
+
+const supabaseSettings = window.VELORA_SUPABASE || {};
+const hasSupabaseConfig =
+  Boolean(supabaseSettings.url) &&
+  Boolean(supabaseSettings.publishableKey) &&
+  !supabaseSettings.publishableKey.includes("PASTE");
+const supabaseClient =
+  hasSupabaseConfig && window.supabase
+    ? window.supabase.createClient(supabaseSettings.url, supabaseSettings.publishableKey)
+    : null;
 
 const format = (value) =>
   new Intl.NumberFormat("ru-RU", {
@@ -168,7 +198,9 @@ const randomInt = (min, max) => Math.floor(random(min, max + 1));
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
 function saveState() {
-  localStorage.setItem("velora-balance", String(state.balance));
+  if (!state.user) {
+    localStorage.setItem("velora-balance", String(state.balance));
+  }
   localStorage.setItem("velora-bet", String(state.bet));
 }
 
@@ -176,6 +208,7 @@ function setBalance(value) {
   state.balance = Math.max(0, Number(value.toFixed(2)));
   els.balance.value = format(state.balance);
   saveState();
+  queueProfileSave();
 }
 
 function setBet(value) {
@@ -193,6 +226,183 @@ function toast(message) {
   els.toast.classList.add("is-visible");
   clearTimeout(toast.timer);
   toast.timer = setTimeout(() => els.toast.classList.remove("is-visible"), 2400);
+}
+
+function queueProfileSave() {
+  if (!supabaseClient || !state.user || !state.authReady) return;
+  clearTimeout(queueProfileSave.timer);
+  queueProfileSave.timer = setTimeout(() => {
+    saveProfile().catch(() => toast("Profile sync failed"));
+  }, 550);
+}
+
+async function saveProfile() {
+  if (!supabaseClient || !state.user) return;
+  const { error } = await supabaseClient
+    .from("casino_profiles")
+    .update({
+      balance: state.balance,
+      games_played: state.profile?.games_played || 0,
+      total_won: state.profile?.total_won || 0,
+    })
+    .eq("id", state.user.id);
+  if (error) throw error;
+}
+
+function updateAccountUi() {
+  const configured = Boolean(supabaseClient);
+  els.accountChip.classList.toggle("is-online", Boolean(state.user));
+  els.authOpenBtn.classList.toggle("is-hidden", Boolean(state.user));
+  els.signOutBtn.classList.toggle("is-hidden", !state.user);
+
+  if (!configured) {
+    els.accountName.textContent = "Гость";
+    els.accountStatus.textContent = "Supabase key not set";
+    return;
+  }
+
+  if (!state.user) {
+    els.accountName.textContent = "Гость";
+    els.accountStatus.textContent = "Войдите для синхронизации";
+    return;
+  }
+
+  const name = state.profile?.display_name || state.user.email?.split("@")[0] || "Player";
+  els.accountName.textContent = name;
+  els.accountStatus.textContent = state.user.email || "Аккаунт активен";
+}
+
+function setAuthMode(mode) {
+  state.authMode = mode;
+  const signup = mode === "signup";
+  els.authTitle.textContent = signup ? "Создать аккаунт" : "Вход в Velora Play";
+  els.authCopy.textContent = signup
+    ? "Создайте аккаунт, чтобы баланс сохранялся между устройствами."
+    : "Войдите, чтобы баланс и профиль сохранялись между устройствами.";
+  els.authSubmit.textContent = signup ? "Создать аккаунт" : "Войти";
+  els.authToggle.textContent = signup ? "У меня уже есть аккаунт" : "Создать аккаунт";
+  els.displayNameRow.classList.toggle("is-hidden", !signup);
+  els.authPassword.autocomplete = signup ? "new-password" : "current-password";
+}
+
+async function ensureProfile(user) {
+  const fallbackName = user.user_metadata?.display_name || user.email?.split("@")[0] || "Player";
+  const { data, error } = await supabaseClient
+    .from("casino_profiles")
+    .select("id,email,display_name,balance,games_played,total_won")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  if (error) throw error;
+  if (data) return data;
+
+  const { data: created, error: insertError } = await supabaseClient
+    .from("casino_profiles")
+    .insert({
+      id: user.id,
+      email: user.email,
+      display_name: fallbackName,
+      balance: state.balance,
+    })
+    .select("id,email,display_name,balance,games_played,total_won")
+    .single();
+  if (insertError) throw insertError;
+  return created;
+}
+
+async function loadSession() {
+  if (!supabaseClient) {
+    updateAccountUi();
+    return;
+  }
+
+  const { data, error } = await supabaseClient.auth.getSession();
+  if (error) {
+    toast(error.message);
+    updateAccountUi();
+    return;
+  }
+
+  await applySession(data.session);
+  supabaseClient.auth.onAuthStateChange((_event, session) => {
+    applySession(session).catch(() => toast("Could not load account"));
+  });
+}
+
+async function applySession(session) {
+  state.user = session?.user || null;
+  state.profile = null;
+  state.authReady = false;
+
+  if (state.user) {
+    state.profile = await ensureProfile(state.user);
+    state.balance = Number(state.profile.balance);
+    els.balance.value = format(state.balance);
+    localStorage.removeItem("velora-balance");
+    state.authReady = true;
+  }
+
+  updateAccountUi();
+}
+
+async function handleAuthSubmit(event) {
+  event.preventDefault();
+  if (!supabaseClient) {
+    toast("Add Supabase publishable key first");
+    return;
+  }
+
+  const email = els.authEmail.value.trim();
+  const password = els.authPassword.value;
+  const displayName = els.displayName.value.trim() || email.split("@")[0] || "Player";
+  els.authSubmit.disabled = true;
+
+  try {
+    if (state.authMode === "signup") {
+      const { data, error } = await supabaseClient.auth.signUp({
+        email,
+        password,
+        options: {
+          data: { display_name: displayName },
+          emailRedirectTo: window.location.href,
+        },
+      });
+      if (error) throw error;
+      if (data.session) {
+        await applySession(data.session);
+        els.authDialog.close();
+        toast("Account created");
+      } else {
+        toast("Check email to confirm account");
+      }
+    } else {
+      const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      await applySession(data.session);
+      els.authDialog.close();
+      toast("Signed in");
+    }
+  } catch (error) {
+    toast(error.message || "Auth error");
+  } finally {
+    els.authSubmit.disabled = false;
+  }
+}
+
+async function signOut() {
+  if (!supabaseClient) return;
+  const { error } = await supabaseClient.auth.signOut();
+  if (error) {
+    toast(error.message);
+    return;
+  }
+  state.user = null;
+  state.profile = null;
+  state.authReady = false;
+  state.balance = Number(localStorage.getItem("velora-balance")) || 100000;
+  els.balance.value = format(state.balance);
+  updateAccountUi();
+  toast("Signed out");
 }
 
 function getActiveGame() {
@@ -215,12 +425,19 @@ function addWin(gameTitle, amount, icon = "VC") {
 function settleRound({ won, multiplier, message, game }) {
   state.lastMultiplier = multiplier;
   const payout = won ? state.bet * multiplier : 0;
+  recordProfileRound(payout);
   if (won) {
     setBalance(state.balance + payout);
     addWin(game.title, payout, game.symbol);
   }
   els.roundMessage.textContent = message;
   toast(won ? `Выигрыш ${format(payout)} VC` : "Раунд завершен без выигрыша");
+}
+
+function recordProfileRound(payout = 0) {
+  if (!state.profile) return;
+  state.profile.games_played = Number(state.profile.games_played || 0) + 1;
+  state.profile.total_won = Number(state.profile.total_won || 0) + Number(payout || 0);
 }
 
 function chargeBet(customBet = state.bet) {
@@ -575,6 +792,7 @@ function playCrash() {
     if (state.crash.multiplier >= state.crash.bustAt) {
       clearInterval(state.crash.timer);
       state.crash.running = false;
+      recordProfileRound(0);
       els.playBtn.disabled = false;
       els.cashoutBtn.classList.add("is-hidden");
       els.roundMessage.textContent = `Краш на x${state.crash.bustAt}. Ставка сгорела.`;
@@ -591,6 +809,7 @@ function cashoutCrash() {
   state.crash.running = false;
   state.crash.cashed = true;
   const payout = state.crash.stake * state.crash.multiplier;
+  recordProfileRound(payout);
   setBalance(state.balance + payout);
   addWin(game.title, payout, game.symbol);
   els.roundMessage.textContent = `Вы забрали x${state.crash.multiplier.toFixed(2)}.`;
@@ -635,6 +854,7 @@ function playBlackjack() {
   const won = pv <= 21 && (dv > 21 || pv > dv);
   const push = pv <= 21 && pv === dv;
   if (push) {
+    recordProfileRound(0);
     setBalance(state.balance + state.bet);
     els.roundMessage.textContent = `Пуш: ${pv} против ${dv}. Ставка возвращена.`;
     toast("Blackjack: возврат ставки");
@@ -692,6 +912,7 @@ function openMineTile(index) {
     state.mines.locked = true;
     state.mines.active = false;
     state.mines.opened = [...new Set([...state.mines.opened, ...state.mines.mineIndexes])];
+    recordProfileRound(0);
     els.playBtn.textContent = "Начать";
     els.roundMessage.textContent = "Мина открыта. Раунд завершен.";
     toast("Mines: ставка сгорела");
@@ -717,6 +938,7 @@ function collectMines() {
   const game = getActiveGame();
   const multiplier = getMinesMultiplier();
   const payout = state.mines.stake * multiplier;
+  recordProfileRound(payout);
   setBalance(state.balance + payout);
   addWin(game.title, payout, game.symbol);
   state.mines.active = false;
@@ -814,6 +1036,18 @@ function bindEvents() {
   els.navFilters.forEach((btn) => btn.addEventListener("click", () => selectFilter(btn.dataset.filter)));
   els.playBtn.addEventListener("click", playActiveGame);
   els.cashoutBtn.addEventListener("click", cashoutCrash);
+  els.authOpenBtn.addEventListener("click", () => {
+    if (!supabaseClient) {
+      toast("Supabase publishable key is missing");
+      return;
+    }
+    setAuthMode("signin");
+    els.authDialog.showModal();
+  });
+  els.signOutBtn.addEventListener("click", signOut);
+  els.authForm.addEventListener("submit", handleAuthSubmit);
+  els.authToggle.addEventListener("click", () => setAuthMode(state.authMode === "signin" ? "signup" : "signin"));
+  els.modalClose.addEventListener("click", () => els.authDialog.close());
   document.addEventListener("keydown", (event) => {
     if (event.key === "/" && document.activeElement !== els.searchInput) {
       event.preventDefault();
@@ -825,7 +1059,7 @@ function bindEvents() {
   });
 }
 
-function init() {
+async function init() {
   setBalance(state.balance);
   setBet(state.bet);
   renderRecentWins();
@@ -833,6 +1067,8 @@ function init() {
   renderGames();
   syncFilterButtons();
   bindEvents();
+  setAuthMode("signin");
+  await loadSession();
 }
 
 init();
