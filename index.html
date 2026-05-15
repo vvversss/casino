@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velora Play - demo casino</title>
+    <link rel="preload" href="assets/casino-table-art.png" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Навигация">
+        <a class="brand" href="#" aria-label="Velora Play">
+          <span class="brand-mark">V</span>
+          <span>
+            <strong>VELORA</strong>
+            <small>PLAY</small>
+          </span>
+        </a>
+
+        <nav class="nav-list">
+          <button class="nav-item is-active" type="button" data-filter="all">
+            <span class="nav-icon" aria-hidden="true">⌂</span>
+            <span>Лобби</span>
+          </button>
+          <button class="nav-item" type="button" data-filter="slots">
+            <span class="nav-icon" aria-hidden="true">▣</span>
+            <span>Слоты</span>
+          </button>
+          <button class="nav-item" type="button" data-filter="roulette">
+            <span class="nav-icon" aria-hidden="true">◎</span>
+            <span>Рулетка</span>
+          </button>
+          <button class="nav-item" type="button" data-filter="dice">
+            <span class="nav-icon" aria-hidden="true">◇</span>
+            <span>Dice</span>
+          </button>
+          <button class="nav-item" type="button" data-filter="crash">
+            <span class="nav-icon" aria-hidden="true">↗</span>
+            <span>Crash</span>
+          </button>
+          <button class="nav-item" type="button" data-filter="blackjack">
+            <span class="nav-icon" aria-hidden="true">♠</span>
+            <span>Blackjack</span>
+          </button>
+          <button class="nav-item" type="button" data-filter="plinko">
+            <span class="nav-icon" aria-hidden="true">●</span>
+            <span>Plinko</span>
+          </button>
+          <button class="nav-item" type="button" data-filter="mines">
+            <span class="nav-icon" aria-hidden="true">✦</span>
+            <span>Mines</span>
+          </button>
+          <button class="nav-item" type="button" data-filter="wheel">
+            <span class="nav-icon" aria-hidden="true">◌</span>
+            <span>Wheel</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-group">
+          <button class="nav-item" type="button">
+            <span class="nav-icon" aria-hidden="true">▤</span>
+            <span>Промо</span>
+          </button>
+          <button class="nav-item" type="button">
+            <span class="nav-icon" aria-hidden="true">♛</span>
+            <span>VIP клуб</span>
+          </button>
+          <button class="nav-item" type="button">
+            <span class="nav-icon" aria-hidden="true">⚙</span>
+            <span>Настройки</span>
+          </button>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-toggle" aria-hidden="true"><span></span></div>
+          <strong>Демо-режим</strong>
+          <small>Все игры используют только виртуальные кредиты.</small>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <label class="search">
+            <span aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="Поиск игр..." autocomplete="off" />
+            <kbd>/</kbd>
+          </label>
+
+          <div class="top-actions">
+            <button class="language" type="button">
+              <span aria-hidden="true">◉</span>
+              RU
+            </button>
+            <section class="wallet" aria-label="Виртуальный кошелек">
+              <span class="coin">VC</span>
+              <div>
+                <output id="balance">100 000.00</output>
+                <small>Демо-баланс · виртуальные кредиты</small>
+              </div>
+              <button id="topUpBtn" class="top-up" type="button">+10 000</button>
+            </section>
+          </div>
+        </header>
+
+        <section class="play-layout">
+          <article class="game-stage" aria-label="Игровая зона">
+            <div class="stage-art" aria-hidden="true"></div>
+            <div class="stage-content">
+              <div class="game-heading">
+                <span class="star">★</span>
+                <span>Выбрана игра</span>
+              </div>
+              <h1 id="activeGameTitle">Plinko</h1>
+              <p id="activeGameDescription">Брось шар, поймай множитель и забери выигрыш.</p>
+              <div id="gameBoard" class="game-board plinko-board" aria-live="polite"></div>
+              <div id="roundMessage" class="round-message">Готово к ставке.</div>
+            </div>
+          </article>
+
+          <aside class="bet-panel" aria-label="Панель ставки">
+            <div class="panel-section">
+              <div class="section-head">
+                <h2>Ставка</h2>
+                <span>VC</span>
+              </div>
+              <div class="bet-stepper">
+                <button id="decreaseBet" type="button" aria-label="Уменьшить ставку">−</button>
+                <input id="betInput" type="number" min="100" step="100" value="1000" />
+                <button id="increaseBet" type="button" aria-label="Увеличить ставку">+</button>
+              </div>
+              <div class="quick-bets" aria-label="Быстрые ставки">
+                <button type="button" data-bet="100">100</button>
+                <button type="button" data-bet="500">500</button>
+                <button class="is-selected" type="button" data-bet="1000">1 000</button>
+                <button type="button" data-bet="5000">5 000</button>
+                <button type="button" data-bet="10000">10 000</button>
+              </div>
+            </div>
+
+            <div id="dynamicControls" class="panel-section dynamic-controls"></div>
+
+            <div class="panel-section compact">
+              <label class="switch-row">
+                <span>Авто-игра</span>
+                <input id="autoPlay" type="checkbox" />
+                <span class="switch" aria-hidden="true"></span>
+              </label>
+              <div class="mini-grid">
+                <label>
+                  Раундов
+                  <input id="autoRounds" type="number" min="1" max="50" value="5" />
+                </label>
+                <label>
+                  Стоп при x
+                  <input id="autoStop" type="number" min="1" max="100" step="0.5" value="5" />
+                </label>
+              </div>
+            </div>
+
+            <button id="playBtn" class="play-button" type="button">Бросить шар</button>
+            <button id="cashoutBtn" class="cashout-button is-hidden" type="button">Забрать</button>
+          </aside>
+        </section>
+
+        <section class="recent-strip" aria-label="Последние выигрыши">
+          <div class="strip-title">
+            <span aria-hidden="true">ϟ</span>
+            <strong>Последние выигрыши</strong>
+          </div>
+          <div id="recentWins" class="wins-list"></div>
+        </section>
+
+        <section class="catalog" aria-label="Каталог игр">
+          <div class="catalog-toolbar">
+            <div class="tabs" role="tablist" aria-label="Категории игр">
+              <button class="tab is-active" type="button" data-filter="all">Все игры</button>
+              <button class="tab" type="button" data-filter="slots">Слоты</button>
+              <button class="tab" type="button" data-filter="roulette">Рулетка</button>
+              <button class="tab" type="button" data-filter="dice">Dice</button>
+              <button class="tab" type="button" data-filter="crash">Crash</button>
+              <button class="tab" type="button" data-filter="blackjack">Blackjack</button>
+              <button class="tab" type="button" data-filter="plinko">Plinko</button>
+              <button class="tab" type="button" data-filter="mines">Mines</button>
+              <button class="tab" type="button" data-filter="wheel">Wheel</button>
+            </div>
+            <div class="selects">
+              <label>
+                Провайдер
+                <select id="providerSelect">
+                  <option value="all">Все</option>
+                  <option value="velora">Velora</option>
+                  <option value="neon">Neon Lab</option>
+                  <option value="arc">Arc Studio</option>
+                </select>
+              </label>
+              <label>
+                Сортировка
+                <select id="sortSelect">
+                  <option value="popular">Популярные</option>
+                  <option value="online">Онлайн</option>
+                  <option value="name">Название</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div id="gamesGrid" class="games-grid"></div>
+        </section>
+      </main>
+
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
