@@ -99,6 +99,54 @@ const recentSeed = [
   ["WheelFan", "Wheel", 5100, "◌"],
 ];
 
+const providerSlots = [
+  {
+    title: "Sweet Bonanza 2500",
+    studio: "Pragmatic Play",
+    theme: "Candy volatility",
+    symbol: "2500x",
+    accent: "#ff5aa7",
+    glow: "#ffcc3f",
+    url: "https://www.pragmaticplay.com/en/games/sweet-bonanza-2500/?gamelang=ru&cur=ALL",
+  },
+  {
+    title: "Big Bass Trophy Catch",
+    studio: "Pragmatic Play",
+    theme: "Fishing bonus hunt",
+    symbol: "BASS",
+    accent: "#18a8ff",
+    glow: "#83ff62",
+    url: "https://www.pragmaticplay.com/en/games/big-bass-trophy-catch/?gamelang=en&cur=ALL",
+  },
+  {
+    title: "Zeus vs Hades",
+    studio: "Pragmatic Play",
+    theme: "Gods of War",
+    symbol: "Z/H",
+    accent: "#a977ff",
+    glow: "#ff7047",
+    url: "https://www.pragmaticplay.com/en/games/zeus-vs-hades-gods-of-war/?gamelang=en&cur=ALL",
+  },
+  {
+    title: "Gates of Olympus Super Scatter",
+    studio: "Pragmatic Play",
+    theme: "Super Scatter feature",
+    symbol: "SC",
+    accent: "#f7c94b",
+    glow: "#18f5e7",
+    url: "https://www.pragmaticplay.com/en/games/gates-of-olympus-super-scatter/?gamelang=en&cur=ALL",
+  },
+  {
+    title: "Gates of Olympus 1000",
+    studio: "Pragmatic Play",
+    theme: "Olympus multiplier",
+    symbol: "1000x",
+    accent: "#72f060",
+    glow: "#f7c94b",
+    url: "https://www.pragmaticplay.com/en/games/gates-of-olympus-1000/?gamelang=en&cur=ALL",
+  },
+];
+
 const state = {
   balance: Number(localStorage.getItem("velora-balance")) || 100000,
   bet: Number(localStorage.getItem("velora-bet")) || 1000,
@@ -148,6 +196,7 @@ const els = {
   providerSelect: document.querySelector("#providerSelect"),
   sortSelect: document.querySelector("#sortSelect"),
   gamesGrid: document.querySelector("#gamesGrid"),
+  providerSlotsGrid: document.querySelector("#providerSlotsGrid"),
   recentWins: document.querySelector("#recentWins"),
   activeGameTitle: document.querySelector("#activeGameTitle"),
   activeGameDescription: document.querySelector("#activeGameDescription"),
@@ -658,6 +707,26 @@ function renderRecentWins() {
             <small>VC ${format(amount)}</small>
           </span>
         </div>
+      `,
+    )
+    .join("");
+}
+
+function renderProviderSlots() {
+  els.providerSlotsGrid.innerHTML = providerSlots
+    .map(
+      (slot) => `
+        <article class="provider-slot" style="--slot-accent:${slot.accent}; --slot-glow:${slot.glow}">
+          <div class="provider-slot-art">
+            <span>${slot.symbol}</span>
+          </div>
+          <div class="provider-slot-info">
+            <small>${slot.studio}</small>
+            <strong>${slot.title}</strong>
+            <p>${slot.theme}</p>
+            <a href="${slot.url}" target="_blank" rel="noopener noreferrer">Открыть слот</a>
+          </div>
+        </article>
       `,
     )
     .join("");
@@ -1266,6 +1335,7 @@ async function init() {
   setBalance(state.balance);
   setBet(state.bet);
   renderRecentWins();
+  renderProviderSlots();
   renderActiveGame();
   renderGames();
   syncFilterButtons();
