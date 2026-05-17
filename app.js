@@ -101,49 +101,54 @@ const recentSeed = [
 
 const providerSlots = [
   {
+    id: "sweet-bonanza-2500",
     title: "Sweet Bonanza 2500",
     studio: "Pragmatic Play",
     theme: "Candy volatility",
     symbol: "2500x",
     accent: "#ff5aa7",
     glow: "#ffcc3f",
-    url: "https://www.pragmaticplay.com/en/games/sweet-bonanza-2500/?gamelang=ru&cur=ALL",
+    demoUrl: "https://www.pragmaticplay.com/en/games/sweet-bonanza-2500/?gamelang=ru&cur=ALL",
   },
   {
+    id: "big-bass-trophy-catch",
     title: "Big Bass Trophy Catch",
     studio: "Pragmatic Play",
     theme: "Fishing bonus hunt",
     symbol: "BASS",
     accent: "#18a8ff",
     glow: "#83ff62",
-    url: "https://www.pragmaticplay.com/en/games/big-bass-trophy-catch/?gamelang=en&cur=ALL",
+    demoUrl: "https://www.pragmaticplay.com/en/games/big-bass-trophy-catch/?gamelang=en&cur=ALL",
   },
   {
+    id: "zeus-vs-hades-gods-of-war",
     title: "Zeus vs Hades",
     studio: "Pragmatic Play",
     theme: "Gods of War",
     symbol: "Z/H",
     accent: "#a977ff",
     glow: "#ff7047",
-    url: "https://www.pragmaticplay.com/en/games/zeus-vs-hades-gods-of-war/?gamelang=en&cur=ALL",
+    demoUrl: "https://www.pragmaticplay.com/en/games/zeus-vs-hades-gods-of-war/?gamelang=en&cur=ALL",
   },
   {
+    id: "gates-of-olympus-super-scatter",
     title: "Gates of Olympus Super Scatter",
     studio: "Pragmatic Play",
     theme: "Super Scatter feature",
     symbol: "SC",
     accent: "#f7c94b",
     glow: "#18f5e7",
-    url: "https://www.pragmaticplay.com/en/games/gates-of-olympus-super-scatter/?gamelang=en&cur=ALL",
+    demoUrl: "https://www.pragmaticplay.com/en/games/gates-of-olympus-super-scatter/?gamelang=en&cur=ALL",
   },
   {
+    id: "gates-of-olympus-1000",
     title: "Gates of Olympus 1000",
     studio: "Pragmatic Play",
     theme: "Olympus multiplier",
     symbol: "1000x",
     accent: "#72f060",
     glow: "#f7c94b",
-    url: "https://www.pragmaticplay.com/en/games/gates-of-olympus-1000/?gamelang=en&cur=ALL",
+    demoUrl: "https://www.pragmaticplay.com/en/games/gates-of-olympus-1000/?gamelang=en&cur=ALL",
   },
 ];
 
@@ -236,6 +241,10 @@ const els = {
   utilityTitle: document.querySelector("#utilityTitle"),
   utilityContent: document.querySelector("#utilityContent"),
   utilityClose: document.querySelector("#utilityClose"),
+  slotLauncherDialog: document.querySelector("#slotLauncherDialog"),
+  slotLauncherTitle: document.querySelector("#slotLauncherTitle"),
+  slotLauncherContent: document.querySelector("#slotLauncherContent"),
+  slotLauncherClose: document.querySelector("#slotLauncherClose"),
 };
 
 const supabaseSettings = window.VELORA_SUPABASE || {};
@@ -724,12 +733,45 @@ function renderProviderSlots() {
             <small>${slot.studio}</small>
             <strong>${slot.title}</strong>
             <p>${slot.theme}</p>
-            <a href="${slot.url}" target="_blank" rel="noopener noreferrer">Открыть слот</a>
+            <button type="button" data-provider-slot="${slot.id}">Запустить в казино</button>
           </div>
         </article>
       `,
     )
     .join("");
+  els.providerSlotsGrid.querySelectorAll("[data-provider-slot]").forEach((button) => {
+    button.addEventListener("click", () => openProviderSlot(button.dataset.providerSlot));
+  });
+}
+
+function openProviderSlot(slotId) {
+  const slot = providerSlots.find((item) => item.id === slotId);
+  if (!slot) return;
+  const launchUrl = window.VELORA_PROVIDER_LAUNCH_URLS?.[slot.id];
+  els.slotLauncherTitle.textContent = slot.title;
+
+  if (launchUrl) {
+    els.slotLauncherContent.innerHTML = `
+      <iframe title="${slot.title}" src="${launchUrl}" allow="fullscreen; autoplay" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    `;
+  } else {
+    els.slotLauncherContent.innerHTML = `
+      <div class="slot-launch-empty" style="--slot-accent:${slot.accent}; --slot-glow:${slot.glow}">
+        <span>${slot.symbol}</span>
+        <strong>${slot.title}</strong>
+        <p>Этот слот готов запускаться внутри казино, но официальный launch URL еще не настроен. Pragmatic Play не разрешает встраивать публичные demo-страницы на чужом домене: нужен provider/aggregator API, tokenized game session и whitelist домена.</p>
+        <div class="launch-checklist">
+          <i>1. Договор с Pragmatic Play или агрегатором</i>
+          <i>2. Backend endpoint для game launch</i>
+          <i>3. Домен vvversss.github.io/casino в whitelist</i>
+          <i>4. Launch URL добавить в VELORA_PROVIDER_LAUNCH_URLS</i>
+        </div>
+        <a href="${slot.demoUrl}" target="_blank" rel="noopener noreferrer">Официальная demo-страница</a>
+      </div>
+    `;
+  }
+
+  els.slotLauncherDialog.showModal();
 }
 
 function renderGames() {
@@ -1308,6 +1350,10 @@ function bindEvents() {
   els.settingsBtn.addEventListener("click", showSettings);
   els.demoModeBtn.addEventListener("click", attemptRealMode);
   els.utilityClose.addEventListener("click", () => els.utilityDialog.close());
+  els.slotLauncherClose.addEventListener("click", () => {
+    els.slotLauncherDialog.close();
+    els.slotLauncherContent.innerHTML = "";
+  });
   els.authOpenBtn.addEventListener("click", () => {
     if (!supabaseClient) {
       toast("Supabase publishable key is missing");
