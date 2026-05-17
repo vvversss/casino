@@ -180,6 +180,80 @@
           <div id="recentWins" class="wins-list"></div>
         </section>
 
+        <section id="slotEngine" class="slot-engine" aria-label="Velora HTML5 slot engine">
+          <div class="slot-engine-head">
+            <div>
+              <small>HTML5 Engine</small>
+              <h2>Velora Mega Ways</h2>
+              <p>6 reels, cascading wins, free spins, multipliers and Supabase wallet sync with virtual VC credits.</p>
+            </div>
+            <div class="slot-theme-picker">
+              <label>
+                Theme
+                <select id="slotThemeSelect">
+                  <option value="olympus">Olympus mythological</option>
+                  <option value="candy">Candy bonus</option>
+                  <option value="fishing">Fishing bonus</option>
+                  <option value="book">Book explorer</option>
+                </select>
+              </label>
+              <button id="slotAdminToggle" type="button">Admin RTP</button>
+            </div>
+          </div>
+
+          <div class="slot-engine-layout">
+            <div class="slot-machine">
+              <div class="slot-topline">
+                <span id="slotThemeBadge">OLYMPUS</span>
+                <strong id="slotStatus">Ready for spin</strong>
+                <span id="slotWinDisplay">0.00 VC</span>
+              </div>
+              <div id="slotGrid" class="slot-grid" aria-live="polite"></div>
+              <div class="slot-meter-row">
+                <span>Cascade <b id="slotCascade">0</b></span>
+                <span>Multiplier <b id="slotMultiplier">x1</b></span>
+                <span>Free spins <b id="slotFreeSpins">0</b></span>
+              </div>
+            </div>
+
+            <aside class="slot-controls" aria-label="Slot controls">
+              <label class="slot-control-field">
+                Bet VC
+                <input id="slotBetInput" type="number" min="100" max="50000" step="100" value="1000" />
+              </label>
+              <div class="slot-bet-row">
+                <button type="button" data-slot-bet="500">500</button>
+                <button type="button" data-slot-bet="1000">1K</button>
+                <button type="button" data-slot-bet="5000">5K</button>
+              </div>
+              <button id="slotSpinBtn" class="slot-spin-button" type="button">Spin</button>
+              <div class="slot-auto-panel">
+                <label>
+                  <input id="slotAutoplay" type="checkbox" />
+                  Autoplay
+                </label>
+                <input id="slotAutoplayRounds" type="number" min="1" max="100" value="10" />
+              </div>
+              <div id="slotAdminPanel" class="slot-admin-panel" hidden>
+                <label>
+                  Target RTP
+                  <input id="slotRtpInput" type="range" min="86" max="98" step="0.5" value="94" />
+                  <span id="slotRtpValue">94%</span>
+                </label>
+                <label>
+                  Volatility
+                  <select id="slotVolatilitySelect">
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                    <option value="high">High</option>
+                  </select>
+                </label>
+                <small>Demo-side controls for virtual credits. Use protected backend rules before any regulated launch.</small>
+              </div>
+            </aside>
+          </div>
+        </section>
+
         <section class="provider-slots" aria-label="Настоящие слоты Pragmatic Play">
           <div class="provider-head">
             <div>

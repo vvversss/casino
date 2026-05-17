@@ -152,6 +152,73 @@ const providerSlots = [
   },
 ];
 
+const slotThemes = {
+  olympus: {
+    badge: "OLYMPUS",
+    name: "Olympus mythological",
+    accent: "#f7c94b",
+    reel: "#1f2758",
+    scatter: "SC",
+    multiplier: "MX",
+    symbols: [
+      { id: "ZE", label: "ZEUS", weight: 8, pay: 1.65 },
+      { id: "HD", label: "HADES", weight: 8, pay: 1.45 },
+      { id: "LY", label: "LYRE", weight: 14, pay: 0.9 },
+      { id: "CR", label: "CROWN", weight: 16, pay: 0.72 },
+      { id: "A", label: "A", weight: 22, pay: 0.42 },
+      { id: "K", label: "K", weight: 24, pay: 0.36 },
+    ],
+  },
+  candy: {
+    badge: "CANDY",
+    name: "Candy bonus",
+    accent: "#ff5aa7",
+    reel: "#401b4f",
+    scatter: "BN",
+    multiplier: "MX",
+    symbols: [
+      { id: "LO", label: "LOLLY", weight: 9, pay: 1.35 },
+      { id: "GB", label: "GUM", weight: 11, pay: 1.05 },
+      { id: "CB", label: "CUBE", weight: 15, pay: 0.8 },
+      { id: "GR", label: "GRAPE", weight: 18, pay: 0.58 },
+      { id: "A", label: "A", weight: 23, pay: 0.36 },
+      { id: "K", label: "K", weight: 24, pay: 0.32 },
+    ],
+  },
+  fishing: {
+    badge: "FISHING",
+    name: "Fishing bonus",
+    accent: "#18a8ff",
+    reel: "#0c3448",
+    scatter: "FS",
+    multiplier: "MX",
+    symbols: [
+      { id: "BA", label: "BASS", weight: 8, pay: 1.55 },
+      { id: "BO", label: "BOAT", weight: 10, pay: 1.16 },
+      { id: "RO", label: "ROD", weight: 15, pay: 0.78 },
+      { id: "BU", label: "BUOY", weight: 17, pay: 0.55 },
+      { id: "A", label: "A", weight: 23, pay: 0.36 },
+      { id: "K", label: "K", weight: 25, pay: 0.3 },
+    ],
+  },
+  book: {
+    badge: "BOOK",
+    name: "Book explorer",
+    accent: "#ffb92e",
+    reel: "#432d15",
+    scatter: "BK",
+    multiplier: "MX",
+    symbols: [
+      { id: "EX", label: "EXPL", weight: 8, pay: 1.5 },
+      { id: "MAP", label: "MAP", weight: 10, pay: 1.12 },
+      { id: "GEM", label: "GEM", weight: 13, pay: 0.86 },
+      { id: "KEY", label: "KEY", weight: 17, pay: 0.58 },
+      { id: "A", label: "A", weight: 23, pay: 0.38 },
+      { id: "K", label: "K", weight: 25, pay: 0.32 },
+    ],
+  },
+};
+
 const state = {
   balance: Number(localStorage.getItem("velora-balance")) || 100000,
   bet: Number(localStorage.getItem("velora-bet")) || 1000,
@@ -188,6 +255,19 @@ const state = {
     locked: false,
   },
   recentWins: recentSeed,
+  slotEngine: {
+    theme: localStorage.getItem("velora-slot-theme") || "olympus",
+    bet: Number(localStorage.getItem("velora-slot-bet")) || 1000,
+    grid: [],
+    spinning: false,
+    autoplay: false,
+    autoplayRounds: 0,
+    freeSpins: 0,
+    multiplier: 1,
+    cascade: 0,
+    lastWin: 0,
+    settings: JSON.parse(localStorage.getItem("velora-slot-settings") || '{"rtp":94,"volatility":"medium"}'),
+  },
 };
 
 const els = {
@@ -245,6 +325,25 @@ const els = {
   slotLauncherTitle: document.querySelector("#slotLauncherTitle"),
   slotLauncherContent: document.querySelector("#slotLauncherContent"),
   slotLauncherClose: document.querySelector("#slotLauncherClose"),
+  slotEngine: document.querySelector("#slotEngine"),
+  slotThemeSelect: document.querySelector("#slotThemeSelect"),
+  slotThemeBadge: document.querySelector("#slotThemeBadge"),
+  slotGrid: document.querySelector("#slotGrid"),
+  slotStatus: document.querySelector("#slotStatus"),
+  slotWinDisplay: document.querySelector("#slotWinDisplay"),
+  slotCascade: document.querySelector("#slotCascade"),
+  slotMultiplier: document.querySelector("#slotMultiplier"),
+  slotFreeSpins: document.querySelector("#slotFreeSpins"),
+  slotBetInput: document.querySelector("#slotBetInput"),
+  slotBetButtons: document.querySelectorAll("[data-slot-bet]"),
+  slotSpinBtn: document.querySelector("#slotSpinBtn"),
+  slotAutoplay: document.querySelector("#slotAutoplay"),
+  slotAutoplayRounds: document.querySelector("#slotAutoplayRounds"),
+  slotAdminToggle: document.querySelector("#slotAdminToggle"),
+  slotAdminPanel: document.querySelector("#slotAdminPanel"),
+  slotRtpInput: document.querySelector("#slotRtpInput"),
+  slotRtpValue: document.querySelector("#slotRtpValue"),
+  slotVolatilitySelect: document.querySelector("#slotVolatilitySelect"),
 };
 
 const supabaseSettings = window.VELORA_SUPABASE || {};
@@ -266,6 +365,7 @@ const format = (value) =>
 const random = (min, max) => Math.random() * (max - min) + min;
 const randomInt = (min, max) => Math.floor(random(min, max + 1));
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function saveState() {
   if (!state.user) {
@@ -772,6 +872,225 @@ function openProviderSlot(slotId) {
   }
 
   els.slotLauncherDialog.showModal();
+}
+
+function getSlotTheme() {
+  return slotThemes[state.slotEngine.theme] || slotThemes.olympus;
+}
+
+function getSlotSymbols(theme, includeSpecial = true) {
+  const volatility = state.slotEngine.settings.volatility || "medium";
+  const scatterWeight = volatility === "high" ? 4 : volatility === "low" ? 7 : 5;
+  const multiplierWeight = volatility === "high" ? 6 : volatility === "low" ? 3 : 4;
+  const base = theme.symbols.map((symbol) => ({ ...symbol }));
+  if (!includeSpecial) return base;
+  return [
+    ...base,
+    { id: theme.scatter, label: theme.scatter, weight: scatterWeight, pay: 0, special: "scatter" },
+    { id: theme.multiplier, label: "x?", weight: multiplierWeight, pay: 0, special: "multiplier" },
+  ];
+}
+
+function pickWeightedSymbol(symbols) {
+  const total = symbols.reduce((sum, symbol) => sum + symbol.weight, 0);
+  let roll = random(0, total);
+  for (const symbol of symbols) {
+    roll -= symbol.weight;
+    if (roll <= 0) return { ...symbol };
+  }
+  return { ...symbols[symbols.length - 1] };
+}
+
+function makeSlotGrid(theme) {
+  const symbols = getSlotSymbols(theme);
+  return Array.from({ length: 30 }, () => pickWeightedSymbol(symbols));
+}
+
+function setSlotBet(value) {
+  state.slotEngine.bet = clamp(Math.round(Number(value) || 1000), 100, 50000);
+  localStorage.setItem("velora-slot-bet", String(state.slotEngine.bet));
+  if (els.slotBetInput) els.slotBetInput.value = state.slotEngine.bet;
+}
+
+function saveSlotSettings() {
+  localStorage.setItem("velora-slot-settings", JSON.stringify(state.slotEngine.settings));
+}
+
+function renderSlotEngine() {
+  const theme = getSlotTheme();
+  if (!state.slotEngine.grid.length) state.slotEngine.grid = makeSlotGrid(theme);
+  if (els.slotThemeSelect) els.slotThemeSelect.value = state.slotEngine.theme;
+  if (els.slotThemeBadge) els.slotThemeBadge.textContent = theme.badge;
+  if (els.slotBetInput) els.slotBetInput.value = state.slotEngine.bet;
+  if (els.slotRtpInput) els.slotRtpInput.value = state.slotEngine.settings.rtp;
+  if (els.slotRtpValue) els.slotRtpValue.textContent = `${Number(state.slotEngine.settings.rtp).toFixed(1).replace(".0", "")}%`;
+  if (els.slotVolatilitySelect) els.slotVolatilitySelect.value = state.slotEngine.settings.volatility;
+  els.slotEngine.style.setProperty("--slot-theme-accent", theme.accent);
+  els.slotEngine.style.setProperty("--slot-theme-reel", theme.reel);
+  renderSlotGrid();
+  updateSlotMeters();
+}
+
+function renderSlotGrid(winningIndexes = []) {
+  if (!els.slotGrid) return;
+  const winSet = new Set(winningIndexes);
+  els.slotGrid.innerHTML = state.slotEngine.grid
+    .map((symbol, index) => {
+      const classes = ["slot-cell"];
+      if (symbol.special === "scatter") classes.push("is-scatter");
+      if (symbol.special === "multiplier") classes.push("is-multiplier");
+      if (winSet.has(index)) classes.push("is-winning");
+      return `<span class="${classes.join(" ")}" style="--delay:${(index % 6) * 34}ms">${symbol.label}</span>`;
+    })
+    .join("");
+}
+
+function updateSlotMeters() {
+  els.slotCascade.textContent = String(state.slotEngine.cascade);
+  els.slotMultiplier.textContent = `x${state.slotEngine.multiplier}`;
+  els.slotFreeSpins.textContent = String(state.slotEngine.freeSpins);
+  els.slotWinDisplay.textContent = `${format(state.slotEngine.lastWin)} VC`;
+  els.slotSpinBtn.disabled = state.slotEngine.spinning;
+}
+
+function evaluateSlotWins(grid, theme) {
+  const counts = new Map();
+  const bySymbol = new Map();
+  grid.forEach((symbol, index) => {
+    if (symbol.special) return;
+    counts.set(symbol.id, (counts.get(symbol.id) || 0) + 1);
+    bySymbol.set(symbol.id, [...(bySymbol.get(symbol.id) || []), index]);
+  });
+
+  const winningIndexes = [];
+  let baseMultiplier = 0;
+  counts.forEach((count, id) => {
+    if (count < 8) return;
+    const symbol = theme.symbols.find((item) => item.id === id);
+    if (!symbol) return;
+    winningIndexes.push(...bySymbol.get(id));
+    baseMultiplier += symbol.pay * Math.pow(count / 8, 1.22);
+  });
+
+  const scatters = grid.filter((symbol) => symbol.special === "scatter").length;
+  const multipliers = grid.filter((symbol) => symbol.special === "multiplier").length;
+  return { winningIndexes, baseMultiplier, scatters, multipliers };
+}
+
+function cascadeSlotGrid(winningIndexes, theme) {
+  const winSet = new Set(winningIndexes);
+  const source = getSlotSymbols(theme);
+  const next = [...state.slotEngine.grid];
+  for (let reel = 0; reel < 6; reel += 1) {
+    const kept = [];
+    for (let row = 4; row >= 0; row -= 1) {
+      const index = row * 6 + reel;
+      if (!winSet.has(index)) kept.push(next[index]);
+    }
+    for (let row = 4; row >= 0; row -= 1) {
+      const index = row * 6 + reel;
+      next[index] = kept.shift() || pickWeightedSymbol(source);
+    }
+  }
+  state.slotEngine.grid = next;
+}
+
+function getCascadeMultiplier(extraMultipliers, isFreeSpin) {
+  if (!extraMultipliers) return state.slotEngine.multiplier;
+  const boost = Array.from({ length: extraMultipliers }, () => [2, 3, 5][randomInt(0, 2)]).reduce((sum, item) => sum + item, 0);
+  if (isFreeSpin) {
+    state.slotEngine.multiplier += boost;
+    return state.slotEngine.multiplier;
+  }
+  return Math.max(state.slotEngine.multiplier, boost);
+}
+
+async function playSlotRound({ free = false } = {}) {
+  const theme = getSlotTheme();
+  const bet = state.slotEngine.bet;
+  state.slotEngine.grid = makeSlotGrid(theme);
+  state.slotEngine.cascade = 0;
+  state.slotEngine.multiplier = free ? Math.max(2, state.slotEngine.multiplier) : 1;
+  state.slotEngine.lastWin = 0;
+  els.slotStatus.textContent = free ? "Free spin running" : "Spinning";
+  renderSlotGrid();
+  updateSlotMeters();
+  await sleep(420);
+
+  let totalWin = 0;
+  let safety = 0;
+  let scatterAwarded = false;
+  while (safety < 8) {
+    safety += 1;
+    const result = evaluateSlotWins(state.slotEngine.grid, theme);
+    if (!scatterAwarded && result.scatters >= 4) {
+      state.slotEngine.freeSpins += result.scatters >= 5 ? 12 : 8;
+      scatterAwarded = true;
+    }
+    if (!result.winningIndexes.length) break;
+    state.slotEngine.cascade += 1;
+    const multiplier = getCascadeMultiplier(result.multipliers, free);
+    const rtpScale = clamp(Number(state.slotEngine.settings.rtp || 94) / 94, 0.84, 1.08);
+    const cascadeWin = bet * result.baseMultiplier * multiplier * rtpScale;
+    totalWin += cascadeWin;
+    state.slotEngine.lastWin = totalWin;
+    els.slotStatus.textContent = `Cascade ${state.slotEngine.cascade}: ${format(cascadeWin)} VC`;
+    renderSlotGrid(result.winningIndexes);
+    updateSlotMeters();
+    await sleep(520);
+    cascadeSlotGrid(result.winningIndexes, theme);
+    renderSlotGrid();
+    await sleep(300);
+  }
+
+  state.slotEngine.lastWin = Math.round(totalWin * 100) / 100;
+  if (state.slotEngine.lastWin > 0) {
+    setBalance(state.balance + state.slotEngine.lastWin);
+    addWin(theme.name, state.slotEngine.lastWin, theme.badge.slice(0, 2));
+  }
+  recordProfileRound(state.slotEngine.lastWin);
+  els.slotStatus.textContent = state.slotEngine.lastWin > 0 ? `Win ${format(state.slotEngine.lastWin)} VC` : "No win, next spin";
+  updateSlotMeters();
+  await sleep(520);
+}
+
+async function runSlotFreeSpins() {
+  while (state.slotEngine.freeSpins > 0) {
+    state.slotEngine.freeSpins -= 1;
+    updateSlotMeters();
+    await playSlotRound({ free: true });
+  }
+  state.slotEngine.multiplier = 1;
+  updateSlotMeters();
+}
+
+async function spinSlot() {
+  if (state.slotEngine.spinning) return;
+  if (state.walletMode !== "demo") {
+    toast("Real-money mode is disabled. This slot uses virtual VC only.");
+    return;
+  }
+  state.slotEngine.spinning = true;
+  updateSlotMeters();
+  try {
+    if (!chargeBet(state.slotEngine.bet)) return;
+    await playSlotRound();
+    await runSlotFreeSpins();
+  } finally {
+    state.slotEngine.spinning = false;
+    updateSlotMeters();
+  }
+}
+
+async function runSlotAutoplay() {
+  state.slotEngine.autoplayRounds = clamp(Number(els.slotAutoplayRounds.value) || 10, 1, 100);
+  while (els.slotAutoplay.checked && state.slotEngine.autoplayRounds > 0 && state.balance >= state.slotEngine.bet) {
+    state.slotEngine.autoplayRounds -= 1;
+    els.slotAutoplayRounds.value = state.slotEngine.autoplayRounds || 1;
+    await spinSlot();
+    await sleep(420);
+  }
+  els.slotAutoplay.checked = false;
 }
 
 function renderGames() {
@@ -1354,6 +1673,38 @@ function bindEvents() {
     els.slotLauncherDialog.close();
     els.slotLauncherContent.innerHTML = "";
   });
+  els.slotThemeSelect.addEventListener("change", (event) => {
+    state.slotEngine.theme = event.target.value;
+    localStorage.setItem("velora-slot-theme", state.slotEngine.theme);
+    state.slotEngine.grid = makeSlotGrid(getSlotTheme());
+    state.slotEngine.cascade = 0;
+    state.slotEngine.multiplier = 1;
+    state.slotEngine.lastWin = 0;
+    els.slotStatus.textContent = `${getSlotTheme().name} loaded`;
+    renderSlotEngine();
+  });
+  els.slotBetInput.addEventListener("change", (event) => setSlotBet(event.target.value));
+  els.slotBetButtons.forEach((button) => {
+    button.addEventListener("click", () => setSlotBet(button.dataset.slotBet));
+  });
+  els.slotSpinBtn.addEventListener("click", spinSlot);
+  els.slotAutoplay.addEventListener("change", () => {
+    if (els.slotAutoplay.checked) runSlotAutoplay();
+  });
+  els.slotAdminToggle.addEventListener("click", () => {
+    els.slotAdminPanel.hidden = !els.slotAdminPanel.hidden;
+  });
+  els.slotRtpInput.addEventListener("input", (event) => {
+    state.slotEngine.settings.rtp = Number(event.target.value);
+    els.slotRtpValue.textContent = `${Number(event.target.value).toFixed(1).replace(".0", "")}%`;
+    saveSlotSettings();
+  });
+  els.slotVolatilitySelect.addEventListener("change", (event) => {
+    state.slotEngine.settings.volatility = event.target.value;
+    state.slotEngine.grid = makeSlotGrid(getSlotTheme());
+    saveSlotSettings();
+    renderSlotEngine();
+  });
   els.authOpenBtn.addEventListener("click", () => {
     if (!supabaseClient) {
       toast("Supabase publishable key is missing");
@@ -1382,6 +1733,7 @@ async function init() {
   setBet(state.bet);
   renderRecentWins();
   renderProviderSlots();
+  renderSlotEngine();
   renderActiveGame();
   renderGames();
   syncFilterButtons();
