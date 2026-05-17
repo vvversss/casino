@@ -161,12 +161,12 @@ const slotThemes = {
     scatter: "SC",
     multiplier: "MX",
     symbols: [
-      { id: "ZE", label: "ZEUS", weight: 8, pay: 1.65 },
-      { id: "HD", label: "HADES", weight: 8, pay: 1.45 },
-      { id: "LY", label: "LYRE", weight: 14, pay: 0.9 },
-      { id: "CR", label: "CROWN", weight: 16, pay: 0.72 },
-      { id: "A", label: "A", weight: 22, pay: 0.42 },
-      { id: "K", label: "K", weight: 24, pay: 0.36 },
+      { id: "ZE", label: "Zeus", icon: "bolt", weight: 8, pay: 1.65 },
+      { id: "HD", label: "Hades", icon: "helmet", weight: 8, pay: 1.45 },
+      { id: "LY", label: "Lyre", icon: "lyre", weight: 14, pay: 0.9 },
+      { id: "CR", label: "Crown", icon: "crown", weight: 16, pay: 0.72 },
+      { id: "A", label: "Gem A", icon: "gem", weight: 22, pay: 0.42 },
+      { id: "K", label: "Gem K", icon: "orb", weight: 24, pay: 0.36 },
     ],
   },
   candy: {
@@ -177,12 +177,12 @@ const slotThemes = {
     scatter: "BN",
     multiplier: "MX",
     symbols: [
-      { id: "LO", label: "LOLLY", weight: 9, pay: 1.35 },
-      { id: "GB", label: "GUM", weight: 11, pay: 1.05 },
-      { id: "CB", label: "CUBE", weight: 15, pay: 0.8 },
-      { id: "GR", label: "GRAPE", weight: 18, pay: 0.58 },
-      { id: "A", label: "A", weight: 23, pay: 0.36 },
-      { id: "K", label: "K", weight: 24, pay: 0.32 },
+      { id: "LO", label: "Lollipop", icon: "lollipop", weight: 9, pay: 1.35 },
+      { id: "GB", label: "Gumball", icon: "candy", weight: 11, pay: 1.05 },
+      { id: "CB", label: "Candy cube", icon: "cube", weight: 15, pay: 0.8 },
+      { id: "GR", label: "Grapes", icon: "grapes", weight: 18, pay: 0.58 },
+      { id: "A", label: "Sugar star", icon: "star", weight: 23, pay: 0.36 },
+      { id: "K", label: "Sweet drop", icon: "drop", weight: 24, pay: 0.32 },
     ],
   },
   fishing: {
@@ -193,12 +193,12 @@ const slotThemes = {
     scatter: "FS",
     multiplier: "MX",
     symbols: [
-      { id: "BA", label: "BASS", weight: 8, pay: 1.55 },
-      { id: "BO", label: "BOAT", weight: 10, pay: 1.16 },
-      { id: "RO", label: "ROD", weight: 15, pay: 0.78 },
-      { id: "BU", label: "BUOY", weight: 17, pay: 0.55 },
-      { id: "A", label: "A", weight: 23, pay: 0.36 },
-      { id: "K", label: "K", weight: 25, pay: 0.3 },
+      { id: "BA", label: "Bass", icon: "fish", weight: 8, pay: 1.55 },
+      { id: "BO", label: "Boat", icon: "boat", weight: 10, pay: 1.16 },
+      { id: "RO", label: "Rod", icon: "rod", weight: 15, pay: 0.78 },
+      { id: "BU", label: "Buoy", icon: "buoy", weight: 17, pay: 0.55 },
+      { id: "A", label: "Hook", icon: "hook", weight: 23, pay: 0.36 },
+      { id: "K", label: "Wave", icon: "wave", weight: 25, pay: 0.3 },
     ],
   },
   book: {
@@ -209,13 +209,186 @@ const slotThemes = {
     scatter: "BK",
     multiplier: "MX",
     symbols: [
-      { id: "EX", label: "EXPL", weight: 8, pay: 1.5 },
-      { id: "MAP", label: "MAP", weight: 10, pay: 1.12 },
-      { id: "GEM", label: "GEM", weight: 13, pay: 0.86 },
-      { id: "KEY", label: "KEY", weight: 17, pay: 0.58 },
-      { id: "A", label: "A", weight: 23, pay: 0.38 },
-      { id: "K", label: "K", weight: 25, pay: 0.32 },
+      { id: "EX", label: "Explorer", icon: "compass", weight: 8, pay: 1.5 },
+      { id: "MAP", label: "Map", icon: "map", weight: 10, pay: 1.12 },
+      { id: "GEM", label: "Gem", icon: "gem", weight: 13, pay: 0.86 },
+      { id: "KEY", label: "Key", icon: "key", weight: 17, pay: 0.58 },
+      { id: "A", label: "Torch", icon: "torch", weight: 23, pay: 0.38 },
+      { id: "K", label: "Relic", icon: "relic", weight: 25, pay: 0.32 },
     ],
+  },
+};
+
+const i18n = {
+  ru: {
+    lang: "RU",
+    search: "Поиск игр...",
+    wallet: "Демо-баланс · виртуальные кредиты",
+    realWallet: "Реальный счет недоступен",
+    guest: "Гость",
+    guestStatus: "Локальный демо-режим",
+    login: "Войти",
+    logout: "Выйти",
+    demoTitle: "Демо-режим",
+    demoText: "Все игры используют только виртуальные кредиты.",
+    nav: {
+      all: "Лобби",
+      slots: "Слоты",
+      roulette: "Рулетка",
+      promo: "Промо",
+      vip: "VIP клуб",
+      settings: "Настройки",
+    },
+    recent: "Последние выигрыши",
+    selectedGame: "Выбрана игра",
+    slot: {
+      kicker: "HTML5 Engine",
+      title: "Velora Mega Ways",
+      copy: "6 барабанов, каскадные выигрыши, free spins, множители и Supabase wallet с виртуальными VC.",
+      theme: "Тема",
+      admin: "Admin RTP",
+      ready: "Готово к спину",
+      loaded: "загружена",
+      bet: "Ставка VC",
+      spin: "Spin",
+      autoplay: "Автоигра",
+      cascade: "Каскад",
+      multiplier: "Множитель",
+      freeSpins: "Free spins",
+      targetRtp: "Target RTP",
+      volatility: "Волатильность",
+      low: "Низкая",
+      medium: "Средняя",
+      high: "Высокая",
+      adminNote: "Demo-настройки для виртуальных кредитов. Для регулируемого запуска нужен защищенный backend.",
+      spinning: "Спин",
+      freeRunning: "Free spin",
+      win: "Выигрыш",
+      noWin: "Без выигрыша, следующий спин",
+      realBlocked: "Реальный счет выключен. Этот слот использует только виртуальные VC.",
+    },
+    providerTitle: "Pragmatic Play slots",
+    providerCopy: "Официальные demo-страницы провайдера открываются отдельно. Внутри сайта работает собственный HTML5 слот.",
+    providerTag: "Real provider demos",
+    catalogAll: "Все игры",
+    catalogProvider: "Провайдер",
+    catalogSort: "Сортировка",
+    betTitle: "Ставка",
+    autoGame: "Авто-игра",
+    rounds: "Раундов",
+    stopAt: "Стоп при x",
+    cashout: "Забрать",
+    launch: "Запустить в казино",
+    sortPopular: "Популярные",
+    sortOnline: "Онлайн",
+    sortName: "Название",
+  },
+  en: {
+    lang: "EN",
+    search: "Search games...",
+    wallet: "Demo balance · virtual credits",
+    realWallet: "Real mode unavailable",
+    guest: "Guest",
+    guestStatus: "Local demo mode",
+    login: "Sign in",
+    logout: "Sign out",
+    demoTitle: "Demo mode",
+    demoText: "All games use virtual credits only.",
+    nav: {
+      all: "Lobby",
+      slots: "Slots",
+      roulette: "Roulette",
+      promo: "Promo",
+      vip: "VIP club",
+      settings: "Settings",
+    },
+    recent: "Recent wins",
+    selectedGame: "Selected game",
+    slot: {
+      kicker: "HTML5 Engine",
+      title: "Velora Mega Ways",
+      copy: "6 reels, cascading wins, free spins, multipliers and Supabase wallet sync with virtual VC credits.",
+      theme: "Theme",
+      admin: "Admin RTP",
+      ready: "Ready for spin",
+      loaded: "loaded",
+      bet: "Bet VC",
+      spin: "Spin",
+      autoplay: "Autoplay",
+      cascade: "Cascade",
+      multiplier: "Multiplier",
+      freeSpins: "Free spins",
+      targetRtp: "Target RTP",
+      volatility: "Volatility",
+      low: "Low",
+      medium: "Medium",
+      high: "High",
+      adminNote: "Demo-side controls for virtual credits. Use protected backend rules before any regulated launch.",
+      spinning: "Spinning",
+      freeRunning: "Free spin running",
+      win: "Win",
+      noWin: "No win, next spin",
+      realBlocked: "Real-money mode is disabled. This slot uses virtual VC only.",
+    },
+    providerTitle: "Pragmatic Play slots",
+    providerCopy: "Official provider demo pages open separately. The site now runs its own embedded HTML5 slot.",
+    providerTag: "Real provider demos",
+    catalogAll: "All games",
+    catalogProvider: "Provider",
+    catalogSort: "Sort",
+    betTitle: "Bet",
+    autoGame: "Auto-play",
+    rounds: "Rounds",
+    stopAt: "Stop at x",
+    cashout: "Cash out",
+    launch: "Launch in casino",
+    sortPopular: "Popular",
+    sortOnline: "Online",
+    sortName: "Name",
+  },
+};
+
+const gameText = {
+  en: {
+    slots: {
+      description: "Three reels, quick multipliers and a rare x50 for triple sevens.",
+      action: "Spin",
+    },
+    roulette: {
+      title: "Roulette",
+      description: "Pick a color, spin the wheel and see where the ball lands.",
+      action: "Spin",
+    },
+    dice: {
+      title: "Dice",
+      description: "Guess over or under the target. Clean math and instant results.",
+      action: "Roll",
+    },
+    crash: {
+      title: "Crash",
+      description: "The multiplier rises. Cash out before the crash.",
+      action: "Start",
+    },
+    blackjack: {
+      title: "Blackjack",
+      description: "One fast hand against the dealer. 21 takes the pot.",
+      action: "Deal",
+    },
+    plinko: {
+      title: "Plinko",
+      description: "Drop the ball, catch a multiplier and take the payout.",
+      action: "Drop ball",
+    },
+    mines: {
+      title: "Mines",
+      description: "Open safe tiles and avoid mines. Longer runs raise the multiplier.",
+      action: "Start",
+    },
+    wheel: {
+      title: "Wheel",
+      description: "A lucky wheel with sectors from x0.2 to x10.",
+      action: "Spin",
+    },
   },
 };
 
@@ -228,6 +401,7 @@ const state = {
   authReady: false,
   walletMode: localStorage.getItem("velora-wallet-mode") || "demo",
   settings: JSON.parse(localStorage.getItem("velora-settings") || "{}"),
+  lang: localStorage.getItem("velora-lang") || "ru",
   activeGame: "plinko",
   filter: "all",
   provider: "all",
@@ -277,6 +451,7 @@ const els = {
   increaseBet: document.querySelector("#increaseBet"),
   quickBets: document.querySelectorAll(".quick-bets button"),
   topUpBtn: document.querySelector("#topUpBtn"),
+  languageBtn: document.querySelector("#languageBtn"),
   searchInput: document.querySelector("#searchInput"),
   providerSelect: document.querySelector("#providerSelect"),
   sortSelect: document.querySelector("#sortSelect"),
@@ -366,6 +541,7 @@ const random = (min, max) => Math.random() * (max - min) + min;
 const randomInt = (min, max) => Math.floor(random(min, max + 1));
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const tr = (key) => key.split(".").reduce((value, part) => value?.[part], i18n[state.lang]) ?? key;
 
 function saveState() {
   if (!state.user) {
@@ -414,6 +590,70 @@ function toast(message) {
   toast.timer = setTimeout(() => els.toast.classList.remove("is-visible"), 2400);
 }
 
+function setText(selector, text) {
+  const node = document.querySelector(selector);
+  if (node) node.textContent = text;
+}
+
+function setLabelLead(selector, text) {
+  const node = document.querySelector(selector);
+  if (node?.firstChild) node.firstChild.textContent = text;
+}
+
+function applyLanguage() {
+  const copy = i18n[state.lang];
+  document.documentElement.lang = state.lang;
+  els.languageBtn.lastChild.textContent = ` ${copy.lang}`;
+  els.searchInput.placeholder = copy.search;
+  setText('.nav-item[data-filter="all"] span:last-child', copy.nav.all);
+  setText('.nav-item[data-filter="slots"] span:last-child', copy.nav.slots);
+  setText('.nav-item[data-filter="roulette"] span:last-child', copy.nav.roulette);
+  setText("#promoBtn span:last-child", copy.nav.promo);
+  setText("#vipBtn span:last-child", copy.nav.vip);
+  setText("#settingsBtn span:last-child", copy.nav.settings);
+  setText(".demo-card strong", copy.demoTitle);
+  setText(".game-heading span:last-child", copy.selectedGame);
+  setText(".strip-title strong", copy.recent);
+  setText(".slot-engine-head small", copy.slot.kicker);
+  setText(".slot-engine-head h2", copy.slot.title);
+  setText(".slot-engine-head p", copy.slot.copy);
+  setLabelLead(".slot-theme-picker label", copy.slot.theme);
+  setText("#slotAdminToggle", copy.slot.admin);
+  setLabelLead(".slot-control-field", copy.slot.bet);
+  setText("#slotSpinBtn", copy.slot.spin);
+  const autoplayLabel = document.querySelector(".slot-auto-panel label");
+  if (autoplayLabel) {
+    autoplayLabel.innerHTML = "";
+    autoplayLabel.append(els.slotAutoplay, document.createTextNode(` ${copy.slot.autoplay}`));
+  }
+  setLabelLead(".slot-admin-panel label:first-child", copy.slot.targetRtp);
+  setLabelLead(".slot-admin-panel label:nth-child(2)", copy.slot.volatility);
+  setText('.slot-admin-panel option[value="low"]', copy.slot.low);
+  setText('.slot-admin-panel option[value="medium"]', copy.slot.medium);
+  setText('.slot-admin-panel option[value="high"]', copy.slot.high);
+  setText(".slot-admin-panel small", copy.slot.adminNote);
+  setText(".provider-head h2", copy.providerTitle);
+  setText(".provider-head p", copy.providerCopy);
+  setText(".provider-head > span", copy.providerTag);
+  setText('.tab[data-filter="all"]', copy.catalogAll);
+  setText('.tab[data-filter="slots"]', copy.nav.slots);
+  setText('.tab[data-filter="roulette"]', copy.nav.roulette);
+  const selectLabels = document.querySelectorAll(".selects label");
+  if (selectLabels[0]?.firstChild) selectLabels[0].firstChild.textContent = copy.catalogProvider;
+  if (selectLabels[1]?.firstChild) selectLabels[1].firstChild.textContent = copy.catalogSort;
+  setText(".bet-panel .section-head h2", copy.betTitle);
+  setText(".switch-row > span:first-child", copy.autoGame);
+  setLabelLead(".mini-grid label:first-child", copy.rounds);
+  setLabelLead(".mini-grid label:nth-child(2)", copy.stopAt);
+  setText("#cashoutBtn", copy.cashout);
+  setText('#sortSelect option[value="popular"]', copy.sortPopular);
+  setText('#sortSelect option[value="online"]', copy.sortOnline);
+  setText('#sortSelect option[value="name"]', copy.sortName);
+  updateModeUi();
+  updateAccountUi();
+  updateSlotMeters();
+}
+
 function queueProfileSave() {
   if (!supabaseClient || !state.user || !state.authReady) return;
   clearTimeout(queueProfileSave.timer);
@@ -440,30 +680,34 @@ function updateAccountUi() {
   els.accountChip.classList.toggle("is-online", Boolean(state.user));
   els.authOpenBtn.classList.toggle("is-hidden", Boolean(state.user));
   els.signOutBtn.classList.toggle("is-hidden", !state.user);
+  els.authOpenBtn.textContent = tr("login");
+  els.signOutBtn.textContent = tr("logout");
 
   if (!configured) {
-    els.accountName.textContent = "Гость";
+    els.accountName.textContent = tr("guest");
     els.accountStatus.textContent = "Supabase key not set";
     return;
   }
 
   if (!state.user) {
-    els.accountName.textContent = "Гость";
-    els.accountStatus.textContent = "Войдите для синхронизации";
+    els.accountName.textContent = tr("guest");
+    els.accountStatus.textContent = state.lang === "en" ? "Sign in to sync" : "Войдите для синхронизации";
     return;
   }
 
   const name = state.profile?.display_name || state.user.email?.split("@")[0] || "Player";
   els.accountName.textContent = name;
-  els.accountStatus.textContent = state.user.email || "Аккаунт активен";
+  els.accountStatus.textContent = state.user.email || (state.lang === "en" ? "Account active" : "Аккаунт активен");
 }
 
 function updateModeUi() {
   const demo = state.walletMode === "demo";
-  els.walletModeLabel.textContent = demo ? "Демо-баланс · виртуальные кредиты" : "Real mode unavailable";
+  els.walletModeLabel.textContent = demo ? tr("wallet") : tr("realWallet");
   els.modeText.textContent = demo
-    ? "Все игры используют только виртуальные кредиты."
-    : "Реальный счет заблокирован до лицензии и KYC.";
+    ? tr("demoText")
+    : state.lang === "en"
+      ? "Real balance is blocked until licensing and KYC."
+      : "Реальный счет заблокирован до лицензии и KYC.";
   els.demoModeBtn.classList.toggle("is-off", !demo);
   document.body.classList.toggle("reduced-motion", Boolean(state.settings.reducedMotion));
   document.body.classList.toggle("compact-ui", Boolean(state.settings.compactUi));
@@ -759,6 +1003,10 @@ function getActiveGame() {
   return games.find((game) => game.id === state.activeGame) || games[0];
 }
 
+function localizeGame(game) {
+  return { ...game, ...(gameText[state.lang]?.[game.id] || {}) };
+}
+
 function addWin(gameTitle, amount, icon = "VC") {
   if (amount <= 0) return;
   const names = ["Nova", "Zero7", "Pulse", "Vlad", "Jet", "Runa", "Ace", "Spark"];
@@ -833,7 +1081,7 @@ function renderProviderSlots() {
             <small>${slot.studio}</small>
             <strong>${slot.title}</strong>
             <p>${slot.theme}</p>
-            <button type="button" data-provider-slot="${slot.id}">Запустить в казино</button>
+            <button type="button" data-provider-slot="${slot.id}">${tr("launch")}</button>
           </div>
         </article>
       `,
@@ -886,8 +1134,8 @@ function getSlotSymbols(theme, includeSpecial = true) {
   if (!includeSpecial) return base;
   return [
     ...base,
-    { id: theme.scatter, label: theme.scatter, weight: scatterWeight, pay: 0, special: "scatter" },
-    { id: theme.multiplier, label: "x?", weight: multiplierWeight, pay: 0, special: "multiplier" },
+    { id: theme.scatter, label: "Scatter", icon: "scatter", weight: scatterWeight, pay: 0, special: "scatter" },
+    { id: theme.multiplier, label: "Multiplier", icon: "multiplier", weight: multiplierWeight, pay: 0, special: "multiplier" },
   ];
 }
 
@@ -927,8 +1175,41 @@ function renderSlotEngine() {
   if (els.slotVolatilitySelect) els.slotVolatilitySelect.value = state.slotEngine.settings.volatility;
   els.slotEngine.style.setProperty("--slot-theme-accent", theme.accent);
   els.slotEngine.style.setProperty("--slot-theme-reel", theme.reel);
+  if (!state.slotEngine.spinning && !state.slotEngine.lastWin) els.slotStatus.textContent = tr("slot.ready");
   renderSlotGrid();
   updateSlotMeters();
+}
+
+function renderSlotIcon(symbol) {
+  const common = 'viewBox="0 0 64 64" aria-hidden="true" focusable="false"';
+  const icons = {
+    bolt: `<svg ${common}><path d="M36 4 14 36h16l-3 24 23-34H34l2-22Z"/><path class="shine" d="M34 10 20 31"/></svg>`,
+    helmet: `<svg ${common}><path d="M11 38C12 17 26 8 43 12c7 2 11 8 11 17v19H38V34H25v14H11V38Z"/><path class="shine" d="M24 23c6-5 15-5 22 1"/></svg>`,
+    lyre: `<svg ${common}><path d="M19 10c-6 14-4 30 13 38 17-8 19-24 13-38"/><path d="M22 12v28M30 10v34M38 12v28M18 49h28"/></svg>`,
+    crown: `<svg ${common}><path d="m9 24 13 10 10-20 10 20 13-10-5 27H14L9 24Z"/><circle cx="32" cy="14" r="4"/></svg>`,
+    gem: `<svg ${common}><path d="M14 18h36l8 12-26 28L6 30l8-12Z"/><path class="shine" d="M14 30h36M24 18l8 40 8-40"/></svg>`,
+    orb: `<svg ${common}><circle cx="32" cy="32" r="22"/><path class="shine" d="M22 23c7-7 19-6 25 2"/></svg>`,
+    lollipop: `<svg ${common}><circle cx="32" cy="23" r="16"/><path d="M42 35 24 59"/><path class="shine" d="M24 18c7-7 19-5 23 4"/></svg>`,
+    candy: `<svg ${common}><path d="M21 22h22l8 10-8 10H21l-8-10 8-10Z"/><path d="M13 32 4 23v18l9-9ZM51 32l9-9v18l-9-9Z"/></svg>`,
+    cube: `<svg ${common}><path d="m32 7 24 14v28L32 62 8 49V21L32 7Z"/><path class="shine" d="M8 21 32 35l24-14M32 35v27"/></svg>`,
+    grapes: `<svg ${common}><circle cx="25" cy="25" r="9"/><circle cx="39" cy="25" r="9"/><circle cx="20" cy="38" r="9"/><circle cx="34" cy="39" r="9"/><circle cx="29" cy="52" r="8"/><path d="M34 15c4-7 10-8 17-5"/></svg>`,
+    star: `<svg ${common}><path d="m32 6 7 17 18 1-14 12 5 18-16-10-16 10 5-18L7 24l18-1 7-17Z"/></svg>`,
+    drop: `<svg ${common}><path d="M32 5c13 16 20 27 20 38 0 10-8 17-20 17s-20-7-20-17C12 32 19 21 32 5Z"/></svg>`,
+    fish: `<svg ${common}><path d="M7 33c10-14 29-18 42-4l9-9v26l-9-8C36 51 17 47 7 33Z"/><circle class="dark" cx="42" cy="31" r="3"/></svg>`,
+    boat: `<svg ${common}><path d="M8 38h48l-8 14H16L8 38Z"/><path d="M31 8v28M31 10l18 16H31"/></svg>`,
+    rod: `<svg ${common}><path d="M14 50C29 20 43 10 55 8"/><path d="M21 38c13 0 21 5 23 16"/><circle cx="45" cy="55" r="4"/></svg>`,
+    buoy: `<svg ${common}><circle cx="32" cy="32" r="23"/><circle class="cut" cx="32" cy="32" r="10"/><path d="M16 16 26 26M48 16 38 26M16 48l10-10M48 48 38 38"/></svg>`,
+    hook: `<svg ${common}><path d="M36 7v36c0 9-7 15-15 12-7-3-8-12-2-17"/><path d="M28 7h16"/></svg>`,
+    wave: `<svg ${common}><path d="M5 39c8-11 16-11 24 0s16 11 24 0"/><path d="M5 25c8-9 16-9 24 0s16 9 24 0"/></svg>`,
+    compass: `<svg ${common}><circle cx="32" cy="32" r="24"/><path d="m41 13-6 22-22 6 16-12 12-16Z"/><circle class="dark" cx="32" cy="32" r="4"/></svg>`,
+    map: `<svg ${common}><path d="m8 17 15-6 18 6 15-6v36l-15 6-18-6-15 6V17Z"/><path class="shine" d="M23 11v36M41 17v36"/></svg>`,
+    key: `<svg ${common}><circle cx="21" cy="35" r="12"/><path d="M32 35h25M47 35v9M39 35v6"/></svg>`,
+    torch: `<svg ${common}><path d="M25 28c-6-9 5-15 7-24 3 8 13 13 7 24H25Z"/><path d="M26 30h12l-4 28h-4l-4-28Z"/></svg>`,
+    relic: `<svg ${common}><path d="M16 17h32v36H16V17Z"/><path class="shine" d="M23 25h18M23 34h14M23 43h18"/></svg>`,
+    scatter: `<svg ${common}><path d="M32 5 39 24h20L43 36l6 20-17-12-17 12 6-20L5 24h20L32 5Z"/><circle class="dark" cx="32" cy="32" r="7"/></svg>`,
+    multiplier: `<svg ${common}><circle cx="32" cy="32" r="25"/><path class="dark" d="m22 20 20 24M42 20 22 44"/></svg>`,
+  };
+  return icons[symbol.icon] || icons.gem;
 }
 
 function renderSlotGrid(winningIndexes = []) {
@@ -940,15 +1221,18 @@ function renderSlotGrid(winningIndexes = []) {
       if (symbol.special === "scatter") classes.push("is-scatter");
       if (symbol.special === "multiplier") classes.push("is-multiplier");
       if (winSet.has(index)) classes.push("is-winning");
-      return `<span class="${classes.join(" ")}" style="--delay:${(index % 6) * 34}ms">${symbol.label}</span>`;
+      return `<span class="${classes.join(" ")}" style="--delay:${(index % 6) * 34}ms" title="${symbol.label}" aria-label="${symbol.label}">${renderSlotIcon(symbol)}</span>`;
     })
     .join("");
 }
 
 function updateSlotMeters() {
-  els.slotCascade.textContent = String(state.slotEngine.cascade);
-  els.slotMultiplier.textContent = `x${state.slotEngine.multiplier}`;
-  els.slotFreeSpins.textContent = String(state.slotEngine.freeSpins);
+  els.slotCascade.parentElement.innerHTML = `${tr("slot.cascade")} <b id="slotCascade">${state.slotEngine.cascade}</b>`;
+  els.slotMultiplier.parentElement.innerHTML = `${tr("slot.multiplier")} <b id="slotMultiplier">x${state.slotEngine.multiplier}</b>`;
+  els.slotFreeSpins.parentElement.innerHTML = `${tr("slot.freeSpins")} <b id="slotFreeSpins">${state.slotEngine.freeSpins}</b>`;
+  els.slotCascade = document.querySelector("#slotCascade");
+  els.slotMultiplier = document.querySelector("#slotMultiplier");
+  els.slotFreeSpins = document.querySelector("#slotFreeSpins");
   els.slotWinDisplay.textContent = `${format(state.slotEngine.lastWin)} VC`;
   els.slotSpinBtn.disabled = state.slotEngine.spinning;
 }
@@ -1012,7 +1296,7 @@ async function playSlotRound({ free = false } = {}) {
   state.slotEngine.cascade = 0;
   state.slotEngine.multiplier = free ? Math.max(2, state.slotEngine.multiplier) : 1;
   state.slotEngine.lastWin = 0;
-  els.slotStatus.textContent = free ? "Free spin running" : "Spinning";
+  els.slotStatus.textContent = free ? tr("slot.freeRunning") : tr("slot.spinning");
   renderSlotGrid();
   updateSlotMeters();
   await sleep(420);
@@ -1034,7 +1318,7 @@ async function playSlotRound({ free = false } = {}) {
     const cascadeWin = bet * result.baseMultiplier * multiplier * rtpScale;
     totalWin += cascadeWin;
     state.slotEngine.lastWin = totalWin;
-    els.slotStatus.textContent = `Cascade ${state.slotEngine.cascade}: ${format(cascadeWin)} VC`;
+    els.slotStatus.textContent = `${tr("slot.cascade")} ${state.slotEngine.cascade}: ${format(cascadeWin)} VC`;
     renderSlotGrid(result.winningIndexes);
     updateSlotMeters();
     await sleep(520);
@@ -1049,7 +1333,7 @@ async function playSlotRound({ free = false } = {}) {
     addWin(theme.name, state.slotEngine.lastWin, theme.badge.slice(0, 2));
   }
   recordProfileRound(state.slotEngine.lastWin);
-  els.slotStatus.textContent = state.slotEngine.lastWin > 0 ? `Win ${format(state.slotEngine.lastWin)} VC` : "No win, next spin";
+  els.slotStatus.textContent = state.slotEngine.lastWin > 0 ? `${tr("slot.win")} ${format(state.slotEngine.lastWin)} VC` : tr("slot.noWin");
   updateSlotMeters();
   await sleep(520);
 }
@@ -1067,7 +1351,7 @@ async function runSlotFreeSpins() {
 async function spinSlot() {
   if (state.slotEngine.spinning) return;
   if (state.walletMode !== "demo") {
-    toast("Real-money mode is disabled. This slot uses virtual VC only.");
+    toast(tr("slot.realBlocked"));
     return;
   }
   state.slotEngine.spinning = true;
@@ -1099,10 +1383,10 @@ function renderGames() {
   if (state.provider !== "all") list = list.filter((game) => game.provider === state.provider);
   if (state.query) {
     const query = state.query.toLowerCase();
-    list = list.filter((game) => game.title.toLowerCase().includes(query));
+    list = list.filter((game) => localizeGame(game).title.toLowerCase().includes(query));
   }
   if (state.sort === "online") list.sort((a, b) => b.online - a.online);
-  if (state.sort === "name") list.sort((a, b) => a.title.localeCompare(b.title));
+  if (state.sort === "name") list.sort((a, b) => localizeGame(a).title.localeCompare(localizeGame(b).title));
 
   els.gamesGrid.innerHTML = list
     .map(
@@ -1149,13 +1433,13 @@ function selectGame(gameId) {
 }
 
 function renderActiveGame() {
-  const game = getActiveGame();
+  const game = localizeGame(getActiveGame());
   els.activeGameTitle.textContent = game.title;
   els.activeGameDescription.textContent = game.description;
   els.playBtn.textContent = game.action;
   els.playBtn.disabled = false;
   els.cashoutBtn.classList.add("is-hidden");
-  els.roundMessage.textContent = "Готово к ставке.";
+  els.roundMessage.textContent = state.lang === "en" ? "Ready for bet." : "Готово к ставке.";
   els.gameBoard.className = "game-board";
 
   const renderers = {
@@ -1227,6 +1511,7 @@ function renderControls(gameId) {
   };
 
   els.dynamicControls.innerHTML = controls[gameId] || "";
+  localizeDynamicControls(gameId);
   els.dynamicControls.querySelectorAll("[data-risk]").forEach((btn) =>
     btn.addEventListener("click", () => {
       state.risk = btn.dataset.risk;
@@ -1253,6 +1538,48 @@ function renderControls(gameId) {
     state.diceTarget = Number(event.target.value);
     renderControls("dice");
   });
+}
+
+function localizeDynamicControls(gameId) {
+  if (state.lang !== "en") return;
+  const title = els.dynamicControls.querySelector(".dynamic-title");
+  const note = els.dynamicControls.querySelector(".control-note");
+  const setDynamicText = (selector, text) => {
+    const node = els.dynamicControls.querySelector(selector);
+    if (node) node.textContent = text;
+  };
+  if (gameId === "plinko") {
+    if (title) title.textContent = "Risk";
+    setDynamicText('[data-risk="low"]', "Low");
+    setDynamicText('[data-risk="medium"]', "Medium");
+    setDynamicText('[data-risk="high"]', "High");
+    const label = els.dynamicControls.querySelector(".range-row label");
+    if (label) label.innerHTML = `Rows <strong>${state.rows}</strong>`;
+  }
+  if (gameId === "roulette") {
+    if (title) title.textContent = "Color";
+    setDynamicText('[data-roulette="red"]', "Red x2");
+    setDynamicText('[data-roulette="black"]', "Black x2");
+    setDynamicText('[data-roulette="green"]', "Zero x14");
+  }
+  if (gameId === "dice") {
+    if (title) title.textContent = "Condition";
+    setDynamicText('[data-dice-mode="over"]', "Over");
+    setDynamicText('[data-dice-mode="under"]', "Under");
+    const label = els.dynamicControls.querySelector(".range-row label");
+    if (label) label.innerHTML = `Target <strong>${state.diceTarget}</strong>`;
+  }
+  if (gameId === "crash" && note) note.textContent = "After start, the Cash out button locks the current multiplier. If the curve crashes first, the bet is lost.";
+  if (gameId === "mines" && note) note.textContent = "Open safe tiles, then cash out the bank. Two hidden tiles contain mines.";
+  if (gameId === "blackjack" && note) note.textContent = "Fast demo hand: player against dealer. The bank pays the better hand up to 21.";
+  if (gameId === "slots" && note) {
+    if (title) title.textContent = "Slots";
+    note.textContent = "Two matching icons pay x1.8, three matching icons pay x10, and three sevens pay x50.";
+  }
+  if (gameId === "wheel" && note) {
+    if (title) title.textContent = "Wheel";
+    note.textContent = "Wheel sectors pay different multipliers. Higher sectors are rarer.";
+  }
 }
 
 function renderPlinko(resultIndex = null, multiplier = null) {
@@ -1645,6 +1972,14 @@ function bindEvents() {
   els.increaseBet.addEventListener("click", () => setBet(state.bet + 100));
   els.betInput.addEventListener("change", (event) => setBet(event.target.value));
   els.quickBets.forEach((btn) => btn.addEventListener("click", () => setBet(Number(btn.dataset.bet))));
+  els.languageBtn.addEventListener("click", () => {
+    state.lang = state.lang === "ru" ? "en" : "ru";
+    localStorage.setItem("velora-lang", state.lang);
+    applyLanguage();
+    renderActiveGame();
+    renderGames();
+    renderProviderSlots();
+  });
   els.topUpBtn.addEventListener("click", () => {
     setBalance(state.balance + 10000);
     toast("Демо-баланс пополнен на 10 000 VC");
@@ -1738,6 +2073,7 @@ async function init() {
   renderGames();
   syncFilterButtons();
   bindEvents();
+  applyLanguage();
   setAuthMode("signin");
   updateModeUi();
   await loadSession();

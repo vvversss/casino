@@ -1417,13 +1417,49 @@ kbd {
   animation-delay: var(--delay);
 }
 
+.slot-cell svg {
+  width: min(46px, 72%);
+  height: min(46px, 72%);
+  fill: #fff5c7;
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.45));
+}
+
+.slot-cell svg .shine {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.72);
+  stroke-width: 3;
+}
+
+.slot-cell svg .dark {
+  fill: rgba(4, 11, 16, 0.78);
+  stroke: rgba(4, 11, 16, 0.78);
+}
+
+.slot-cell svg .cut {
+  fill: rgba(4, 11, 16, 0.7);
+}
+
 .slot-cell.is-scatter {
   background: linear-gradient(145deg, #f7c94b, #ff7047);
   color: #1b1205;
 }
 
+.slot-cell.is-scatter svg {
+  fill: #201303;
+  stroke: #201303;
+}
+
 .slot-cell.is-multiplier {
   background: linear-gradient(145deg, #18f5e7, #5d36d7);
+}
+
+.slot-cell.is-multiplier svg {
+  fill: #ffffff;
+  stroke: #ffffff;
 }
 
 .slot-cell.is-winning {
