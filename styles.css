@@ -336,7 +336,22 @@ kbd {
 }
 
 .account-chip strong {
+  display: inline-block;
   font-size: 14px;
+}
+
+.vip-badge {
+  display: inline-grid;
+  min-height: 20px;
+  margin-left: 6px;
+  padding: 2px 7px;
+  border: 1px solid rgba(247, 201, 75, 0.34);
+  border-radius: 999px;
+  background: rgba(247, 201, 75, 0.12);
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 950;
+  vertical-align: middle;
 }
 
 .account-chip small {
@@ -360,6 +375,13 @@ kbd {
   border-color: rgba(255, 255, 255, 0.18);
   background: rgba(255, 255, 255, 0.04);
   color: #d5e4e8;
+}
+
+.profile-trigger {
+  border: 0;
+  cursor: pointer;
+  color: #06231f;
+  font-weight: 950;
 }
 
 .coin {
@@ -1336,6 +1358,12 @@ kbd {
   color: var(--slot-theme-accent);
 }
 
+.slot-theme-picker button.is-locked {
+  color: #95a5aa;
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
 .slot-engine-layout {
   align-items: stretch;
   gap: 14px;
@@ -2117,6 +2145,95 @@ kbd {
   accent-color: var(--lime);
 }
 
+.cashier-panel,
+.profile-form {
+  display: grid;
+  gap: 12px;
+}
+
+.cashier-panel {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cashier-panel article,
+.profile-preview {
+  padding: 14px;
+  border: 1px solid rgba(118, 152, 158, 0.26);
+  border-radius: var(--radius);
+  background: rgba(8, 18, 24, 0.72);
+}
+
+.cashier-panel article {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.cashier-panel strong,
+.profile-preview strong {
+  color: #fff;
+  font-size: 16px;
+}
+
+.cashier-panel p,
+.profile-preview small {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.cashier-panel label,
+.profile-form label {
+  display: grid;
+  gap: 7px;
+  color: #d8ebed;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.cashier-panel input,
+.profile-form input,
+.profile-form select {
+  min-height: 44px;
+  min-width: 0;
+  border: 1px solid rgba(118, 152, 158, 0.32);
+  border-radius: 7px;
+  background: #0b151a;
+  color: var(--text);
+  padding: 0 12px;
+}
+
+.cashier-panel button,
+.profile-form button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 7px;
+  background: linear-gradient(180deg, var(--lime), #6adc19);
+  color: #102500;
+  padding: 0 16px;
+  font-weight: 950;
+}
+
+.profile-preview {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-preview > span {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan), var(--lime));
+  color: #06231f;
+  font-size: 22px;
+  font-weight: 950;
+}
+
 body.compact-ui .game-card,
 body.compact-ui .game-card button {
   min-height: 198px;
@@ -2478,6 +2595,7 @@ body.reduced-motion *::after {
   .promo-form,
   .promo-list,
   .utility-grid,
+  .cashier-panel,
   .launch-checklist {
     grid-template-columns: 1fr;
   }

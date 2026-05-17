@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Velora Play - demo casino</title>
+    <title>VERS casino - demo casino</title>
     <link rel="preload" href="assets/casino-table-art.png" as="image" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="app-shell">
       <aside class="sidebar" aria-label="Навигация">
-        <a class="brand" href="#" aria-label="Velora Play">
+        <a class="brand" href="#" aria-label="VERS casino">
           <span class="brand-mark">V</span>
           <span>
-            <strong>VELORA</strong>
-            <small>PLAY</small>
+            <strong>VERS</strong>
+            <small>CASINO</small>
           </span>
         </a>
 
@@ -66,6 +66,10 @@
             <span class="nav-icon" aria-hidden="true">♛</span>
             <span>VIP клуб</span>
           </button>
+          <button id="cashierBtn" class="nav-item" type="button">
+            <span class="nav-icon" aria-hidden="true">▣</span>
+            <span>Касса</span>
+          </button>
           <button id="settingsBtn" class="nav-item" type="button">
             <span class="nav-icon" aria-hidden="true">⚙</span>
             <span>Настройки</span>
@@ -98,12 +102,12 @@
                 <output id="balance">100 000.00</output>
                 <small id="walletModeLabel">Демо-баланс · виртуальные кредиты</small>
               </div>
-              <button id="topUpBtn" class="top-up" type="button">+10 000</button>
             </section>
             <section id="accountChip" class="account-chip" aria-label="Аккаунт">
-              <span class="account-avatar" aria-hidden="true">?</span>
+              <button id="profileBtn" class="account-avatar profile-trigger" type="button" aria-label="Профиль">?</button>
               <div>
                 <strong id="accountName">Гость</strong>
+                <span id="accountVip" class="vip-badge">Bronze</span>
                 <small id="accountStatus">Локальный демо-режим</small>
               </div>
               <button id="authOpenBtn" class="account-action" type="button">Войти</button>
@@ -180,11 +184,11 @@
           <div id="recentWins" class="wins-list"></div>
         </section>
 
-        <section id="slotEngine" class="slot-engine" aria-label="Velora HTML5 slot engine">
+        <section id="slotEngine" class="slot-engine" aria-label="VERS HTML5 slot engine">
           <div class="slot-engine-head">
             <div>
               <small>HTML5 Engine</small>
-              <h2>Velora Mega Ways</h2>
+              <h2>VERS Mega Ways</h2>
               <p>6 reels, cascading wins, free spins, multipliers and Supabase wallet sync with virtual VC credits.</p>
             </div>
             <div class="slot-theme-picker">
@@ -283,7 +287,7 @@
                 Провайдер
                 <select id="providerSelect">
                   <option value="all">Все</option>
-                  <option value="velora">Velora</option>
+                  <option value="velora">VERS</option>
                   <option value="neon">Neon Lab</option>
                   <option value="arc">Arc Studio</option>
                 </select>
@@ -310,7 +314,7 @@
       <form id="authForm" class="auth-card" method="dialog">
         <button class="modal-close" type="button" aria-label="Закрыть">×</button>
         <span class="brand-mark small" aria-hidden="true">V</span>
-        <h2 id="authTitle">Вход в Velora Play</h2>
+        <h2 id="authTitle">Вход в VERS casino</h2>
         <p id="authCopy">Войдите, чтобы баланс и профиль сохранялись между устройствами.</p>
 
         <label>

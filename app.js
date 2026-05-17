@@ -237,13 +237,14 @@ const i18n = {
       roulette: "Рулетка",
       promo: "Промо",
       vip: "VIP клуб",
+      cashier: "Касса",
       settings: "Настройки",
     },
     recent: "Последние выигрыши",
     selectedGame: "Выбрана игра",
     slot: {
       kicker: "HTML5 Engine",
-      title: "Velora Mega Ways",
+    title: "VERS Mega Ways",
       copy: "6 барабанов, каскадные выигрыши, free spins, множители и Supabase wallet с виртуальными VC.",
       theme: "Тема",
       admin: "Admin RTP",
@@ -279,6 +280,19 @@ const i18n = {
     stopAt: "Стоп при x",
     cashout: "Забрать",
     launch: "Запустить в казино",
+    profile: "Профиль",
+    nickname: "Ник",
+    avatar: "Аватар",
+    saveProfile: "Сохранить профиль",
+    newPassword: "Новый пароль",
+    changePassword: "Сменить пароль",
+    cashierTitle: "Касса",
+    demoTopUp: "Пополнить виртуальный баланс",
+    depositShell: "Ввод средств",
+    withdrawShell: "Вывод средств",
+    amount: "Сумма",
+    createRequest: "Создать заявку",
+    shellNote: "Это только оболочка интерфейса. Реальные платежи и выводы не подключены.",
     sortPopular: "Популярные",
     sortOnline: "Онлайн",
     sortName: "Название",
@@ -300,13 +314,14 @@ const i18n = {
       roulette: "Roulette",
       promo: "Promo",
       vip: "VIP club",
+      cashier: "Cashier",
       settings: "Settings",
     },
     recent: "Recent wins",
     selectedGame: "Selected game",
     slot: {
       kicker: "HTML5 Engine",
-      title: "Velora Mega Ways",
+    title: "VERS Mega Ways",
       copy: "6 reels, cascading wins, free spins, multipliers and Supabase wallet sync with virtual VC credits.",
       theme: "Theme",
       admin: "Admin RTP",
@@ -342,6 +357,19 @@ const i18n = {
     stopAt: "Stop at x",
     cashout: "Cash out",
     launch: "Launch in casino",
+    profile: "Profile",
+    nickname: "Nickname",
+    avatar: "Avatar",
+    saveProfile: "Save profile",
+    newPassword: "New password",
+    changePassword: "Change password",
+    cashierTitle: "Cashier",
+    demoTopUp: "Top up virtual balance",
+    depositShell: "Deposit",
+    withdrawShell: "Withdraw",
+    amount: "Amount",
+    createRequest: "Create request",
+    shellNote: "This is only an interface shell. Real payments and withdrawals are not connected.",
     sortPopular: "Popular",
     sortOnline: "Online",
     sortName: "Name",
@@ -450,7 +478,6 @@ const els = {
   decreaseBet: document.querySelector("#decreaseBet"),
   increaseBet: document.querySelector("#increaseBet"),
   quickBets: document.querySelectorAll(".quick-bets button"),
-  topUpBtn: document.querySelector("#topUpBtn"),
   languageBtn: document.querySelector("#languageBtn"),
   searchInput: document.querySelector("#searchInput"),
   providerSelect: document.querySelector("#providerSelect"),
@@ -472,6 +499,8 @@ const els = {
   navFilters: document.querySelectorAll("[data-filter]"),
   accountChip: document.querySelector("#accountChip"),
   accountName: document.querySelector("#accountName"),
+  accountVip: document.querySelector("#accountVip"),
+  profileBtn: document.querySelector("#profileBtn"),
   accountStatus: document.querySelector("#accountStatus"),
   authOpenBtn: document.querySelector("#authOpenBtn"),
   signOutBtn: document.querySelector("#signOutBtn"),
@@ -491,6 +520,7 @@ const els = {
   demoModeBtn: document.querySelector("#demoModeBtn"),
   promoBtn: document.querySelector("#promoBtn"),
   vipBtn: document.querySelector("#vipBtn"),
+  cashierBtn: document.querySelector("#cashierBtn"),
   settingsBtn: document.querySelector("#settingsBtn"),
   utilityDialog: document.querySelector("#utilityDialog"),
   utilityTitle: document.querySelector("#utilityTitle"),
@@ -542,6 +572,13 @@ const randomInt = (min, max) => Math.floor(random(min, max + 1));
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const tr = (key) => key.split(".").reduce((value, part) => value?.[part], i18n[state.lang]) ?? key;
+const escapeHtml = (value) =>
+  String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 
 function saveState() {
   if (!state.user) {
@@ -610,6 +647,7 @@ function applyLanguage() {
   setText('.nav-item[data-filter="roulette"] span:last-child', copy.nav.roulette);
   setText("#promoBtn span:last-child", copy.nav.promo);
   setText("#vipBtn span:last-child", copy.nav.vip);
+  setText("#cashierBtn span:last-child", copy.nav.cashier);
   setText("#settingsBtn span:last-child", copy.nav.settings);
   setText(".demo-card strong", copy.demoTitle);
   setText(".game-heading span:last-child", copy.selectedGame);
@@ -652,6 +690,7 @@ function applyLanguage() {
   updateModeUi();
   updateAccountUi();
   updateSlotMeters();
+  updateAdminControls();
 }
 
 function queueProfileSave() {
@@ -668,11 +707,32 @@ async function saveProfile() {
     .from("casino_profiles")
     .update({
       balance: state.balance,
+      display_name: state.profile?.display_name || "Player",
+      avatar_url: state.profile?.avatar_url || "avatar-neon",
       games_played: state.profile?.games_played || 0,
       total_won: state.profile?.total_won || 0,
     })
     .eq("id", state.user.id);
   if (error) throw error;
+}
+
+function getAvatarLabel(profile = state.profile) {
+  const avatar = profile?.avatar_url || localStorage.getItem("vers-avatar") || "avatar-neon";
+  const map = {
+    "avatar-neon": "V",
+    "avatar-crown": "♛",
+    "avatar-star": "★",
+    "avatar-card": "A",
+  };
+  return map[avatar] || (profile?.display_name || "V").slice(0, 1).toUpperCase();
+}
+
+function getVipLevelName() {
+  return getVipInfo().current.name;
+}
+
+function isAdmin() {
+  return Boolean(state.profile?.is_admin || state.user?.app_metadata?.role === "admin" || state.user?.app_metadata?.is_admin);
 }
 
 function updateAccountUi() {
@@ -685,18 +745,24 @@ function updateAccountUi() {
 
   if (!configured) {
     els.accountName.textContent = tr("guest");
+    els.profileBtn.textContent = getAvatarLabel();
+    els.accountVip.textContent = getVipLevelName();
     els.accountStatus.textContent = "Supabase key not set";
     return;
   }
 
   if (!state.user) {
     els.accountName.textContent = tr("guest");
+    els.profileBtn.textContent = getAvatarLabel();
+    els.accountVip.textContent = getVipLevelName();
     els.accountStatus.textContent = state.lang === "en" ? "Sign in to sync" : "Войдите для синхронизации";
     return;
   }
 
   const name = state.profile?.display_name || state.user.email?.split("@")[0] || "Player";
   els.accountName.textContent = name;
+  els.profileBtn.textContent = getAvatarLabel();
+  els.accountVip.textContent = getVipLevelName();
   els.accountStatus.textContent = state.user.email || (state.lang === "en" ? "Account active" : "Аккаунт активен");
 }
 
@@ -866,10 +932,113 @@ function attemptRealMode() {
   );
 }
 
+function showCashier() {
+  openUtility(
+    tr("cashierTitle"),
+    `
+      <div class="cashier-panel">
+        <article>
+          <strong>${tr("demoTopUp")}</strong>
+          <p>${state.lang === "en" ? "Adds 10,000 VC to the virtual balance." : "Добавляет 10 000 VC на виртуальный баланс."}</p>
+          <button type="button" data-demo-topup>+10 000 VC</button>
+        </article>
+        <article>
+          <strong>${tr("depositShell")}</strong>
+          <label>${tr("amount")}<input type="number" min="10" value="100" /></label>
+          <button type="button" data-cash-shell>${tr("createRequest")}</button>
+        </article>
+        <article>
+          <strong>${tr("withdrawShell")}</strong>
+          <label>${tr("amount")}<input type="number" min="10" value="100" /></label>
+          <button type="button" data-cash-shell>${tr("createRequest")}</button>
+        </article>
+      </div>
+      <p class="utility-note">${tr("shellNote")}</p>
+    `,
+  );
+  document.querySelector("[data-demo-topup]")?.addEventListener("click", () => {
+    setBalance(state.balance + 10000);
+    toast(state.lang === "en" ? "Virtual balance topped up by 10,000 VC" : "Виртуальный баланс пополнен на 10 000 VC");
+    updateAccountUi();
+  });
+  document.querySelectorAll("[data-cash-shell]").forEach((button) => {
+    button.addEventListener("click", () => toast(state.lang === "en" ? "Request shell created" : "Заявка создана как демонстрация"));
+  });
+}
+
+function showProfileMenu() {
+  const profileName = state.profile?.display_name || els.accountName.textContent || tr("guest");
+  const safeName = escapeHtml(profileName);
+  const avatar = state.profile?.avatar_url || localStorage.getItem("vers-avatar") || "avatar-neon";
+  openUtility(
+    tr("profile"),
+    `
+      <form id="profileForm" class="profile-form">
+        <div class="profile-preview">
+          <span>${getAvatarLabel()}</span>
+          <div>
+            <strong>${safeName}</strong>
+            <small>VIP ${getVipLevelName()}${isAdmin() ? " · Admin" : ""}</small>
+          </div>
+        </div>
+        <label>${tr("nickname")}<input id="profileNameInput" type="text" maxlength="24" value="${safeName}" /></label>
+        <label>${tr("avatar")}
+          <select id="profileAvatarSelect">
+            <option value="avatar-neon" ${avatar === "avatar-neon" ? "selected" : ""}>VERS neon</option>
+            <option value="avatar-crown" ${avatar === "avatar-crown" ? "selected" : ""}>Crown VIP</option>
+            <option value="avatar-star" ${avatar === "avatar-star" ? "selected" : ""}>Star player</option>
+            <option value="avatar-card" ${avatar === "avatar-card" ? "selected" : ""}>Card ace</option>
+          </select>
+        </label>
+        <button type="submit">${tr("saveProfile")}</button>
+      </form>
+      <form id="passwordForm" class="profile-form">
+        <label>${tr("newPassword")}<input id="newPasswordInput" type="password" minlength="6" autocomplete="new-password" /></label>
+        <button type="submit">${tr("changePassword")}</button>
+      </form>
+    `,
+  );
+  document.querySelector("#profileForm")?.addEventListener("submit", saveProfileMenu);
+  document.querySelector("#passwordForm")?.addEventListener("submit", changePassword);
+}
+
+async function saveProfileMenu(event) {
+  event.preventDefault();
+  const displayName = document.querySelector("#profileNameInput").value.trim() || "Player";
+  const avatarUrl = document.querySelector("#profileAvatarSelect").value;
+  localStorage.setItem("vers-avatar", avatarUrl);
+  if (state.profile) {
+    state.profile.display_name = displayName;
+    state.profile.avatar_url = avatarUrl;
+  }
+  try {
+    if (supabaseClient && state.user) await saveProfile();
+    updateAccountUi();
+    toast(state.lang === "en" ? "Profile saved" : "Профиль сохранен");
+    els.utilityDialog.close();
+  } catch (error) {
+    toast(error.message || "Profile save failed");
+  }
+}
+
+async function changePassword(event) {
+  event.preventDefault();
+  if (!supabaseClient || !state.user) {
+    toast(state.lang === "en" ? "Sign in first" : "Сначала войдите в аккаунт");
+    return;
+  }
+  const password = document.querySelector("#newPasswordInput").value;
+  if (!password || password.length < 6) return toast(state.lang === "en" ? "Minimum 6 characters" : "Минимум 6 символов");
+  const { error } = await supabaseClient.auth.updateUser({ password });
+  if (error) return toast(error.message);
+  toast(state.lang === "en" ? "Password changed" : "Пароль изменен");
+  els.utilityDialog.close();
+}
+
 function setAuthMode(mode) {
   state.authMode = mode;
   const signup = mode === "signup";
-  els.authTitle.textContent = signup ? "Создать аккаунт" : "Вход в Velora Play";
+  els.authTitle.textContent = signup ? "Создать аккаунт" : "Вход в VERS casino";
   els.authCopy.textContent = signup
     ? "Создайте аккаунт, чтобы баланс сохранялся между устройствами."
     : "Войдите, чтобы баланс и профиль сохранялись между устройствами.";
@@ -883,7 +1052,7 @@ async function ensureProfile(user) {
   const fallbackName = user.user_metadata?.display_name || user.email?.split("@")[0] || "Player";
   const { data, error } = await supabaseClient
     .from("casino_profiles")
-    .select("id,email,display_name,balance,games_played,total_won")
+    .select("id,email,display_name,balance,games_played,total_won,avatar_url,is_admin")
     .eq("id", user.id)
     .maybeSingle();
 
@@ -898,7 +1067,7 @@ async function ensureProfile(user) {
       display_name: fallbackName,
       balance: state.balance,
     })
-    .select("id,email,display_name,balance,games_played,total_won")
+    .select("id,email,display_name,balance,games_played,total_won,avatar_url,is_admin")
     .single();
   if (insertError) throw insertError;
   return created;
@@ -930,6 +1099,7 @@ async function applySession(session) {
 
   if (state.user) {
     state.profile = await ensureProfile(state.user);
+    await loadSlotSettingsRemote();
     state.balance = Number(state.profile.balance);
     els.balance.value = format(state.balance);
     localStorage.removeItem("velora-balance");
@@ -937,6 +1107,7 @@ async function applySession(session) {
   }
 
   updateAccountUi();
+  updateAdminControls();
 }
 
 async function handleAuthSubmit(event) {
@@ -1162,6 +1333,32 @@ function setSlotBet(value) {
 
 function saveSlotSettings() {
   localStorage.setItem("velora-slot-settings", JSON.stringify(state.slotEngine.settings));
+  saveSlotSettingsRemote().catch(() => {});
+}
+
+async function loadSlotSettingsRemote() {
+  if (!supabaseClient || !state.user) return;
+  const { data, error } = await supabaseClient
+    .from("slot_engine_settings")
+    .select("target_rtp,volatility")
+    .eq("id", "global")
+    .maybeSingle();
+  if (error || !data) return;
+  state.slotEngine.settings = {
+    rtp: Number(data.target_rtp || state.slotEngine.settings.rtp),
+    volatility: data.volatility || state.slotEngine.settings.volatility,
+  };
+  localStorage.setItem("velora-slot-settings", JSON.stringify(state.slotEngine.settings));
+}
+
+async function saveSlotSettingsRemote() {
+  if (!supabaseClient || !state.user || !isAdmin()) return;
+  await supabaseClient.from("slot_engine_settings").upsert({
+    id: "global",
+    target_rtp: state.slotEngine.settings.rtp,
+    volatility: state.slotEngine.settings.volatility,
+    updated_by: state.user.id,
+  });
 }
 
 function renderSlotEngine() {
@@ -1178,6 +1375,16 @@ function renderSlotEngine() {
   if (!state.slotEngine.spinning && !state.slotEngine.lastWin) els.slotStatus.textContent = tr("slot.ready");
   renderSlotGrid();
   updateSlotMeters();
+  updateAdminControls();
+}
+
+function updateAdminControls() {
+  const allowed = isAdmin();
+  els.slotAdminToggle.classList.toggle("is-locked", !allowed);
+  els.slotAdminToggle.textContent = allowed ? tr("slot.admin") : `${tr("slot.admin")} 🔒`;
+  if (!allowed) els.slotAdminPanel.hidden = true;
+  els.slotRtpInput.disabled = !allowed;
+  els.slotVolatilitySelect.disabled = !allowed;
 }
 
 function renderSlotIcon(symbol) {
@@ -1980,10 +2187,7 @@ function bindEvents() {
     renderGames();
     renderProviderSlots();
   });
-  els.topUpBtn.addEventListener("click", () => {
-    setBalance(state.balance + 10000);
-    toast("Демо-баланс пополнен на 10 000 VC");
-  });
+  els.profileBtn.addEventListener("click", showProfileMenu);
   els.searchInput.addEventListener("input", (event) => {
     state.query = event.target.value.trim();
     renderGames();
@@ -2001,6 +2205,7 @@ function bindEvents() {
   els.cashoutBtn.addEventListener("click", cashoutCrash);
   els.promoBtn.addEventListener("click", showPromos);
   els.vipBtn.addEventListener("click", showVipClub);
+  els.cashierBtn.addEventListener("click", showCashier);
   els.settingsBtn.addEventListener("click", showSettings);
   els.demoModeBtn.addEventListener("click", attemptRealMode);
   els.utilityClose.addEventListener("click", () => els.utilityDialog.close());
@@ -2027,14 +2232,20 @@ function bindEvents() {
     if (els.slotAutoplay.checked) runSlotAutoplay();
   });
   els.slotAdminToggle.addEventListener("click", () => {
+    if (!isAdmin()) {
+      toast(state.lang === "en" ? "Admin access required" : "Нужен доступ администратора");
+      return;
+    }
     els.slotAdminPanel.hidden = !els.slotAdminPanel.hidden;
   });
   els.slotRtpInput.addEventListener("input", (event) => {
+    if (!isAdmin()) return;
     state.slotEngine.settings.rtp = Number(event.target.value);
     els.slotRtpValue.textContent = `${Number(event.target.value).toFixed(1).replace(".0", "")}%`;
     saveSlotSettings();
   });
   els.slotVolatilitySelect.addEventListener("change", (event) => {
+    if (!isAdmin()) return;
     state.slotEngine.settings.volatility = event.target.value;
     state.slotEngine.grid = makeSlotGrid(getSlotTheme());
     saveSlotSettings();
