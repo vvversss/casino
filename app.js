@@ -591,6 +591,9 @@ const format = (value) =>
 const random = (min, max) => Math.random() * (max - min) + min;
 const randomInt = (min, max) => Math.floor(random(min, max + 1));
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+const MINI_GAME_MIN_BET = 100;
+const MINI_GAME_MAX_BET = 1000000000;
+const MINI_GAME_BET_STEP = 100;
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const tr = (key) => key.split(".").reduce((value, part) => value?.[part], i18n[state.lang]) ?? key;
 const escapeHtml = (value) =>
@@ -632,7 +635,12 @@ function setBalance(value) {
 }
 
 function setBet(value) {
-  const clean = clamp(Math.round(Number(value) / 100) * 100 || 100, 100, 50000);
+  const requested = Number(value);
+  const clean = clamp(
+    Math.round((Number.isFinite(requested) ? requested : MINI_GAME_MIN_BET) / MINI_GAME_BET_STEP) * MINI_GAME_BET_STEP,
+    MINI_GAME_MIN_BET,
+    Math.min(MINI_GAME_MAX_BET, Math.max(MINI_GAME_MIN_BET, state.balance || MINI_GAME_MAX_BET)),
+  );
   state.bet = clean;
   els.betInput.value = clean;
   els.quickBets.forEach((btn) => {
@@ -2236,8 +2244,8 @@ function maybeAutoPlay() {
 }
 
 function bindEvents() {
-  els.decreaseBet.addEventListener("click", () => setBet(state.bet - 100));
-  els.increaseBet.addEventListener("click", () => setBet(state.bet + 100));
+  els.decreaseBet.addEventListener("click", () => setBet(state.bet - MINI_GAME_BET_STEP));
+  els.increaseBet.addEventListener("click", () => setBet(state.bet + MINI_GAME_BET_STEP));
   els.betInput.addEventListener("change", (event) => setBet(event.target.value));
   els.quickBets.forEach((btn) => btn.addEventListener("click", () => setBet(Number(btn.dataset.bet))));
   els.languageBtn.addEventListener("click", () => {

@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VERS casino - social casino</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="shortcut icon" href="assets/favicon.svg" />
     <link rel="preload" href="assets/casino-table-art.png" as="image" />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -134,15 +136,15 @@
               </div>
               <div class="bet-stepper">
                 <button id="decreaseBet" type="button" aria-label="Уменьшить ставку">−</button>
-                <input id="betInput" type="number" min="100" step="100" value="1000" />
+                <input id="betInput" type="number" min="100" max="1000000000" step="100" value="1000" />
                 <button id="increaseBet" type="button" aria-label="Увеличить ставку">+</button>
               </div>
               <div class="quick-bets" aria-label="Быстрые ставки">
-                <button type="button" data-bet="100">100</button>
-                <button type="button" data-bet="500">500</button>
                 <button class="is-selected" type="button" data-bet="1000">1 000</button>
-                <button type="button" data-bet="5000">5 000</button>
-                <button type="button" data-bet="10000">10 000</button>
+                <button type="button" data-bet="10000">10K</button>
+                <button type="button" data-bet="100000">100K</button>
+                <button type="button" data-bet="1000000">1M</button>
+                <button type="button" data-bet="10000000">10M</button>
               </div>
             </div>
 
