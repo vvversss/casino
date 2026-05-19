@@ -2,101 +2,101 @@ const games = [
   {
     id: "slots",
     title: "Slots",
-    description: "РўСЂРё Р±Р°СЂР°Р±Р°РЅР°, Р±С‹СЃС‚СЂС‹Рµ РјРЅРѕР¶РёС‚РµР»Рё Рё СЂРµРґРєРёР№ x50 Р·Р° С‚СЂРё СЃРµРјРµСЂРєРё.",
+    description: "Три барабана, быстрые множители и редкий x50 за три семерки.",
     provider: "velora",
     online: 2568,
     symbol: "7",
     color: "#f7c94b",
     border: "#d89517",
-    action: "РљСЂСѓС‚РёС‚СЊ",
+    action: "Крутить",
   },
   {
     id: "roulette",
     title: "Roulette",
-    description: "Р’С‹Р±РµСЂРё С†РІРµС‚, Р·Р°РїСѓСЃС‚Рё РєРѕР»РµСЃРѕ Рё РїСЂРѕРІРµСЂСЊ, РєСѓРґР° Р»РµРі С€Р°СЂ.",
+    description: "Выбери цвет, запусти колесо и проверь, куда лег шар.",
     provider: "arc",
     online: 1253,
-    symbol: "в—Ћ",
+    symbol: "◎",
     color: "#ff3f4d",
     border: "#d53735",
-    action: "РљСЂСѓС‚РёС‚СЊ",
+    action: "Крутить",
   },
   {
     id: "dice",
     title: "Dice",
-    description: "РЈРіР°РґР°Р№ РІС‹С€Рµ РёР»Рё РЅРёР¶Рµ С†РµР»Рё. Р§РёСЃС‚Р°СЏ РјР°С‚РµРјР°С‚РёРєР° Рё Р±С‹СЃС‚СЂС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚.",
+    description: "Угадай выше или ниже цели. Чистая математика и быстрый результат.",
     provider: "velora",
     online: 1847,
-    symbol: "в—†",
+    symbol: "◆",
     color: "#18a8ff",
     border: "#2476c9",
-    action: "Р‘СЂРѕСЃРёС‚СЊ",
+    action: "Бросить",
   },
   {
     id: "crash",
     title: "Crash",
-    description: "РњРЅРѕР¶РёС‚РµР»СЊ СЂР°СЃС‚РµС‚, РЅРѕ СѓСЃРїРµР№ Р·Р°Р±СЂР°С‚СЊ РґРѕ РєСЂР°С€Р°.",
+    description: "Множитель растет, но успей забрать до краша.",
     provider: "neon",
     online: 2312,
-    symbol: "в†—",
+    symbol: "↗",
     color: "#ff7047",
     border: "#d45b22",
-    action: "Р—Р°РїСѓСЃС‚РёС‚СЊ",
+    action: "Запустить",
   },
   {
     id: "blackjack",
     title: "Blackjack",
-    description: "РћРґРЅР° Р±С‹СЃС‚СЂР°СЏ СЂР°Р·РґР°С‡Р° РїСЂРѕС‚РёРІ РґРёР»РµСЂР°. 21 Р·Р°Р±РёСЂР°РµС‚ Р±Р°РЅРє.",
+    description: "Одна быстрая раздача против дилера. 21 забирает банк.",
     provider: "arc",
     online: 1105,
     symbol: "A",
     color: "#46ff81",
     border: "#159344",
-    action: "Р Р°Р·РґР°С‚СЊ",
+    action: "Раздать",
   },
   {
     id: "plinko",
     title: "Plinko",
-    description: "Р‘СЂРѕСЃСЊ С€Р°СЂ, РїРѕР№РјР°Р№ РјРЅРѕР¶РёС‚РµР»СЊ Рё Р·Р°Р±РµСЂРё РІС‹РёРіСЂС‹С€.",
+    description: "Брось шар, поймай множитель и забери выигрыш.",
     provider: "velora",
     online: 1026,
-    symbol: "в—Џ",
+    symbol: "●",
     color: "#18f5e7",
     border: "#5d36d7",
-    action: "Р‘СЂРѕСЃРёС‚СЊ С€Р°СЂ",
+    action: "Бросить шар",
   },
   {
     id: "mines",
     title: "Mines",
-    description: "РћС‚РєСЂС‹РІР°Р№ РєР»РµС‚РєРё Р±РµР· РјРёРЅ. Р§РµРј РґРѕР»СЊС€Рµ РёРіСЂР°РµС€СЊ, С‚РµРј РІС‹С€Рµ РєРѕСЌС„С„РёС†РёРµРЅС‚.",
+    description: "Открывай клетки без мин. Чем дольше играешь, тем выше коэффициент.",
     provider: "neon",
     online: 1532,
-    symbol: "вњ¦",
+    symbol: "✦",
     color: "#1aa2d6",
     border: "#1989a6",
-    action: "РќР°С‡Р°С‚СЊ",
+    action: "Начать",
   },
   {
     id: "wheel",
     title: "Wheel",
-    description: "РљРѕР»РµСЃРѕ СѓРґР°С‡Рё СЃ СЃРµРіРјРµРЅС‚Р°РјРё РѕС‚ x0.2 РґРѕ x10.",
+    description: "Колесо удачи с сегментами от x0.2 до x10.",
     provider: "arc",
     online: 1209,
-    symbol: "в—Њ",
+    symbol: "◌",
     color: "#ffb92e",
     border: "#c88812",
-    action: "РљСЂСѓС‚РёС‚СЊ",
+    action: "Крутить",
   },
 ];
 
 const recentSeed = [
-  ["LuckyAce", "Roulette", 6000, "в—Ћ"],
-  ["BetMaster", "Crash", 3200, "в†—"],
+  ["LuckyAce", "Roulette", 6000, "◎"],
+  ["BetMaster", "Crash", 3200, "↗"],
   ["HighRoller", "Blackjack", 2500, "A"],
-  ["CoinFlip", "Dice", 1920, "в—†"],
-  ["PlinkoKing", "Plinko", 4800, "в—Џ"],
-  ["MineHunter", "Mines", 7250, "вњ¦"],
-  ["WheelFan", "Wheel", 5100, "в—Њ"],
+  ["CoinFlip", "Dice", 1920, "◆"],
+  ["PlinkoKing", "Plinko", 4800, "●"],
+  ["MineHunter", "Mines", 7250, "✦"],
+  ["WheelFan", "Wheel", 5100, "◌"],
 ];
 
 const providerSlots = [
@@ -222,86 +222,86 @@ const slotThemes = {
 const i18n = {
   ru: {
     lang: "RU",
-    search: "РџРѕРёСЃРє РёРіСЂ...",
-    wallet: "Coin Balance В· VERS Coins",
-    realWallet: "Coin Balance В· entertainment only",
-    guest: "Р“РѕСЃС‚СЊ",
-    guestStatus: "Р›РѕРєР°Р»СЊРЅС‹Р№ РґРµРјРѕ-СЂРµР¶РёРј",
-    login: "Р’РѕР№С‚Рё",
-    logout: "Р’С‹Р№С‚Рё",
+    search: "Поиск игр...",
+    wallet: "Coin Balance · VERS Coins",
+    realWallet: "Coin Balance · entertainment only",
+    guest: "Гость",
+    guestStatus: "Развлекательный аккаунт",
+    login: "Войти",
+    logout: "Выйти",
     coinTitle: "VERS Coins",
     coinText: "Entertainment credits only. No cash value.",
     nav: {
-      all: "Р›РѕР±Р±Рё",
-      slots: "РЎР»РѕС‚С‹",
-      roulette: "Р СѓР»РµС‚РєР°",
-      promo: "РџСЂРѕРјРѕ",
-      vip: "VIP РєР»СѓР±",
-      cashier: "РљР°СЃСЃР°",
-      settings: "РќР°СЃС‚СЂРѕР№РєРё",
+      all: "Лобби",
+      slots: "Слоты",
+      roulette: "Рулетка",
+      promo: "Промо",
+      vip: "VIP клуб",
+      cashier: "Coin Shop",
+      settings: "Настройки",
     },
-    recent: "РџРѕСЃР»РµРґРЅРёРµ РІС‹РёРіСЂС‹С€Рё",
-    selectedGame: "Р’С‹Р±СЂР°РЅР° РёРіСЂР°",
+    recent: "Последние выигрыши",
+    selectedGame: "Выбрана игра",
     slot: {
       kicker: "HTML5 Engine",
     title: "VERS Mega Ways",
-      copy: "6 Р±Р°СЂР°Р±Р°РЅРѕРІ, РєР°СЃРєР°РґРЅС‹Рµ РІС‹РёРіСЂС‹С€Рё, free spins, РјРЅРѕР¶РёС‚РµР»Рё Рё VERS Coins.",
-      theme: "РўРµРјР°",
+      copy: "6 барабанов, каскадные выигрыши, free spins, множители и VERS Coins.",
+      theme: "Тема",
       admin: "Admin RTP",
-      ready: "Р“РѕС‚РѕРІРѕ Рє СЃРїРёРЅСѓ",
-      loaded: "Р·Р°РіСЂСѓР¶РµРЅР°",
-      bet: "РЎС‚Р°РІРєР° Coins",
+      ready: "Готово к спину",
+      loaded: "загружена",
+      bet: "Ставка Coins",
       spin: "Spin",
-      autoplay: "РђРІС‚РѕРёРіСЂР°",
-      cascade: "РљР°СЃРєР°Рґ",
-      multiplier: "РњРЅРѕР¶РёС‚РµР»СЊ",
+      autoplay: "Автоигра",
+      cascade: "Каскад",
+      multiplier: "Множитель",
       freeSpins: "Free spins",
       targetRtp: "Target RTP",
-      volatility: "Р’РѕР»Р°С‚РёР»СЊРЅРѕСЃС‚СЊ",
-      low: "РќРёР·РєР°СЏ",
-      medium: "РЎСЂРµРґРЅСЏСЏ",
-      high: "Р’С‹СЃРѕРєР°СЏ",
-      adminNote: "Admin-only РЅР°СЃС‚СЂРѕР№РєРё СЌРєРѕРЅРѕРјРёРєРё VERS Coins. РџР»Р°С‚РµР¶Рё РїРѕРґС‚РІРµСЂР¶РґР°СЋС‚СЃСЏ С‚РѕР»СЊРєРѕ backend/webhook.",
-      spinning: "РЎРїРёРЅ",
+      volatility: "Волатильность",
+      low: "Низкая",
+      medium: "Средняя",
+      high: "Высокая",
+      adminNote: "Admin-only настройки экономики VERS Coins. Платежи подтверждаются только backend/webhook.",
+      spinning: "Спин",
       freeRunning: "Free spin",
-      win: "Р’С‹РёРіСЂС‹С€",
-      noWin: "Р‘РµР· РІС‹РёРіСЂС‹С€Р°, СЃР»РµРґСѓСЋС‰РёР№ СЃРїРёРЅ",
+      win: "Выигрыш",
+      noWin: "Без выигрыша, следующий спин",
       realBlocked: "VERS Coins are entertainment credits only.",
     },
     providerTitle: "Featured VERS games",
-    providerCopy: "Р’СЃРµ РёРіСЂС‹ Р·Р°РїСѓСЃРєР°СЋС‚СЃСЏ РїСЂСЏРјРѕ РЅР° СЃР°Р№С‚Рµ VERS Рё РёСЃРїРѕР»СЊР·СѓСЋС‚ VERS Coins С‚РѕР»СЊРєРѕ РґР»СЏ СЂР°Р·РІР»РµС‡РµРЅРёСЏ.",
+    providerCopy: "Все игры запускаются прямо на сайте VERS и используют VERS Coins только для развлечения.",
     providerTag: "Internal games",
-    catalogAll: "Р’СЃРµ РёРіСЂС‹",
-    catalogProvider: "РџСЂРѕРІР°Р№РґРµСЂ",
-    catalogSort: "РЎРѕСЂС‚РёСЂРѕРІРєР°",
-    betTitle: "РЎС‚Р°РІРєР°",
-    autoGame: "РђРІС‚Рѕ-РёРіСЂР°",
-    rounds: "Р Р°СѓРЅРґРѕРІ",
-    stopAt: "РЎС‚РѕРї РїСЂРё x",
+    catalogAll: "Все игры",
+    catalogProvider: "Провайдер",
+    catalogSort: "Сортировка",
+    betTitle: "Ставка",
+    autoGame: "Авто-игра",
+    rounds: "Раундов",
+    stopAt: "Стоп при x",
     cashout: "Collect",
     launch: "Play",
-    profile: "РџСЂРѕС„РёР»СЊ",
-    nickname: "РќРёРє",
-    avatar: "РђРІР°С‚Р°СЂ",
-    saveProfile: "РЎРѕС…СЂР°РЅРёС‚СЊ РїСЂРѕС„РёР»СЊ",
-    newPassword: "РќРѕРІС‹Р№ РїР°СЂРѕР»СЊ",
-    changePassword: "РЎРјРµРЅРёС‚СЊ РїР°СЂРѕР»СЊ",
+    profile: "Профиль",
+    nickname: "Ник",
+    avatar: "Аватар",
+    saveProfile: "Сохранить профиль",
+    newPassword: "Новый пароль",
+    changePassword: "Сменить пароль",
     cashierTitle: "Coin Shop",
     buyCoins: "Buy Coins",
     stripePlaceholder: "Stripe placeholder",
     cryptoPlaceholder: "Crypto placeholder",
-    amount: "РЎСѓРјРјР°",
-    createRequest: "РЎРѕР·РґР°С‚СЊ Р·Р°СЏРІРєСѓ",
+    amount: "Сумма",
+    createRequest: "Создать заявку",
     shellNote: "VERS Coins have no monetary value and cannot be withdrawn, exchanged, sold, or redeemed for prizes.",
-    sortPopular: "РџРѕРїСѓР»СЏСЂРЅС‹Рµ",
-    sortOnline: "РћРЅР»Р°Р№РЅ",
-    sortName: "РќР°Р·РІР°РЅРёРµ",
+    sortPopular: "Популярные",
+    sortOnline: "Онлайн",
+    sortName: "Название",
   },
   en: {
     lang: "EN",
     search: "Search games...",
-    wallet: "Coin Balance В· VERS Coins",
-    realWallet: "Coin Balance В· entertainment only",
+    wallet: "Coin Balance · VERS Coins",
+    realWallet: "Coin Balance · entertainment only",
     guest: "Guest",
     guestStatus: "Entertainment account",
     login: "Sign in",
@@ -384,19 +384,19 @@ const gameText = {
     },
     roulette: {
       title: "Roulette",
-      symbol: "◎",
+      symbol: "?",
       description: "Pick a color, spin the wheel and see where the ball lands.",
       action: "Spin",
     },
     dice: {
       title: "Dice",
-      symbol: "◆",
+      symbol: "?",
       description: "Guess over or under the target. Clean math and instant results.",
       action: "Roll",
     },
     crash: {
       title: "Crash",
-      symbol: "↗",
+      symbol: "?",
       description: "The multiplier rises. Collect the Coin win before the crash.",
       action: "Start",
     },
@@ -407,19 +407,19 @@ const gameText = {
     },
     plinko: {
       title: "Plinko",
-      symbol: "●",
+      symbol: "?",
       description: "Drop the ball, catch a multiplier and take the payout.",
       action: "Drop ball",
     },
     mines: {
       title: "Mines",
-      symbol: "✦",
+      symbol: "?",
       description: "Open safe tiles and avoid mines. Longer runs raise the multiplier.",
       action: "Start",
     },
     wheel: {
       title: "Wheel",
-      symbol: "◌",
+      symbol: "?",
       description: "A lucky wheel with sectors from x0.2 to x10.",
       action: "Spin",
     },
@@ -443,7 +443,7 @@ const state = {
   authReady: false,
   walletMode: localStorage.getItem("velora-wallet-mode") || "coins",
   settings: JSON.parse(localStorage.getItem("velora-settings") || "{}"),
-  lang: localStorage.getItem("velora-lang") || "en",
+  lang: localStorage.getItem("velora-lang") || "ru",
   activeGame: "plinko",
   filter: "all",
   provider: "all",
@@ -534,8 +534,6 @@ const els = {
   authToggle: document.querySelector("#authToggle"),
   modalClose: document.querySelector(".modal-close"),
   walletModeLabel: document.querySelector("#walletModeLabel"),
-  modeText: document.querySelector("#modeText"),
-  demoModeBtn: document.querySelector("#demoModeBtn"),
   promoBtn: document.querySelector("#promoBtn"),
   vipBtn: document.querySelector("#vipBtn"),
   cashierBtn: document.querySelector("#cashierBtn"),
@@ -672,7 +670,6 @@ function applyLanguage() {
   setText("#vipBtn span:last-child", copy.nav.vip);
   setText("#cashierBtn span:last-child", copy.nav.cashier);
   setText("#settingsBtn span:last-child", copy.nav.settings);
-  setText(".demo-card strong", copy.coinTitle);
   setText(".game-heading span:last-child", copy.selectedGame);
   setText(".strip-title strong", copy.recent);
   setText(".slot-engine-head small", copy.slot.kicker);
@@ -743,8 +740,8 @@ function getAvatarLabel(profile = state.profile) {
   const avatar = profile?.avatar_url || localStorage.getItem("vers-avatar") || "avatar-neon";
   const map = {
     "avatar-neon": "V",
-    "avatar-crown": "в™›",
-    "avatar-star": "в…",
+    "avatar-crown": "♛",
+    "avatar-star": "★",
     "avatar-card": "A",
   };
   return map[avatar] || (profile?.display_name || "V").slice(0, 1).toUpperCase();
@@ -778,7 +775,7 @@ function updateAccountUi() {
     els.accountName.textContent = tr("guest");
     els.profileBtn.textContent = getAvatarLabel();
     els.accountVip.textContent = getVipLevelName();
-    els.accountStatus.textContent = state.lang === "en" ? "Sign in to sync" : "Р’РѕР№РґРёС‚Рµ РґР»СЏ СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёРё";
+    els.accountStatus.textContent = state.lang === "en" ? "Sign in to sync" : "Войдите для синхронизации";
     return;
   }
 
@@ -786,13 +783,11 @@ function updateAccountUi() {
   els.accountName.textContent = name;
   els.profileBtn.textContent = getAvatarLabel();
   els.accountVip.textContent = getVipLevelName();
-  els.accountStatus.textContent = state.user.email || (state.lang === "en" ? "Account active" : "РђРєРєР°СѓРЅС‚ Р°РєС‚РёРІРµРЅ");
+  els.accountStatus.textContent = state.user.email || (state.lang === "en" ? "Account active" : "Аккаунт активен");
 }
 
 function updateModeUi() {
   els.walletModeLabel.textContent = tr("wallet");
-  els.modeText.textContent = tr("coinText");
-  els.demoModeBtn.classList.remove("is-off");
   document.body.classList.toggle("reduced-motion", Boolean(state.settings.reducedMotion));
   document.body.classList.toggle("compact-ui", Boolean(state.settings.compactUi));
 }
@@ -808,10 +803,10 @@ function getVipInfo() {
   const totalWon = Number(state.profile?.total_won || localStorage.getItem("velora-total-won") || 0);
   const points = Math.floor(gamesPlayed * 120 + totalWon / 20);
   const levels = [
-    { name: "Bronze", min: 0, perks: "Р‘Р°Р·РѕРІС‹Рµ РїСЂРѕРјРѕ Рё РµР¶РµРґРЅРµРІРЅС‹Р№ РґРµРјРѕ-Р±РѕРЅСѓСЃ" },
-    { name: "Silver", min: 2500, perks: "+5% Рє РїСЂРѕРјРѕ-Р±РѕРЅСѓСЃР°Рј Рё Р±С‹СЃС‚СЂС‹Рµ С‚СѓСЂРЅРёСЂС‹" },
-    { name: "Gold", min: 9000, perks: "+10% Рє РїСЂРѕРјРѕ-Р±РѕРЅСѓСЃР°Рј Рё VIP РјРёСЃСЃРёРё" },
-    { name: "Platinum", min: 22000, perks: "+15% Рє РїСЂРѕРјРѕ-Р±РѕРЅСѓСЃР°Рј Рё РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹Рµ Р°РєС†РёРё" },
+    { name: "Bronze", min: 0, perks: "Базовые промо и ежедневный бонус Coins" },
+    { name: "Silver", min: 2500, perks: "+5% к промо-бонусам и быстрые турниры" },
+    { name: "Gold", min: 9000, perks: "+10% к промо-бонусам и VIP миссии" },
+    { name: "Platinum", min: 22000, perks: "+15% к промо-бонусам и персональные акции" },
   ];
   const current = [...levels].reverse().find((level) => points >= level.min) || levels[0];
   const next = levels.find((level) => level.min > points);
@@ -822,10 +817,10 @@ function showVipClub() {
   const vip = getVipInfo();
   const progress = vip.next ? Math.min(100, Math.round(((vip.points - vip.current.min) / (vip.next.min - vip.current.min)) * 100)) : 100;
   openUtility(
-    "VIP РєР»СѓР±",
+    "VIP клуб",
     `
       <div class="vip-hero">
-        <span class="vip-crown">в™›</span>
+        <span class="vip-crown">♛</span>
         <div>
           <strong>${vip.current.name}</strong>
           <small>${vip.current.perks}</small>
@@ -833,15 +828,15 @@ function showVipClub() {
       </div>
       <div class="vip-progress">
         <span>${vip.points.toLocaleString("ru-RU")} VIP points</span>
-        <span>${vip.next ? `Р”Рѕ ${vip.next.name}: ${(vip.next.min - vip.points).toLocaleString("ru-RU")}` : "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СѓСЂРѕРІРµРЅСЊ"}</span>
+        <span>${vip.next ? `До ${vip.next.name}: ${(vip.next.min - vip.points).toLocaleString("ru-RU")}` : "Максимальный уровень"}</span>
         <div><i style="width:${progress}%"></i></div>
       </div>
       <div class="utility-grid">
-        <article><strong>${vip.gamesPlayed}</strong><span>РРіСЂ СЃС‹РіСЂР°РЅРѕ</span></article>
-        <article><strong>Coins ${format(vip.totalWon)}</strong><span>Р’СЃРµРіРѕ РІС‹РёРіСЂР°РЅРѕ</span></article>
-        <article><strong>Daily</strong><span>Р‘РѕРЅСѓСЃС‹ С‚РѕР»СЊРєРѕ РІРёСЂС‚СѓР°Р»СЊРЅС‹Рµ</span></article>
+        <article><strong>${vip.gamesPlayed}</strong><span>Игр сыграно</span></article>
+        <article><strong>Coins ${format(vip.totalWon)}</strong><span>Всего выиграно</span></article>
+        <article><strong>Daily</strong><span>Бонусы только в Coins</span></article>
       </div>
-      <p class="utility-note">VIP РєР»СѓР± РЅРµ СЃРІСЏР·Р°РЅ СЃ СЂРµР°Р»СЊРЅС‹РјРё РґРµРЅСЊРіР°РјРё. РЈСЂРѕРІРЅРё РґР°СЋС‚ С‚РѕР»СЊРєРѕ РґРµРјРѕ-Р±РѕРЅСѓСЃС‹ Рё РІРёР·СѓР°Р»СЊРЅС‹Рµ РїСЂРµРёРјСѓС‰РµСЃС‚РІР°.</p>
+      <p class="utility-note">VIP клуб работает только с VERS Coins. Уровни дают бонусы Coins и визуальные преимущества.</p>
     `,
   );
 }
@@ -849,32 +844,32 @@ function showVipClub() {
 function showPromos() {
   const redeemed = getRedeemedPromos();
   openUtility(
-    "РџСЂРѕРјРѕ",
+    "Промо",
     `
       <form id="promoForm" class="promo-form">
-        <label>РџСЂРѕРјРѕРєРѕРґ
+        <label>Промокод
           <input id="promoCode" type="text" placeholder="WELCOME" autocomplete="off" />
         </label>
-        <button type="submit">РђРєС‚РёРІРёСЂРѕРІР°С‚СЊ</button>
+        <button type="submit">Активировать</button>
       </form>
       <div class="promo-list">
         ${[
-          ["WELCOME", "10 000 Coins", "РЎС‚Р°СЂС‚РѕРІС‹Р№ Р±РѕРЅСѓСЃ"],
+          ["WELCOME", "10 000 Coins", "Стартовый бонус"],
           ["VIP5000", "5 000 Coins", "VIP Coin bonus"],
-          ["LUCKY", "3 000 Coins", "Р‘С‹СЃС‚СЂС‹Р№ Р±РѕРЅСѓСЃ"],
+          ["LUCKY", "3 000 Coins", "Быстрый бонус"],
         ]
           .map(
             ([code, amount, label]) => `
               <article class="${redeemed.includes(code) ? "is-used" : ""}">
                 <strong>${code}</strong>
                 <span>${label}</span>
-                <small>${redeemed.includes(code) ? "РЈР¶Рµ Р°РєС‚РёРІРёСЂРѕРІР°РЅ" : amount}</small>
+                <small>${redeemed.includes(code) ? "Уже активирован" : amount}</small>
               </article>
             `,
           )
           .join("")}
       </div>
-      <p class="utility-note">РџСЂРѕРјРѕ РЅР°С‡РёСЃР»СЏСЋС‚ С‚РѕР»СЊРєРѕ РІРёСЂС‚СѓР°Р»СЊРЅС‹Рµ РєСЂРµРґРёС‚С‹. Р РµР°Р»СЊРЅС‹Рµ РґРµРїРѕР·РёС‚С‹ Рё РІС‹РІРѕРґС‹ РЅРµ РїРѕРґРєР»СЋС‡РµРЅС‹.</p>
+      <p class="utility-note">Промо начисляют только VERS Coins для развлечения. Coins нельзя вывести, обменять или продать.</p>
     `,
   );
   document.querySelector("#promoForm").addEventListener("submit", redeemPromo);
@@ -886,42 +881,42 @@ function redeemPromo(event) {
   const code = input.value.trim().toUpperCase();
   const promos = { WELCOME: 10000, VIP5000: 5000, LUCKY: 3000 };
   if (!promos[code]) {
-    toast("РџСЂРѕРјРѕРєРѕРґ РЅРµ РЅР°Р№РґРµРЅ");
+    toast("Промокод не найден");
     return;
   }
   const redeemed = getRedeemedPromos();
   if (redeemed.includes(code)) {
-    toast("РџСЂРѕРјРѕРєРѕРґ СѓР¶Рµ Р°РєС‚РёРІРёСЂРѕРІР°РЅ");
+    toast("Промокод уже активирован");
     return;
   }
   setRedeemedPromos([...redeemed, code]);
   setBalance(state.balance + promos[code]);
-  toast(`РџСЂРѕРјРѕ ${code}: +${format(promos[code])} Coins`);
+  toast(`Промо ${code}: +${format(promos[code])} Coins`);
   showPromos();
 }
 
 function showSettings() {
   openUtility(
-    "РќР°СЃС‚СЂРѕР№РєРё",
+    "Настройки",
     `
       <div class="settings-list">
         <label>
-          <span><strong>Р—РІСѓРє РёРЅС‚РµСЂС„РµР№СЃР°</strong><small>РџРѕРґРіРѕС‚РѕРІР»РµРЅРѕ РґР»СЏ Р±СѓРґСѓС‰РёС… СЌС„С„РµРєС‚РѕРІ</small></span>
+          <span><strong>Звук интерфейса</strong><small>Подготовлено для будущих эффектов</small></span>
           <input type="checkbox" data-setting="sound" ${state.settings.sound ? "checked" : ""} />
         </label>
         <label>
-          <span><strong>РњРµРЅСЊС€Рµ Р°РЅРёРјР°С†РёР№</strong><small>РЈРїСЂРѕС‰Р°РµС‚ РґРІРёР¶РµРЅРёРµ РёРЅС‚РµСЂС„РµР№СЃР°</small></span>
+          <span><strong>Меньше анимаций</strong><small>Упрощает движение интерфейса</small></span>
           <input type="checkbox" data-setting="reducedMotion" ${state.settings.reducedMotion ? "checked" : ""} />
         </label>
         <label>
-          <span><strong>РљРѕРјРїР°РєС‚РЅС‹Р№ СЂРµР¶РёРј</strong><small>Р‘РѕР»РµРµ РїР»РѕС‚РЅС‹Рµ РєР°СЂС‚РѕС‡РєРё РёРіСЂ</small></span>
+          <span><strong>Компактный режим</strong><small>Более плотные карточки игр</small></span>
           <input type="checkbox" data-setting="compactUi" ${state.settings.compactUi ? "checked" : ""} />
         </label>
       </div>
       <div class="real-mode-card">
-        <strong>Р РµР°Р»СЊРЅС‹Р№ СЃС‡РµС‚</strong>
-        <p>Р РµР°Р»СЊРЅС‹Рµ СЃС‚Р°РІРєРё, РґРµРїРѕР·РёС‚С‹ Рё РІС‹РІРѕРґС‹ РѕС‚РєР»СЋС‡РµРЅС‹. Р”Р»СЏ С‚Р°РєРѕРіРѕ СЂРµР¶РёРјР° РЅСѓР¶РЅС‹ Р»РёС†РµРЅР·РёСЏ, KYC/AML, РїР»Р°С‚РµР¶РЅС‹Р№ РїСЂРѕРІР°Р№РґРµСЂ Рё СЋСЂРёРґРёС‡РµСЃРєР°СЏ РїСЂРѕРІРµСЂРєР°.</p>
-        <button id="realModeBtn" type="button">Р—Р°РїСЂРѕСЃРёС‚СЊ РїРѕРґРєР»СЋС‡РµРЅРёРµ</button>
+        <strong>Coin Balance</strong>
+        <p>VERS Coins являются развлекательными кредитами без денежной ценности. Их нельзя вывести, обменять, продать или получить за них призы.</p>
+        <button id="realModeBtn" type="button">Понятно</button>
       </div>
     `,
   );
@@ -960,7 +955,7 @@ function showCashier() {
             (pack) => `
               <article>
                 <strong>${pack.label}</strong>
-                <p>$${pack.amount.toFixed(2)} В· VERS Coins entertainment credits</p>
+                <p>$${pack.amount.toFixed(2)} · VERS Coins entertainment credits</p>
                 <div class="coin-shop-actions">
                   <button type="button" data-buy-coins="${pack.id}" data-provider="stripe">Stripe</button>
                   <button type="button" data-buy-coins="${pack.id}" data-provider="crypto">Crypto</button>
@@ -1007,7 +1002,7 @@ function showProfileMenu() {
           <span>${getAvatarLabel()}</span>
           <div>
             <strong>${safeName}</strong>
-            <small>VIP ${getVipLevelName()}${isAdmin() ? " В· Admin" : ""}</small>
+            <small>VIP ${getVipLevelName()}${isAdmin() ? " · Admin" : ""}</small>
           </div>
         </div>
         <label>${tr("nickname")}<input id="profileNameInput" type="text" maxlength="24" value="${safeName}" /></label>
@@ -1065,7 +1060,7 @@ async function saveProfileMenu(event) {
   try {
     if (supabaseClient && state.user) await saveProfile();
     updateAccountUi();
-    toast(state.lang === "en" ? "Profile saved" : "РџСЂРѕС„РёР»СЊ СЃРѕС…СЂР°РЅРµРЅ");
+    toast(state.lang === "en" ? "Profile saved" : "Профиль сохранен");
     els.utilityDialog.close();
   } catch (error) {
     toast(error.message || "Profile save failed");
@@ -1075,26 +1070,26 @@ async function saveProfileMenu(event) {
 async function changePassword(event) {
   event.preventDefault();
   if (!supabaseClient || !state.user) {
-    toast(state.lang === "en" ? "Sign in first" : "РЎРЅР°С‡Р°Р»Р° РІРѕР№РґРёС‚Рµ РІ Р°РєРєР°СѓРЅС‚");
+    toast(state.lang === "en" ? "Sign in first" : "Сначала войдите в аккаунт");
     return;
   }
   const password = document.querySelector("#newPasswordInput").value;
-  if (!password || password.length < 6) return toast(state.lang === "en" ? "Minimum 6 characters" : "РњРёРЅРёРјСѓРј 6 СЃРёРјРІРѕР»РѕРІ");
+  if (!password || password.length < 6) return toast(state.lang === "en" ? "Minimum 6 characters" : "Минимум 6 символов");
   const { error } = await supabaseClient.auth.updateUser({ password });
   if (error) return toast(error.message);
-  toast(state.lang === "en" ? "Password changed" : "РџР°СЂРѕР»СЊ РёР·РјРµРЅРµРЅ");
+  toast(state.lang === "en" ? "Password changed" : "Пароль изменен");
   els.utilityDialog.close();
 }
 
 function setAuthMode(mode) {
   state.authMode = mode;
   const signup = mode === "signup";
-  els.authTitle.textContent = signup ? "РЎРѕР·РґР°С‚СЊ Р°РєРєР°СѓРЅС‚" : "Р’С…РѕРґ РІ VERS casino";
+  els.authTitle.textContent = signup ? "Создать аккаунт" : "Вход в VERS casino";
   els.authCopy.textContent = signup
-    ? "РЎРѕР·РґР°Р№С‚Рµ Р°РєРєР°СѓРЅС‚, С‡С‚РѕР±С‹ Р±Р°Р»Р°РЅСЃ СЃРѕС…СЂР°РЅСЏР»СЃСЏ РјРµР¶РґСѓ СѓСЃС‚СЂРѕР№СЃС‚РІР°РјРё."
-    : "Р’РѕР№РґРёС‚Рµ, С‡С‚РѕР±С‹ Р±Р°Р»Р°РЅСЃ Рё РїСЂРѕС„РёР»СЊ СЃРѕС…СЂР°РЅСЏР»РёСЃСЊ РјРµР¶РґСѓ СѓСЃС‚СЂРѕР№СЃС‚РІР°РјРё.";
-  els.authSubmit.textContent = signup ? "РЎРѕР·РґР°С‚СЊ Р°РєРєР°СѓРЅС‚" : "Р’РѕР№С‚Рё";
-  els.authToggle.textContent = signup ? "РЈ РјРµРЅСЏ СѓР¶Рµ РµСЃС‚СЊ Р°РєРєР°СѓРЅС‚" : "РЎРѕР·РґР°С‚СЊ Р°РєРєР°СѓРЅС‚";
+    ? "Создайте аккаунт, чтобы баланс сохранялся между устройствами."
+    : "Войдите, чтобы баланс и профиль сохранялись между устройствами.";
+  els.authSubmit.textContent = signup ? "Создать аккаунт" : "Войти";
+  els.authToggle.textContent = signup ? "У меня уже есть аккаунт" : "Создать аккаунт";
   els.displayNameRow.classList.toggle("is-hidden", !signup);
   els.authPassword.autocomplete = signup ? "new-password" : "current-password";
 }
@@ -1251,7 +1246,7 @@ function settleRound({ won, multiplier, message, game }) {
     addWin(game.title, payout, game.symbol);
   }
   els.roundMessage.textContent = message;
-  toast(won ? `Р’С‹РёРіСЂС‹С€ ${format(payout)} Coins` : "Р Р°СѓРЅРґ Р·Р°РІРµСЂС€РµРЅ Р±РµР· РІС‹РёРіСЂС‹С€Р°");
+  toast(won ? `Выигрыш ${format(payout)} Coins` : "Раунд завершен без выигрыша");
 }
 
 function recordProfileRound(payout = 0) {
@@ -1282,7 +1277,7 @@ function renderRecentWins() {
         <div class="win-item">
           <span class="win-avatar">${icon}</span>
           <span>
-            <strong>${player} В· ${game}</strong>
+            <strong>${player} · ${game}</strong>
             <small>Coins ${format(amount)}</small>
           </span>
         </div>
@@ -1426,7 +1421,7 @@ function renderSlotEngine() {
 function updateAdminControls() {
   const allowed = isAdmin();
   els.slotAdminToggle.classList.toggle("is-locked", !allowed);
-  els.slotAdminToggle.textContent = allowed ? tr("slot.admin") : `${tr("slot.admin")} рџ”’`;
+  els.slotAdminToggle.textContent = allowed ? tr("slot.admin") : `${tr("slot.admin")} 🔒`;
   if (!allowed) els.slotAdminPanel.hidden = true;
   els.slotRtpInput.disabled = !allowed;
   els.slotVolatilitySelect.disabled = !allowed;
@@ -1695,7 +1690,7 @@ function selectFilter(filter) {
 }
 
 function selectGame(gameId, options = {}) {
-  if (state.crash.running) return toast("РЎРЅР°С‡Р°Р»Р° Р·Р°РІРµСЂС€РёС‚Рµ Crash-СЂР°СѓРЅРґ.");
+  if (state.crash.running) return toast("Сначала завершите Crash-раунд.");
   state.activeGame = gameId;
   state.mines.active = false;
   state.mines.locked = false;
@@ -1712,7 +1707,7 @@ function renderActiveGame() {
   els.playBtn.textContent = game.action;
   els.playBtn.disabled = false;
   els.cashoutBtn.classList.add("is-hidden");
-  els.roundMessage.textContent = state.lang === "en" ? "Ready for bet." : "Р“РѕС‚РѕРІРѕ Рє СЃС‚Р°РІРєРµ.";
+  els.roundMessage.textContent = state.lang === "en" ? "Ready for bet." : "Готово к ставке.";
   els.gameBoard.className = "game-board";
 
   const renderers = {
@@ -1732,54 +1727,54 @@ function renderActiveGame() {
 function renderControls(gameId) {
   const controls = {
     plinko: `
-      <h3 class="dynamic-title">Р РёСЃРє</h3>
+      <h3 class="dynamic-title">Риск</h3>
       <div class="control-grid">
-        ${["low", "medium", "high"].map((risk) => `<button class="control-pill ${state.risk === risk ? "is-selected" : ""}" type="button" data-risk="${risk}">${risk === "low" ? "РќРёР·РєРёР№" : risk === "medium" ? "РЎСЂРµРґРЅРёР№" : "Р’С‹СЃРѕРєРёР№"}</button>`).join("")}
+        ${["low", "medium", "high"].map((risk) => `<button class="control-pill ${state.risk === risk ? "is-selected" : ""}" type="button" data-risk="${risk}">${risk === "low" ? "Низкий" : risk === "medium" ? "Средний" : "Высокий"}</button>`).join("")}
       </div>
       <div class="range-row">
-        <label>Р СЏРґРѕРІ <strong>${state.rows}</strong></label>
+        <label>Рядов <strong>${state.rows}</strong></label>
         <input id="rowsRange" type="range" min="8" max="24" step="2" value="${state.rows}" />
       </div>
     `,
     roulette: `
-      <h3 class="dynamic-title">Р¦РІРµС‚</h3>
+      <h3 class="dynamic-title">Цвет</h3>
       <div class="control-grid">
-        <button class="control-pill ${state.rouletteChoice === "red" ? "is-selected" : ""}" type="button" data-roulette="red">РљСЂР°СЃРЅС‹Р№ x2</button>
-        <button class="control-pill ${state.rouletteChoice === "black" ? "is-selected" : ""}" type="button" data-roulette="black">Р§РµСЂРЅС‹Р№ x2</button>
-        <button class="control-pill ${state.rouletteChoice === "green" ? "is-selected" : ""}" type="button" data-roulette="green">Р—РµСЂРѕ x14</button>
+        <button class="control-pill ${state.rouletteChoice === "red" ? "is-selected" : ""}" type="button" data-roulette="red">Красный x2</button>
+        <button class="control-pill ${state.rouletteChoice === "black" ? "is-selected" : ""}" type="button" data-roulette="black">Черный x2</button>
+        <button class="control-pill ${state.rouletteChoice === "green" ? "is-selected" : ""}" type="button" data-roulette="green">Зеро x14</button>
       </div>
     `,
     dice: `
-      <h3 class="dynamic-title">РЈСЃР»РѕРІРёРµ</h3>
+      <h3 class="dynamic-title">Условие</h3>
       <div class="control-grid">
-        <button class="control-pill ${state.diceMode === "over" ? "is-selected" : ""}" type="button" data-dice-mode="over">Р’С‹С€Рµ</button>
-        <button class="control-pill ${state.diceMode === "under" ? "is-selected" : ""}" type="button" data-dice-mode="under">РќРёР¶Рµ</button>
+        <button class="control-pill ${state.diceMode === "over" ? "is-selected" : ""}" type="button" data-dice-mode="over">Выше</button>
+        <button class="control-pill ${state.diceMode === "under" ? "is-selected" : ""}" type="button" data-dice-mode="under">Ниже</button>
         <button class="control-pill" type="button" data-dice-mode="fair">50/50</button>
       </div>
       <div class="range-row">
-        <label>Р¦РµР»СЊ <strong>${state.diceTarget}</strong></label>
+        <label>Цель <strong>${state.diceTarget}</strong></label>
         <input id="diceTarget" type="range" min="20" max="80" step="1" value="${state.diceTarget}" />
       </div>
     `,
     crash: `
       <h3 class="dynamic-title">Crash</h3>
-      <p class="control-note">РџРѕСЃР»Рµ СЃС‚Р°СЂС‚Р° РєРЅРѕРїРєР° В«Р—Р°Р±СЂР°С‚СЊВ» С„РёРєСЃРёСЂСѓРµС‚ С‚РµРєСѓС‰РёР№ РјРЅРѕР¶РёС‚РµР»СЊ. Р•СЃР»Рё РіСЂР°С„РёРє СѓРїР°РґРµС‚ СЂР°РЅСЊС€Рµ, СЃС‚Р°РІРєР° СЃРіРѕСЂР°РµС‚.</p>
+      <p class="control-note">После старта кнопка «Забрать» фиксирует текущий множитель. Если график упадет раньше, ставка сгорает.</p>
     `,
     mines: `
       <h3 class="dynamic-title">Mines</h3>
-      <p class="control-note">РћС‚РєСЂРѕР№ Р±РµР·РѕРїР°СЃРЅС‹Рµ РєР»РµС‚РєРё, Р·Р°С‚РµРј Р·Р°Р±РµСЂРё Р±Р°РЅРє. Р”РІРµ РєР»РµС‚РєРё СЃРєСЂС‹РІР°СЋС‚ РјРёРЅСѓ.</p>
+      <p class="control-note">Открой безопасные клетки, затем забери банк. Две клетки скрывают мину.</p>
     `,
     blackjack: `
       <h3 class="dynamic-title">Blackjack</h3>
-      <p class="control-note">Р‘С‹СЃС‚СЂР°СЏ РґРµРјРѕ-СЂР°Р·РґР°С‡Р°: РёРіСЂРѕРє РїСЂРѕС‚РёРІ РґРёР»РµСЂР°, Р±Р°РЅРє РІС‹РїР»Р°С‡РёРІР°РµС‚СЃСЏ РїСЂРё Р»СѓС‡С€РµР№ СЂСѓРєРµ РґРѕ 21.</p>
+      <p class="control-note">Быстрая social-casino раздача: игрок против дилера. Лучшая рука до 21 получает Coins.</p>
     `,
     slots: `
-      <h3 class="dynamic-title">РЎР»РѕС‚С‹</h3>
-      <p class="control-note">Р”РІРµ РѕРґРёРЅР°РєРѕРІС‹Рµ РёРєРѕРЅРєРё РґР°СЋС‚ x1.8, С‚СЂРё РѕРґРёРЅР°РєРѕРІС‹Рµ x10, С‚СЂРё СЃРµРјРµСЂРєРё x50.</p>
+      <h3 class="dynamic-title">Слоты</h3>
+      <p class="control-note">Две одинаковые иконки дают x1.8, три одинаковые x10, три семерки x50.</p>
     `,
     wheel: `
-      <h3 class="dynamic-title">РљРѕР»РµСЃРѕ</h3>
-      <p class="control-note">РЎРµРіРјРµРЅС‚С‹ РІС‹РїР»Р°С‡РёРІР°СЋС‚ СЂР°Р·РЅС‹Рµ РјРЅРѕР¶РёС‚РµР»Рё. Р§РµРј РІС‹С€Рµ СЃРµРєС‚РѕСЂ, С‚РµРј СЂРµР¶Рµ РѕРЅ РІС‹РїР°РґР°РµС‚.</p>
+      <h3 class="dynamic-title">Колесо</h3>
+      <p class="control-note">Сегменты выплачивают разные множители. Чем выше сектор, тем реже он выпадает.</p>
     `,
   };
 
@@ -1866,7 +1861,7 @@ function renderPlinko(resultIndex = null, multiplier = null) {
     </div>
   `;
   if (multiplier) {
-    els.roundMessage.textContent = `РЁР°СЂ РїРѕРїР°Р» РІ СЃРµРєС‚РѕСЂ x${multiplier}.`;
+    els.roundMessage.textContent = `Шар попал в сектор x${multiplier}.`;
   }
 }
 
@@ -1888,7 +1883,7 @@ function playPlinko() {
     settleRound({
       won: multiplier >= 1,
       multiplier,
-      message: multiplier >= 1 ? `РџРѕРїР°РґР°РЅРёРµ x${multiplier}. Р’С‹РїР»Р°С‚Р° РЅР°С‡РёСЃР»РµРЅР°.` : `РџРѕРїР°РґР°РЅРёРµ x${multiplier}. Р’ СЌС‚РѕС‚ СЂР°Р· Р±РµР· РїСЂРёР±С‹Р»Рё.`,
+      message: multiplier >= 1 ? `Попадание x${multiplier}. Выплата начислена.` : `Попадание x${multiplier}. В этот раз без прибыли.`,
       game,
     });
     maybeAutoPlay();
@@ -1912,7 +1907,7 @@ function renderSlots(symbols = ["?", "?", "?"]) {
 function playSlots() {
   const game = getActiveGame();
   if (!chargeBet()) return;
-  const symbols = ["7", "в—†", "в…", "в—Џ", "в™ ", "вњ¦"];
+  const symbols = ["7", "◆", "★", "●", "♠", "✦"];
   const roll = Array.from({ length: 3 }, () => symbols[randomInt(0, symbols.length - 1)]);
   renderSlots(roll);
   const counts = roll.reduce((acc, symbol) => {
@@ -1924,19 +1919,19 @@ function playSlots() {
   settleRound({
     won: multiplier > 0,
     multiplier,
-    message: multiplier > 0 ? `РљРѕРјР±РёРЅР°С†РёСЏ ${roll.join(" ")} РґР°Р»Р° x${multiplier}.` : `РљРѕРјР±РёРЅР°С†РёСЏ ${roll.join(" ")} РЅРµ СЃС‹РіСЂР°Р»Р°.`,
+    message: multiplier > 0 ? `Комбинация ${roll.join(" ")} дала x${multiplier}.` : `Комбинация ${roll.join(" ")} не сыграла.`,
     game,
   });
   maybeAutoPlay();
 }
 
-function renderRoulette(result = "вЂ”") {
+function renderRoulette(result = "—") {
   els.gameBoard.className = "game-board roulette-board";
   els.gameBoard.innerHTML = `
     <div class="roulette-wheel" style="transform: rotate(${randomInt(0, 360)}deg)"><span>${result}</span></div>
     <div>
-      <strong>${state.rouletteChoice === "red" ? "РљСЂР°СЃРЅС‹Р№" : state.rouletteChoice === "black" ? "Р§РµСЂРЅС‹Р№" : "Р—РµСЂРѕ"}</strong>
-      <p>РўРµРєСѓС‰Р°СЏ СЃС‚Р°РІРєР° РЅР° С†РІРµС‚</p>
+      <strong>${state.rouletteChoice === "red" ? "Красный" : state.rouletteChoice === "black" ? "Черный" : "Зеро"}</strong>
+      <p>Текущая ставка на цвет</p>
     </div>
   `;
 }
@@ -1952,17 +1947,17 @@ function playRoulette() {
   settleRound({
     won: result === state.rouletteChoice,
     multiplier,
-    message: result === state.rouletteChoice ? `Р’С‹РїР°Р» ${labelColor(result)}. РЎС‚Р°РІРєР° СЃС‹РіСЂР°Р»Р°.` : `Р’С‹РїР°Р» ${labelColor(result)}. Р¦РІРµС‚ РЅРµ СЃРѕРІРїР°Р».`,
+    message: result === state.rouletteChoice ? `Выпал ${labelColor(result)}. Ставка сыграла.` : `Выпал ${labelColor(result)}. Цвет не совпал.`,
     game,
   });
   maybeAutoPlay();
 }
 
 function labelColor(color) {
-  return color === "red" ? "РєСЂР°СЃРЅС‹Р№" : color === "black" ? "С‡РµСЂРЅС‹Р№" : "Р·РµСЂРѕ";
+  return color === "red" ? "красный" : color === "black" ? "черный" : "зеро";
 }
 
-function renderDice(roll = "вЂ”") {
+function renderDice(roll = "—") {
   els.gameBoard.className = "game-board dice-board";
   els.gameBoard.innerHTML = `
     <span class="die-face">${roll}</span>
@@ -1984,7 +1979,7 @@ function playDice() {
   settleRound({
     won,
     multiplier,
-    message: won ? `Р’С‹РїР°Р»Рѕ ${roll}. РљРѕСЌС„С„РёС†РёРµРЅС‚ x${multiplier}.` : `Р’С‹РїР°Р»Рѕ ${roll}. РЈСЃР»РѕРІРёРµ РЅРµ РІС‹РїРѕР»РЅРµРЅРѕ.`,
+    message: won ? `Выпало ${roll}. Коэффициент x${multiplier}.` : `Выпало ${roll}. Условие не выполнено.`,
     game,
   });
   maybeAutoPlay();
@@ -1995,7 +1990,7 @@ function renderCrash(multiplier = 1) {
   els.gameBoard.innerHTML = `
     <span class="crash-multiplier">${multiplier.toFixed(2)}x</span>
     <span class="crash-line"></span>
-    <span class="rocket" aria-hidden="true">в–І</span>
+    <span class="rocket" aria-hidden="true">▲</span>
   `;
 }
 
@@ -2013,7 +2008,7 @@ function playCrash() {
   };
   els.playBtn.disabled = true;
   els.cashoutBtn.classList.remove("is-hidden");
-  els.roundMessage.textContent = "РњРЅРѕР¶РёС‚РµР»СЊ СЂР°СЃС‚РµС‚. Р—Р°Р±РёСЂР°Р№ РІРѕРІСЂРµРјСЏ.";
+  els.roundMessage.textContent = "Множитель растет. Забирай вовремя.";
   state.crash.timer = setInterval(() => {
     state.crash.multiplier = Number((state.crash.multiplier + random(0.06, 0.17)).toFixed(2));
     renderCrash(state.crash.multiplier);
@@ -2023,8 +2018,8 @@ function playCrash() {
       recordProfileRound(0);
       els.playBtn.disabled = false;
       els.cashoutBtn.classList.add("is-hidden");
-      els.roundMessage.textContent = `РљСЂР°С€ РЅР° x${state.crash.bustAt}. РЎС‚Р°РІРєР° СЃРіРѕСЂРµР»Р°.`;
-      toast("Crash: РЅРµ СѓСЃРїРµР»Рё Р·Р°Р±СЂР°С‚СЊ");
+      els.roundMessage.textContent = `Краш на x${state.crash.bustAt}. Ставка сгорела.`;
+      toast("Crash: не успели забрать");
       maybeAutoPlay();
     }
   }, 190);
@@ -2040,21 +2035,21 @@ function cashoutCrash() {
   recordProfileRound(payout);
   setBalance(state.balance + payout);
   addWin(game.title, payout, game.symbol);
-  els.roundMessage.textContent = `Р’С‹ Р·Р°Р±СЂР°Р»Рё x${state.crash.multiplier.toFixed(2)}.`;
+  els.roundMessage.textContent = `Вы забрали x${state.crash.multiplier.toFixed(2)}.`;
   els.playBtn.disabled = false;
   els.cashoutBtn.classList.add("is-hidden");
-  toast(`Crash РІС‹РїР»Р°С‚Р° ${format(payout)} Coins`);
+  toast(`Crash выплата ${format(payout)} Coins`);
 }
 
 function renderBlackjack(player = [10, 7], dealer = [9, 0]) {
   els.gameBoard.className = "game-board blackjack-board";
   els.gameBoard.innerHTML = `
     <div>
-      <strong>РРіСЂРѕРє</strong>
+      <strong>Игрок</strong>
       <div class="card-hand">${player.map((card) => `<span class="play-card">${card || "?"}</span>`).join("")}</div>
     </div>
     <div>
-      <strong>Р”РёР»РµСЂ</strong>
+      <strong>Дилер</strong>
       <div class="card-hand">${dealer.map((card) => `<span class="play-card">${card || "?"}</span>`).join("")}</div>
     </div>
   `;
@@ -2084,15 +2079,15 @@ function playBlackjack() {
   if (push) {
     recordProfileRound(0);
     setBalance(state.balance + state.bet);
-    els.roundMessage.textContent = `РџСѓС€: ${pv} РїСЂРѕС‚РёРІ ${dv}. РЎС‚Р°РІРєР° РІРѕР·РІСЂР°С‰РµРЅР°.`;
-    toast("Blackjack: РІРѕР·РІСЂР°С‚ СЃС‚Р°РІРєРё");
+    els.roundMessage.textContent = `Пуш: ${pv} против ${dv}. Ставка возвращена.`;
+    toast("Blackjack: возврат ставки");
     maybeAutoPlay();
     return;
   }
   settleRound({
     won,
     multiplier: playerBlackjack ? 2.5 : 2,
-    message: won ? `РРіСЂРѕРє ${pv}, РґРёР»РµСЂ ${dv}. РџРѕР±РµРґР°.` : `РРіСЂРѕРє ${pv}, РґРёР»РµСЂ ${dv}. Р Р°СѓРЅРґ РґРёР»РµСЂР°.`,
+    message: won ? `Игрок ${pv}, дилер ${dv}. Победа.` : `Игрок ${pv}, дилер ${dv}. Раунд дилера.`,
     game,
   });
   maybeAutoPlay();
@@ -2104,7 +2099,7 @@ function renderMines() {
     const isOpened = state.mines.opened.includes(index);
     const isMine = state.mines.mineIndexes.includes(index);
     const visibleClass = isOpened ? (isMine ? "is-mine" : "is-safe") : "";
-    const label = isOpened ? (isMine ? "Г—" : "вњ“") : "";
+    const label = isOpened ? (isMine ? "×" : "✓") : "";
     return `<button class="mine-tile ${visibleClass}" type="button" data-tile="${index}" ${state.mines.active && !state.mines.locked ? "" : "disabled"}>${label}</button>`;
   }).join("");
 
@@ -2125,8 +2120,8 @@ function playMines() {
       opened: [],
       locked: false,
     };
-    els.playBtn.textContent = "Р—Р°Р±СЂР°С‚СЊ";
-    els.roundMessage.textContent = "РћС‚РєСЂС‹РІР°Р№С‚Рµ РєР»РµС‚РєРё РёР»Рё Р·Р°Р±РёСЂР°Р№С‚Рµ С‚РµРєСѓС‰РёР№ Р±Р°РЅРє.";
+    els.playBtn.textContent = "Забрать";
+    els.roundMessage.textContent = "Открывайте клетки или забирайте текущий банк.";
     renderMines();
     return;
   }
@@ -2141,15 +2136,15 @@ function openMineTile(index) {
     state.mines.active = false;
     state.mines.opened = [...new Set([...state.mines.opened, ...state.mines.mineIndexes])];
     recordProfileRound(0);
-    els.playBtn.textContent = "РќР°С‡Р°С‚СЊ";
-    els.roundMessage.textContent = "РњРёРЅР° РѕС‚РєСЂС‹С‚Р°. Р Р°СѓРЅРґ Р·Р°РІРµСЂС€РµРЅ.";
-    toast("Mines: СЃС‚Р°РІРєР° СЃРіРѕСЂРµР»Р°");
+    els.playBtn.textContent = "Начать";
+    els.roundMessage.textContent = "Мина открыта. Раунд завершен.";
+    toast("Mines: ставка сгорела");
     renderMines();
     maybeAutoPlay();
     return;
   }
   const multiplier = getMinesMultiplier();
-  els.roundMessage.textContent = `Р‘РµР·РѕРїР°СЃРЅРѕ. РўРµРєСѓС‰РёР№ РєРѕСЌС„С„РёС†РёРµРЅС‚ x${multiplier.toFixed(2)}.`;
+  els.roundMessage.textContent = `Безопасно. Текущий коэффициент x${multiplier.toFixed(2)}.`;
   renderMines();
   if (state.mines.opened.length === 7) collectMines();
 }
@@ -2160,7 +2155,7 @@ function getMinesMultiplier() {
 
 function collectMines() {
   if (!state.mines.active || state.mines.opened.length === 0) {
-    toast("РЎРЅР°С‡Р°Р»Р° РѕС‚РєСЂРѕР№С‚Рµ С…РѕС‚СЏ Р±С‹ РѕРґРЅСѓ Р±РµР·РѕРїР°СЃРЅСѓСЋ РєР»РµС‚РєСѓ.");
+    toast("Сначала откройте хотя бы одну безопасную клетку.");
     return;
   }
   const game = getActiveGame();
@@ -2171,9 +2166,9 @@ function collectMines() {
   addWin(game.title, payout, game.symbol);
   state.mines.active = false;
   state.mines.locked = true;
-  els.playBtn.textContent = "РќР°С‡Р°С‚СЊ";
-  els.roundMessage.textContent = `Р’С‹ Р·Р°Р±СЂР°Р»Рё x${multiplier.toFixed(2)}.`;
-  toast(`Mines РІС‹РїР»Р°С‚Р° ${format(payout)} Coins`);
+  els.playBtn.textContent = "Начать";
+  els.roundMessage.textContent = `Вы забрали x${multiplier.toFixed(2)}.`;
+  toast(`Mines выплата ${format(payout)} Coins`);
   renderMines();
   maybeAutoPlay();
 }
@@ -2201,7 +2196,7 @@ function playWheel() {
     settleRound({
       won: multiplier >= 1,
       multiplier,
-      message: multiplier >= 1 ? `РљРѕР»РµСЃРѕ РѕСЃС‚Р°РЅРѕРІРёР»РѕСЃСЊ РЅР° x${multiplier}.` : `РљРѕР»РµСЃРѕ РѕСЃС‚Р°РЅРѕРІРёР»РѕСЃСЊ РЅР° x${multiplier}.`,
+      message: multiplier >= 1 ? `Колесо остановилось на x${multiplier}.` : `Колесо остановилось на x${multiplier}.`,
       game,
     });
     maybeAutoPlay();
@@ -2226,7 +2221,7 @@ function maybeAutoPlay() {
   if (!els.autoPlay.checked || state.activeGame === "crash" || state.activeGame === "mines") return;
   if (state.lastMultiplier >= Number(els.autoStop.value || 0)) {
     els.autoPlay.checked = false;
-    toast(`РђРІС‚Рѕ-РёРіСЂР° РѕСЃС‚Р°РЅРѕРІР»РµРЅР° РЅР° x${state.lastMultiplier}`);
+    toast(`Авто-игра остановлена на x${state.lastMultiplier}`);
     return;
   }
   const rounds = Number(els.autoRounds.value);
@@ -2273,7 +2268,6 @@ function bindEvents() {
   els.vipBtn.addEventListener("click", showVipClub);
   els.cashierBtn.addEventListener("click", showCashier);
   els.settingsBtn.addEventListener("click", showSettings);
-  els.demoModeBtn.addEventListener("click", attemptRealMode);
   document.querySelectorAll("[data-legal]").forEach((button) => {
     button.addEventListener("click", () => showLegalPage(button.dataset.legal));
   });
@@ -2302,7 +2296,7 @@ function bindEvents() {
   });
   els.slotAdminToggle.addEventListener("click", () => {
     if (!isAdmin()) {
-      toast(state.lang === "en" ? "Admin access required" : "РќСѓР¶РµРЅ РґРѕСЃС‚СѓРї Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°");
+      toast(state.lang === "en" ? "Admin access required" : "Нужен доступ администратора");
       return;
     }
     els.slotAdminPanel.hidden = !els.slotAdminPanel.hidden;
