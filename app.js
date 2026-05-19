@@ -2,153 +2,153 @@ const games = [
   {
     id: "slots",
     title: "Slots",
-    description: "Три барабана, быстрые множители и редкий x50 за три семерки.",
+    description: "РўСЂРё Р±Р°СЂР°Р±Р°РЅР°, Р±С‹СЃС‚СЂС‹Рµ РјРЅРѕР¶РёС‚РµР»Рё Рё СЂРµРґРєРёР№ x50 Р·Р° С‚СЂРё СЃРµРјРµСЂРєРё.",
     provider: "velora",
     online: 2568,
     symbol: "7",
     color: "#f7c94b",
     border: "#d89517",
-    action: "Крутить",
+    action: "РљСЂСѓС‚РёС‚СЊ",
   },
   {
     id: "roulette",
     title: "Roulette",
-    description: "Выбери цвет, запусти колесо и проверь, куда лег шар.",
+    description: "Р’С‹Р±РµСЂРё С†РІРµС‚, Р·Р°РїСѓСЃС‚Рё РєРѕР»РµСЃРѕ Рё РїСЂРѕРІРµСЂСЊ, РєСѓРґР° Р»РµРі С€Р°СЂ.",
     provider: "arc",
     online: 1253,
-    symbol: "◎",
+    symbol: "в—Ћ",
     color: "#ff3f4d",
     border: "#d53735",
-    action: "Крутить",
+    action: "РљСЂСѓС‚РёС‚СЊ",
   },
   {
     id: "dice",
     title: "Dice",
-    description: "Угадай выше или ниже цели. Чистая математика и быстрый результат.",
+    description: "РЈРіР°РґР°Р№ РІС‹С€Рµ РёР»Рё РЅРёР¶Рµ С†РµР»Рё. Р§РёСЃС‚Р°СЏ РјР°С‚РµРјР°С‚РёРєР° Рё Р±С‹СЃС‚СЂС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚.",
     provider: "velora",
     online: 1847,
-    symbol: "◆",
+    symbol: "в—†",
     color: "#18a8ff",
     border: "#2476c9",
-    action: "Бросить",
+    action: "Р‘СЂРѕСЃРёС‚СЊ",
   },
   {
     id: "crash",
     title: "Crash",
-    description: "Множитель растет, но успей забрать до краша.",
+    description: "РњРЅРѕР¶РёС‚РµР»СЊ СЂР°СЃС‚РµС‚, РЅРѕ СѓСЃРїРµР№ Р·Р°Р±СЂР°С‚СЊ РґРѕ РєСЂР°С€Р°.",
     provider: "neon",
     online: 2312,
-    symbol: "↗",
+    symbol: "в†—",
     color: "#ff7047",
     border: "#d45b22",
-    action: "Запустить",
+    action: "Р—Р°РїСѓСЃС‚РёС‚СЊ",
   },
   {
     id: "blackjack",
     title: "Blackjack",
-    description: "Одна быстрая раздача против дилера. 21 забирает банк.",
+    description: "РћРґРЅР° Р±С‹СЃС‚СЂР°СЏ СЂР°Р·РґР°С‡Р° РїСЂРѕС‚РёРІ РґРёР»РµСЂР°. 21 Р·Р°Р±РёСЂР°РµС‚ Р±Р°РЅРє.",
     provider: "arc",
     online: 1105,
     symbol: "A",
     color: "#46ff81",
     border: "#159344",
-    action: "Раздать",
+    action: "Р Р°Р·РґР°С‚СЊ",
   },
   {
     id: "plinko",
     title: "Plinko",
-    description: "Брось шар, поймай множитель и забери выигрыш.",
+    description: "Р‘СЂРѕСЃСЊ С€Р°СЂ, РїРѕР№РјР°Р№ РјРЅРѕР¶РёС‚РµР»СЊ Рё Р·Р°Р±РµСЂРё РІС‹РёРіСЂС‹С€.",
     provider: "velora",
     online: 1026,
-    symbol: "●",
+    symbol: "в—Џ",
     color: "#18f5e7",
     border: "#5d36d7",
-    action: "Бросить шар",
+    action: "Р‘СЂРѕСЃРёС‚СЊ С€Р°СЂ",
   },
   {
     id: "mines",
     title: "Mines",
-    description: "Открывай клетки без мин. Чем дольше играешь, тем выше коэффициент.",
+    description: "РћС‚РєСЂС‹РІР°Р№ РєР»РµС‚РєРё Р±РµР· РјРёРЅ. Р§РµРј РґРѕР»СЊС€Рµ РёРіСЂР°РµС€СЊ, С‚РµРј РІС‹С€Рµ РєРѕСЌС„С„РёС†РёРµРЅС‚.",
     provider: "neon",
     online: 1532,
-    symbol: "✦",
+    symbol: "вњ¦",
     color: "#1aa2d6",
     border: "#1989a6",
-    action: "Начать",
+    action: "РќР°С‡Р°С‚СЊ",
   },
   {
     id: "wheel",
     title: "Wheel",
-    description: "Колесо удачи с сегментами от x0.2 до x10.",
+    description: "РљРѕР»РµСЃРѕ СѓРґР°С‡Рё СЃ СЃРµРіРјРµРЅС‚Р°РјРё РѕС‚ x0.2 РґРѕ x10.",
     provider: "arc",
     online: 1209,
-    symbol: "◌",
+    symbol: "в—Њ",
     color: "#ffb92e",
     border: "#c88812",
-    action: "Крутить",
+    action: "РљСЂСѓС‚РёС‚СЊ",
   },
 ];
 
 const recentSeed = [
-  ["LuckyAce", "Roulette", 6000, "◎"],
-  ["BetMaster", "Crash", 3200, "↗"],
+  ["LuckyAce", "Roulette", 6000, "в—Ћ"],
+  ["BetMaster", "Crash", 3200, "в†—"],
   ["HighRoller", "Blackjack", 2500, "A"],
-  ["CoinFlip", "Dice", 1920, "◆"],
-  ["PlinkoKing", "Plinko", 4800, "●"],
-  ["MineHunter", "Mines", 7250, "✦"],
-  ["WheelFan", "Wheel", 5100, "◌"],
+  ["CoinFlip", "Dice", 1920, "в—†"],
+  ["PlinkoKing", "Plinko", 4800, "в—Џ"],
+  ["MineHunter", "Mines", 7250, "вњ¦"],
+  ["WheelFan", "Wheel", 5100, "в—Њ"],
 ];
 
 const providerSlots = [
   {
-    id: "sweet-bonanza-2500",
-    title: "Sweet Bonanza 2500",
-    studio: "Pragmatic Play",
-    theme: "Candy volatility",
-    symbol: "2500x",
+    id: "candy",
+    gameId: "slots",
+    title: "Candy Spin",
+    studio: "VERS Originals",
+    theme: "Sweet cluster slot",
+    symbol: "SWEET",
     accent: "#ff5aa7",
     glow: "#ffcc3f",
-    demoUrl: "https://www.pragmaticplay.com/en/games/sweet-bonanza-2500/?gamelang=ru&cur=ALL",
   },
   {
-    id: "big-bass-trophy-catch",
-    title: "Big Bass Trophy Catch",
-    studio: "Pragmatic Play",
-    theme: "Fishing bonus hunt",
-    symbol: "BASS",
+    id: "olympus",
+    gameId: "slots",
+    title: "Olympus Reels",
+    studio: "VERS Originals",
+    theme: "Mythological free spins",
+    symbol: "OLY",
     accent: "#18a8ff",
     glow: "#83ff62",
-    demoUrl: "https://www.pragmaticplay.com/en/games/big-bass-trophy-catch/?gamelang=en&cur=ALL",
   },
   {
-    id: "zeus-vs-hades-gods-of-war",
-    title: "Zeus vs Hades",
-    studio: "Pragmatic Play",
-    theme: "Gods of War",
-    symbol: "Z/H",
+    id: "crash",
+    gameId: "crash",
+    title: "VERS Crash",
+    studio: "VERS Originals",
+    theme: "Multiplier arcade",
+    symbol: "UP",
     accent: "#a977ff",
     glow: "#ff7047",
-    demoUrl: "https://www.pragmaticplay.com/en/games/zeus-vs-hades-gods-of-war/?gamelang=en&cur=ALL",
   },
   {
-    id: "gates-of-olympus-super-scatter",
-    title: "Gates of Olympus Super Scatter",
-    studio: "Pragmatic Play",
-    theme: "Super Scatter feature",
-    symbol: "SC",
+    id: "mines",
+    gameId: "mines",
+    title: "Neon Mines",
+    studio: "VERS Originals",
+    theme: "Grid reveal game",
+    symbol: "MINE",
     accent: "#f7c94b",
     glow: "#18f5e7",
-    demoUrl: "https://www.pragmaticplay.com/en/games/gates-of-olympus-super-scatter/?gamelang=en&cur=ALL",
   },
   {
-    id: "gates-of-olympus-1000",
-    title: "Gates of Olympus 1000",
-    studio: "Pragmatic Play",
-    theme: "Olympus multiplier",
-    symbol: "1000x",
+    id: "plinko",
+    gameId: "plinko",
+    title: "Plinko Rush",
+    studio: "VERS Originals",
+    theme: "Peg drop arcade",
+    symbol: "DROP",
     accent: "#72f060",
     glow: "#f7c94b",
-    demoUrl: "https://www.pragmaticplay.com/en/games/gates-of-olympus-1000/?gamelang=en&cur=ALL",
   },
 ];
 
@@ -222,92 +222,92 @@ const slotThemes = {
 const i18n = {
   ru: {
     lang: "RU",
-    search: "Поиск игр...",
-    wallet: "Демо-баланс · виртуальные кредиты",
-    realWallet: "Реальный счет недоступен",
-    guest: "Гость",
-    guestStatus: "Локальный демо-режим",
-    login: "Войти",
-    logout: "Выйти",
-    demoTitle: "Демо-режим",
-    demoText: "Все игры используют только виртуальные кредиты.",
+    search: "РџРѕРёСЃРє РёРіСЂ...",
+    wallet: "Coin Balance В· VERS Coins",
+    realWallet: "Coin Balance В· entertainment only",
+    guest: "Р“РѕСЃС‚СЊ",
+    guestStatus: "Р›РѕРєР°Р»СЊРЅС‹Р№ РґРµРјРѕ-СЂРµР¶РёРј",
+    login: "Р’РѕР№С‚Рё",
+    logout: "Р’С‹Р№С‚Рё",
+    coinTitle: "VERS Coins",
+    coinText: "Entertainment credits only. No cash value.",
     nav: {
-      all: "Лобби",
-      slots: "Слоты",
-      roulette: "Рулетка",
-      promo: "Промо",
-      vip: "VIP клуб",
-      cashier: "Касса",
-      settings: "Настройки",
+      all: "Р›РѕР±Р±Рё",
+      slots: "РЎР»РѕС‚С‹",
+      roulette: "Р СѓР»РµС‚РєР°",
+      promo: "РџСЂРѕРјРѕ",
+      vip: "VIP РєР»СѓР±",
+      cashier: "РљР°СЃСЃР°",
+      settings: "РќР°СЃС‚СЂРѕР№РєРё",
     },
-    recent: "Последние выигрыши",
-    selectedGame: "Выбрана игра",
+    recent: "РџРѕСЃР»РµРґРЅРёРµ РІС‹РёРіСЂС‹С€Рё",
+    selectedGame: "Р’С‹Р±СЂР°РЅР° РёРіСЂР°",
     slot: {
       kicker: "HTML5 Engine",
     title: "VERS Mega Ways",
-      copy: "6 барабанов, каскадные выигрыши, free spins, множители и Supabase wallet с виртуальными VC.",
-      theme: "Тема",
+      copy: "6 Р±Р°СЂР°Р±Р°РЅРѕРІ, РєР°СЃРєР°РґРЅС‹Рµ РІС‹РёРіСЂС‹С€Рё, free spins, РјРЅРѕР¶РёС‚РµР»Рё Рё VERS Coins.",
+      theme: "РўРµРјР°",
       admin: "Admin RTP",
-      ready: "Готово к спину",
-      loaded: "загружена",
-      bet: "Ставка VC",
+      ready: "Р“РѕС‚РѕРІРѕ Рє СЃРїРёРЅСѓ",
+      loaded: "Р·Р°РіСЂСѓР¶РµРЅР°",
+      bet: "РЎС‚Р°РІРєР° Coins",
       spin: "Spin",
-      autoplay: "Автоигра",
-      cascade: "Каскад",
-      multiplier: "Множитель",
+      autoplay: "РђРІС‚РѕРёРіСЂР°",
+      cascade: "РљР°СЃРєР°Рґ",
+      multiplier: "РњРЅРѕР¶РёС‚РµР»СЊ",
       freeSpins: "Free spins",
       targetRtp: "Target RTP",
-      volatility: "Волатильность",
-      low: "Низкая",
-      medium: "Средняя",
-      high: "Высокая",
-      adminNote: "Demo-настройки для виртуальных кредитов. Для регулируемого запуска нужен защищенный backend.",
-      spinning: "Спин",
+      volatility: "Р’РѕР»Р°С‚РёР»СЊРЅРѕСЃС‚СЊ",
+      low: "РќРёР·РєР°СЏ",
+      medium: "РЎСЂРµРґРЅСЏСЏ",
+      high: "Р’С‹СЃРѕРєР°СЏ",
+      adminNote: "Admin-only РЅР°СЃС‚СЂРѕР№РєРё СЌРєРѕРЅРѕРјРёРєРё VERS Coins. РџР»Р°С‚РµР¶Рё РїРѕРґС‚РІРµСЂР¶РґР°СЋС‚СЃСЏ С‚РѕР»СЊРєРѕ backend/webhook.",
+      spinning: "РЎРїРёРЅ",
       freeRunning: "Free spin",
-      win: "Выигрыш",
-      noWin: "Без выигрыша, следующий спин",
-      realBlocked: "Реальный счет выключен. Этот слот использует только виртуальные VC.",
+      win: "Р’С‹РёРіСЂС‹С€",
+      noWin: "Р‘РµР· РІС‹РёРіСЂС‹С€Р°, СЃР»РµРґСѓСЋС‰РёР№ СЃРїРёРЅ",
+      realBlocked: "VERS Coins are entertainment credits only.",
     },
-    providerTitle: "Pragmatic Play slots",
-    providerCopy: "Официальные demo-страницы провайдера открываются отдельно. Внутри сайта работает собственный HTML5 слот.",
-    providerTag: "Real provider demos",
-    catalogAll: "Все игры",
-    catalogProvider: "Провайдер",
-    catalogSort: "Сортировка",
-    betTitle: "Ставка",
-    autoGame: "Авто-игра",
-    rounds: "Раундов",
-    stopAt: "Стоп при x",
-    cashout: "Забрать",
-    launch: "Запустить в казино",
-    profile: "Профиль",
-    nickname: "Ник",
-    avatar: "Аватар",
-    saveProfile: "Сохранить профиль",
-    newPassword: "Новый пароль",
-    changePassword: "Сменить пароль",
-    cashierTitle: "Касса",
-    demoTopUp: "Пополнить виртуальный баланс",
-    depositShell: "Ввод средств",
-    withdrawShell: "Вывод средств",
-    amount: "Сумма",
-    createRequest: "Создать заявку",
-    shellNote: "Это только оболочка интерфейса. Реальные платежи и выводы не подключены.",
-    sortPopular: "Популярные",
-    sortOnline: "Онлайн",
-    sortName: "Название",
+    providerTitle: "Featured VERS games",
+    providerCopy: "Р’СЃРµ РёРіСЂС‹ Р·Р°РїСѓСЃРєР°СЋС‚СЃСЏ РїСЂСЏРјРѕ РЅР° СЃР°Р№С‚Рµ VERS Рё РёСЃРїРѕР»СЊР·СѓСЋС‚ VERS Coins С‚РѕР»СЊРєРѕ РґР»СЏ СЂР°Р·РІР»РµС‡РµРЅРёСЏ.",
+    providerTag: "Internal games",
+    catalogAll: "Р’СЃРµ РёРіСЂС‹",
+    catalogProvider: "РџСЂРѕРІР°Р№РґРµСЂ",
+    catalogSort: "РЎРѕСЂС‚РёСЂРѕРІРєР°",
+    betTitle: "РЎС‚Р°РІРєР°",
+    autoGame: "РђРІС‚Рѕ-РёРіСЂР°",
+    rounds: "Р Р°СѓРЅРґРѕРІ",
+    stopAt: "РЎС‚РѕРї РїСЂРё x",
+    cashout: "Collect",
+    launch: "Play",
+    profile: "РџСЂРѕС„РёР»СЊ",
+    nickname: "РќРёРє",
+    avatar: "РђРІР°С‚Р°СЂ",
+    saveProfile: "РЎРѕС…СЂР°РЅРёС‚СЊ РїСЂРѕС„РёР»СЊ",
+    newPassword: "РќРѕРІС‹Р№ РїР°СЂРѕР»СЊ",
+    changePassword: "РЎРјРµРЅРёС‚СЊ РїР°СЂРѕР»СЊ",
+    cashierTitle: "Coin Shop",
+    buyCoins: "Buy Coins",
+    stripePlaceholder: "Stripe placeholder",
+    cryptoPlaceholder: "Crypto placeholder",
+    amount: "РЎСѓРјРјР°",
+    createRequest: "РЎРѕР·РґР°С‚СЊ Р·Р°СЏРІРєСѓ",
+    shellNote: "VERS Coins have no monetary value and cannot be withdrawn, exchanged, sold, or redeemed for prizes.",
+    sortPopular: "РџРѕРїСѓР»СЏСЂРЅС‹Рµ",
+    sortOnline: "РћРЅР»Р°Р№РЅ",
+    sortName: "РќР°Р·РІР°РЅРёРµ",
   },
   en: {
     lang: "EN",
     search: "Search games...",
-    wallet: "Demo balance · virtual credits",
-    realWallet: "Real mode unavailable",
+    wallet: "Coin Balance В· VERS Coins",
+    realWallet: "Coin Balance В· entertainment only",
     guest: "Guest",
-    guestStatus: "Local demo mode",
+    guestStatus: "Entertainment account",
     login: "Sign in",
     logout: "Sign out",
-    demoTitle: "Demo mode",
-    demoText: "All games use virtual credits only.",
+    coinTitle: "VERS Coins",
+    coinText: "Entertainment credits only. No cash value.",
     nav: {
       all: "Lobby",
       slots: "Slots",
@@ -322,12 +322,12 @@ const i18n = {
     slot: {
       kicker: "HTML5 Engine",
     title: "VERS Mega Ways",
-      copy: "6 reels, cascading wins, free spins, multipliers and Supabase wallet sync with virtual VC credits.",
+      copy: "6 reels, cascading wins, free spins, multipliers and VERS Coins entertainment balance.",
       theme: "Theme",
       admin: "Admin RTP",
       ready: "Ready for spin",
       loaded: "loaded",
-      bet: "Bet VC",
+      bet: "Bet Coins",
       spin: "Spin",
       autoplay: "Autoplay",
       cascade: "Cascade",
@@ -338,16 +338,16 @@ const i18n = {
       low: "Low",
       medium: "Medium",
       high: "High",
-      adminNote: "Demo-side controls for virtual credits. Use protected backend rules before any regulated launch.",
+      adminNote: "Admin-only VERS Coins economy controls. Payment confirmations must happen on a trusted backend.",
       spinning: "Spinning",
       freeRunning: "Free spin running",
       win: "Win",
       noWin: "No win, next spin",
-      realBlocked: "Real-money mode is disabled. This slot uses virtual VC only.",
+      realBlocked: "VERS Coins are entertainment credits only.",
     },
-    providerTitle: "Pragmatic Play slots",
-    providerCopy: "Official provider demo pages open separately. The site now runs its own embedded HTML5 slot.",
-    providerTag: "Real provider demos",
+    providerTitle: "Featured VERS games",
+    providerCopy: "All games run directly inside VERS casino using VERS Coins for entertainment only.",
+    providerTag: "Internal games",
     catalogAll: "All games",
     catalogProvider: "Provider",
     catalogSort: "Sort",
@@ -355,21 +355,21 @@ const i18n = {
     autoGame: "Auto-play",
     rounds: "Rounds",
     stopAt: "Stop at x",
-    cashout: "Cash out",
-    launch: "Launch in casino",
+    cashout: "Collect",
+    launch: "Play",
     profile: "Profile",
     nickname: "Nickname",
     avatar: "Avatar",
     saveProfile: "Save profile",
     newPassword: "New password",
     changePassword: "Change password",
-    cashierTitle: "Cashier",
-    demoTopUp: "Top up virtual balance",
-    depositShell: "Deposit",
-    withdrawShell: "Withdraw",
+    cashierTitle: "Coin Shop",
+    buyCoins: "Buy Coins",
+    stripePlaceholder: "Stripe placeholder",
+    cryptoPlaceholder: "Crypto placeholder",
     amount: "Amount",
     createRequest: "Create request",
-    shellNote: "This is only an interface shell. Real payments and withdrawals are not connected.",
+    shellNote: "VERS Coins have no monetary value and cannot be withdrawn, exchanged, sold, or redeemed for prizes.",
     sortPopular: "Popular",
     sortOnline: "Online",
     sortName: "Name",
@@ -384,17 +384,20 @@ const gameText = {
     },
     roulette: {
       title: "Roulette",
+      symbol: "◎",
       description: "Pick a color, spin the wheel and see where the ball lands.",
       action: "Spin",
     },
     dice: {
       title: "Dice",
+      symbol: "◆",
       description: "Guess over or under the target. Clean math and instant results.",
       action: "Roll",
     },
     crash: {
       title: "Crash",
-      description: "The multiplier rises. Cash out before the crash.",
+      symbol: "↗",
+      description: "The multiplier rises. Collect the Coin win before the crash.",
       action: "Start",
     },
     blackjack: {
@@ -404,21 +407,32 @@ const gameText = {
     },
     plinko: {
       title: "Plinko",
+      symbol: "●",
       description: "Drop the ball, catch a multiplier and take the payout.",
       action: "Drop ball",
     },
     mines: {
       title: "Mines",
+      symbol: "✦",
       description: "Open safe tiles and avoid mines. Longer runs raise the multiplier.",
       action: "Start",
     },
     wheel: {
       title: "Wheel",
+      symbol: "◌",
       description: "A lucky wheel with sectors from x0.2 to x10.",
       action: "Spin",
     },
   },
 };
+
+const coinPackages = [
+  { id: "coins_10k", coins: 10000, amount: 4.99, label: "10,000 Coins" },
+  { id: "coins_50k", coins: 50000, amount: 14.99, label: "50,000 Coins" },
+  { id: "coins_100k", coins: 100000, amount: 24.99, label: "100,000 Coins" },
+  { id: "coins_500k", coins: 500000, amount: 79.99, label: "500,000 Coins" },
+  { id: "coins_1m", coins: 1000000, amount: 129.99, label: "1,000,000 Coins" },
+];
 
 const state = {
   balance: Number(localStorage.getItem("velora-balance")) || 100000,
@@ -427,9 +441,9 @@ const state = {
   profile: null,
   authMode: "signin",
   authReady: false,
-  walletMode: localStorage.getItem("velora-wallet-mode") || "demo",
+  walletMode: localStorage.getItem("velora-wallet-mode") || "coins",
   settings: JSON.parse(localStorage.getItem("velora-settings") || "{}"),
-  lang: localStorage.getItem("velora-lang") || "ru",
+  lang: localStorage.getItem("velora-lang") || "en",
   activeGame: "plinko",
   filter: "all",
   provider: "all",
@@ -468,7 +482,11 @@ const state = {
     multiplier: 1,
     cascade: 0,
     lastWin: 0,
-    settings: JSON.parse(localStorage.getItem("velora-slot-settings") || '{"rtp":94,"volatility":"medium"}'),
+    settings: JSON.parse(
+      localStorage.getItem("velora-slot-settings") ||
+        '{"rtp":94,"volatility":"medium","maxBet":1000000000,"maxWin":5000000,"bonusFrequency":5,"freeSpinCap":25000000}',
+    ),
+    freeSpinSessionWin: 0,
   },
 };
 
@@ -549,9 +567,14 @@ const els = {
   slotRtpInput: document.querySelector("#slotRtpInput"),
   slotRtpValue: document.querySelector("#slotRtpValue"),
   slotVolatilitySelect: document.querySelector("#slotVolatilitySelect"),
+  slotMaxBetInput: document.querySelector("#slotMaxBetInput"),
+  slotMaxWinInput: document.querySelector("#slotMaxWinInput"),
+  slotBonusFrequencyInput: document.querySelector("#slotBonusFrequencyInput"),
+  slotFreeSpinCapInput: document.querySelector("#slotFreeSpinCapInput"),
 };
 
 const supabaseSettings = window.VELORA_SUPABASE || {};
+const paymentConfig = window.VERS_PAYMENT_CONFIG || {};
 const hasSupabaseConfig =
   Boolean(supabaseSettings.url) &&
   Boolean(supabaseSettings.publishableKey) &&
@@ -649,7 +672,7 @@ function applyLanguage() {
   setText("#vipBtn span:last-child", copy.nav.vip);
   setText("#cashierBtn span:last-child", copy.nav.cashier);
   setText("#settingsBtn span:last-child", copy.nav.settings);
-  setText(".demo-card strong", copy.demoTitle);
+  setText(".demo-card strong", copy.coinTitle);
   setText(".game-heading span:last-child", copy.selectedGame);
   setText(".strip-title strong", copy.recent);
   setText(".slot-engine-head small", copy.slot.kicker);
@@ -720,8 +743,8 @@ function getAvatarLabel(profile = state.profile) {
   const avatar = profile?.avatar_url || localStorage.getItem("vers-avatar") || "avatar-neon";
   const map = {
     "avatar-neon": "V",
-    "avatar-crown": "♛",
-    "avatar-star": "★",
+    "avatar-crown": "в™›",
+    "avatar-star": "в…",
     "avatar-card": "A",
   };
   return map[avatar] || (profile?.display_name || "V").slice(0, 1).toUpperCase();
@@ -755,7 +778,7 @@ function updateAccountUi() {
     els.accountName.textContent = tr("guest");
     els.profileBtn.textContent = getAvatarLabel();
     els.accountVip.textContent = getVipLevelName();
-    els.accountStatus.textContent = state.lang === "en" ? "Sign in to sync" : "Войдите для синхронизации";
+    els.accountStatus.textContent = state.lang === "en" ? "Sign in to sync" : "Р’РѕР№РґРёС‚Рµ РґР»СЏ СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёРё";
     return;
   }
 
@@ -763,18 +786,13 @@ function updateAccountUi() {
   els.accountName.textContent = name;
   els.profileBtn.textContent = getAvatarLabel();
   els.accountVip.textContent = getVipLevelName();
-  els.accountStatus.textContent = state.user.email || (state.lang === "en" ? "Account active" : "Аккаунт активен");
+  els.accountStatus.textContent = state.user.email || (state.lang === "en" ? "Account active" : "РђРєРєР°СѓРЅС‚ Р°РєС‚РёРІРµРЅ");
 }
 
 function updateModeUi() {
-  const demo = state.walletMode === "demo";
-  els.walletModeLabel.textContent = demo ? tr("wallet") : tr("realWallet");
-  els.modeText.textContent = demo
-    ? tr("demoText")
-    : state.lang === "en"
-      ? "Real balance is blocked until licensing and KYC."
-      : "Реальный счет заблокирован до лицензии и KYC.";
-  els.demoModeBtn.classList.toggle("is-off", !demo);
+  els.walletModeLabel.textContent = tr("wallet");
+  els.modeText.textContent = tr("coinText");
+  els.demoModeBtn.classList.remove("is-off");
   document.body.classList.toggle("reduced-motion", Boolean(state.settings.reducedMotion));
   document.body.classList.toggle("compact-ui", Boolean(state.settings.compactUi));
 }
@@ -790,10 +808,10 @@ function getVipInfo() {
   const totalWon = Number(state.profile?.total_won || localStorage.getItem("velora-total-won") || 0);
   const points = Math.floor(gamesPlayed * 120 + totalWon / 20);
   const levels = [
-    { name: "Bronze", min: 0, perks: "Базовые промо и ежедневный демо-бонус" },
-    { name: "Silver", min: 2500, perks: "+5% к промо-бонусам и быстрые турниры" },
-    { name: "Gold", min: 9000, perks: "+10% к промо-бонусам и VIP миссии" },
-    { name: "Platinum", min: 22000, perks: "+15% к промо-бонусам и персональные акции" },
+    { name: "Bronze", min: 0, perks: "Р‘Р°Р·РѕРІС‹Рµ РїСЂРѕРјРѕ Рё РµР¶РµРґРЅРµРІРЅС‹Р№ РґРµРјРѕ-Р±РѕРЅСѓСЃ" },
+    { name: "Silver", min: 2500, perks: "+5% Рє РїСЂРѕРјРѕ-Р±РѕРЅСѓСЃР°Рј Рё Р±С‹СЃС‚СЂС‹Рµ С‚СѓСЂРЅРёСЂС‹" },
+    { name: "Gold", min: 9000, perks: "+10% Рє РїСЂРѕРјРѕ-Р±РѕРЅСѓСЃР°Рј Рё VIP РјРёСЃСЃРёРё" },
+    { name: "Platinum", min: 22000, perks: "+15% Рє РїСЂРѕРјРѕ-Р±РѕРЅСѓСЃР°Рј Рё РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹Рµ Р°РєС†РёРё" },
   ];
   const current = [...levels].reverse().find((level) => points >= level.min) || levels[0];
   const next = levels.find((level) => level.min > points);
@@ -804,10 +822,10 @@ function showVipClub() {
   const vip = getVipInfo();
   const progress = vip.next ? Math.min(100, Math.round(((vip.points - vip.current.min) / (vip.next.min - vip.current.min)) * 100)) : 100;
   openUtility(
-    "VIP клуб",
+    "VIP РєР»СѓР±",
     `
       <div class="vip-hero">
-        <span class="vip-crown">♛</span>
+        <span class="vip-crown">в™›</span>
         <div>
           <strong>${vip.current.name}</strong>
           <small>${vip.current.perks}</small>
@@ -815,15 +833,15 @@ function showVipClub() {
       </div>
       <div class="vip-progress">
         <span>${vip.points.toLocaleString("ru-RU")} VIP points</span>
-        <span>${vip.next ? `До ${vip.next.name}: ${(vip.next.min - vip.points).toLocaleString("ru-RU")}` : "Максимальный уровень"}</span>
+        <span>${vip.next ? `Р”Рѕ ${vip.next.name}: ${(vip.next.min - vip.points).toLocaleString("ru-RU")}` : "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СѓСЂРѕРІРµРЅСЊ"}</span>
         <div><i style="width:${progress}%"></i></div>
       </div>
       <div class="utility-grid">
-        <article><strong>${vip.gamesPlayed}</strong><span>Игр сыграно</span></article>
-        <article><strong>VC ${format(vip.totalWon)}</strong><span>Всего выиграно</span></article>
-        <article><strong>Daily</strong><span>Бонусы только виртуальные</span></article>
+        <article><strong>${vip.gamesPlayed}</strong><span>РРіСЂ СЃС‹РіСЂР°РЅРѕ</span></article>
+        <article><strong>Coins ${format(vip.totalWon)}</strong><span>Р’СЃРµРіРѕ РІС‹РёРіСЂР°РЅРѕ</span></article>
+        <article><strong>Daily</strong><span>Р‘РѕРЅСѓСЃС‹ С‚РѕР»СЊРєРѕ РІРёСЂС‚СѓР°Р»СЊРЅС‹Рµ</span></article>
       </div>
-      <p class="utility-note">VIP клуб не связан с реальными деньгами. Уровни дают только демо-бонусы и визуальные преимущества.</p>
+      <p class="utility-note">VIP РєР»СѓР± РЅРµ СЃРІСЏР·Р°РЅ СЃ СЂРµР°Р»СЊРЅС‹РјРё РґРµРЅСЊРіР°РјРё. РЈСЂРѕРІРЅРё РґР°СЋС‚ С‚РѕР»СЊРєРѕ РґРµРјРѕ-Р±РѕРЅСѓСЃС‹ Рё РІРёР·СѓР°Р»СЊРЅС‹Рµ РїСЂРµРёРјСѓС‰РµСЃС‚РІР°.</p>
     `,
   );
 }
@@ -831,32 +849,32 @@ function showVipClub() {
 function showPromos() {
   const redeemed = getRedeemedPromos();
   openUtility(
-    "Промо",
+    "РџСЂРѕРјРѕ",
     `
       <form id="promoForm" class="promo-form">
-        <label>Промокод
+        <label>РџСЂРѕРјРѕРєРѕРґ
           <input id="promoCode" type="text" placeholder="WELCOME" autocomplete="off" />
         </label>
-        <button type="submit">Активировать</button>
+        <button type="submit">РђРєС‚РёРІРёСЂРѕРІР°С‚СЊ</button>
       </form>
       <div class="promo-list">
         ${[
-          ["WELCOME", "10 000 VC", "Стартовый бонус"],
-          ["VIP5000", "5 000 VC", "VIP демо-бонус"],
-          ["LUCKY", "3 000 VC", "Быстрый бонус"],
+          ["WELCOME", "10 000 Coins", "РЎС‚Р°СЂС‚РѕРІС‹Р№ Р±РѕРЅСѓСЃ"],
+          ["VIP5000", "5 000 Coins", "VIP Coin bonus"],
+          ["LUCKY", "3 000 Coins", "Р‘С‹СЃС‚СЂС‹Р№ Р±РѕРЅСѓСЃ"],
         ]
           .map(
             ([code, amount, label]) => `
               <article class="${redeemed.includes(code) ? "is-used" : ""}">
                 <strong>${code}</strong>
                 <span>${label}</span>
-                <small>${redeemed.includes(code) ? "Уже активирован" : amount}</small>
+                <small>${redeemed.includes(code) ? "РЈР¶Рµ Р°РєС‚РёРІРёСЂРѕРІР°РЅ" : amount}</small>
               </article>
             `,
           )
           .join("")}
       </div>
-      <p class="utility-note">Промо начисляют только виртуальные кредиты. Реальные депозиты и выводы не подключены.</p>
+      <p class="utility-note">РџСЂРѕРјРѕ РЅР°С‡РёСЃР»СЏСЋС‚ С‚РѕР»СЊРєРѕ РІРёСЂС‚СѓР°Р»СЊРЅС‹Рµ РєСЂРµРґРёС‚С‹. Р РµР°Р»СЊРЅС‹Рµ РґРµРїРѕР·РёС‚С‹ Рё РІС‹РІРѕРґС‹ РЅРµ РїРѕРґРєР»СЋС‡РµРЅС‹.</p>
     `,
   );
   document.querySelector("#promoForm").addEventListener("submit", redeemPromo);
@@ -868,42 +886,42 @@ function redeemPromo(event) {
   const code = input.value.trim().toUpperCase();
   const promos = { WELCOME: 10000, VIP5000: 5000, LUCKY: 3000 };
   if (!promos[code]) {
-    toast("Промокод не найден");
+    toast("РџСЂРѕРјРѕРєРѕРґ РЅРµ РЅР°Р№РґРµРЅ");
     return;
   }
   const redeemed = getRedeemedPromos();
   if (redeemed.includes(code)) {
-    toast("Промокод уже активирован");
+    toast("РџСЂРѕРјРѕРєРѕРґ СѓР¶Рµ Р°РєС‚РёРІРёСЂРѕРІР°РЅ");
     return;
   }
   setRedeemedPromos([...redeemed, code]);
   setBalance(state.balance + promos[code]);
-  toast(`Промо ${code}: +${format(promos[code])} VC`);
+  toast(`РџСЂРѕРјРѕ ${code}: +${format(promos[code])} Coins`);
   showPromos();
 }
 
 function showSettings() {
   openUtility(
-    "Настройки",
+    "РќР°СЃС‚СЂРѕР№РєРё",
     `
       <div class="settings-list">
         <label>
-          <span><strong>Звук интерфейса</strong><small>Подготовлено для будущих эффектов</small></span>
+          <span><strong>Р—РІСѓРє РёРЅС‚РµСЂС„РµР№СЃР°</strong><small>РџРѕРґРіРѕС‚РѕРІР»РµРЅРѕ РґР»СЏ Р±СѓРґСѓС‰РёС… СЌС„С„РµРєС‚РѕРІ</small></span>
           <input type="checkbox" data-setting="sound" ${state.settings.sound ? "checked" : ""} />
         </label>
         <label>
-          <span><strong>Меньше анимаций</strong><small>Упрощает движение интерфейса</small></span>
+          <span><strong>РњРµРЅСЊС€Рµ Р°РЅРёРјР°С†РёР№</strong><small>РЈРїСЂРѕС‰Р°РµС‚ РґРІРёР¶РµРЅРёРµ РёРЅС‚РµСЂС„РµР№СЃР°</small></span>
           <input type="checkbox" data-setting="reducedMotion" ${state.settings.reducedMotion ? "checked" : ""} />
         </label>
         <label>
-          <span><strong>Компактный режим</strong><small>Более плотные карточки игр</small></span>
+          <span><strong>РљРѕРјРїР°РєС‚РЅС‹Р№ СЂРµР¶РёРј</strong><small>Р‘РѕР»РµРµ РїР»РѕС‚РЅС‹Рµ РєР°СЂС‚РѕС‡РєРё РёРіСЂ</small></span>
           <input type="checkbox" data-setting="compactUi" ${state.settings.compactUi ? "checked" : ""} />
         </label>
       </div>
       <div class="real-mode-card">
-        <strong>Реальный счет</strong>
-        <p>Реальные ставки, депозиты и выводы отключены. Для такого режима нужны лицензия, KYC/AML, платежный провайдер и юридическая проверка.</p>
-        <button id="realModeBtn" type="button">Запросить подключение</button>
+        <strong>Р РµР°Р»СЊРЅС‹Р№ СЃС‡РµС‚</strong>
+        <p>Р РµР°Р»СЊРЅС‹Рµ СЃС‚Р°РІРєРё, РґРµРїРѕР·РёС‚С‹ Рё РІС‹РІРѕРґС‹ РѕС‚РєР»СЋС‡РµРЅС‹. Р”Р»СЏ С‚Р°РєРѕРіРѕ СЂРµР¶РёРјР° РЅСѓР¶РЅС‹ Р»РёС†РµРЅР·РёСЏ, KYC/AML, РїР»Р°С‚РµР¶РЅС‹Р№ РїСЂРѕРІР°Р№РґРµСЂ Рё СЋСЂРёРґРёС‡РµСЃРєР°СЏ РїСЂРѕРІРµСЂРєР°.</p>
+        <button id="realModeBtn" type="button">Р—Р°РїСЂРѕСЃРёС‚СЊ РїРѕРґРєР»СЋС‡РµРЅРёРµ</button>
       </div>
     `,
   );
@@ -918,15 +936,15 @@ function showSettings() {
 }
 
 function attemptRealMode() {
-  state.walletMode = "demo";
-  localStorage.setItem("velora-wallet-mode", "demo");
+  state.walletMode = "coins";
+  localStorage.setItem("velora-wallet-mode", "coins");
   updateModeUi();
   openUtility(
-    "Реальный счет недоступен",
+    "VERS Coins",
     `
       <div class="real-mode-card">
-        <strong>Режим реальных денег заблокирован</strong>
-        <p>Я могу оставить интерфейс и подготовить легальный checklist интеграции, но не буду подключать реальные ставки или платежи без лицензирования, KYC/AML и регулируемого платежного провайдера.</p>
+        <strong>Social casino entertainment credits</strong>
+        <p>VERS Coins have no monetary value and cannot be withdrawn, exchanged, sold, transferred, or redeemed for prizes.</p>
       </div>
     `,
   );
@@ -936,34 +954,45 @@ function showCashier() {
   openUtility(
     tr("cashierTitle"),
     `
-      <div class="cashier-panel">
-        <article>
-          <strong>${tr("demoTopUp")}</strong>
-          <p>${state.lang === "en" ? "Adds 10,000 VC to the virtual balance." : "Добавляет 10 000 VC на виртуальный баланс."}</p>
-          <button type="button" data-demo-topup>+10 000 VC</button>
-        </article>
-        <article>
-          <strong>${tr("depositShell")}</strong>
-          <label>${tr("amount")}<input type="number" min="10" value="100" /></label>
-          <button type="button" data-cash-shell>${tr("createRequest")}</button>
-        </article>
-        <article>
-          <strong>${tr("withdrawShell")}</strong>
-          <label>${tr("amount")}<input type="number" min="10" value="100" /></label>
-          <button type="button" data-cash-shell>${tr("createRequest")}</button>
-        </article>
+      <div class="cashier-panel coin-shop">
+        ${coinPackages
+          .map(
+            (pack) => `
+              <article>
+                <strong>${pack.label}</strong>
+                <p>$${pack.amount.toFixed(2)} В· VERS Coins entertainment credits</p>
+                <div class="coin-shop-actions">
+                  <button type="button" data-buy-coins="${pack.id}" data-provider="stripe">Stripe</button>
+                  <button type="button" data-buy-coins="${pack.id}" data-provider="crypto">Crypto</button>
+                </div>
+              </article>
+            `,
+          )
+          .join("")}
       </div>
       <p class="utility-note">${tr("shellNote")}</p>
     `,
   );
-  document.querySelector("[data-demo-topup]")?.addEventListener("click", () => {
-    setBalance(state.balance + 10000);
-    toast(state.lang === "en" ? "Virtual balance topped up by 10,000 VC" : "Виртуальный баланс пополнен на 10 000 VC");
-    updateAccountUi();
+  document.querySelectorAll("[data-buy-coins]").forEach((button) => {
+    button.addEventListener("click", () => startCoinPurchase(button.dataset.buyCoins, button.dataset.provider));
   });
-  document.querySelectorAll("[data-cash-shell]").forEach((button) => {
-    button.addEventListener("click", () => toast(state.lang === "en" ? "Request shell created" : "Заявка создана как демонстрация"));
-  });
+}
+
+function startCoinPurchase(packageId, provider) {
+  const pack = coinPackages.find((item) => item.id === packageId);
+  if (!pack) return;
+  const links = provider === "stripe" ? paymentConfig.stripePaymentLinks : paymentConfig.cryptoPaymentLinks;
+  const checkoutUrl = links?.[packageId];
+  if (checkoutUrl) {
+    window.open(checkoutUrl, "_blank", "noopener,noreferrer");
+    return;
+  }
+  if (window.VERS_ENABLE_TEST_PAYMENTS) {
+    setBalance(state.balance + pack.coins);
+    toast(`${pack.label} added for development testing`);
+    return;
+  }
+  toast("Payment placeholder: configure a provider link and verify purchases with a backend webhook.");
 }
 
 function showProfileMenu() {
@@ -978,7 +1007,7 @@ function showProfileMenu() {
           <span>${getAvatarLabel()}</span>
           <div>
             <strong>${safeName}</strong>
-            <small>VIP ${getVipLevelName()}${isAdmin() ? " · Admin" : ""}</small>
+            <small>VIP ${getVipLevelName()}${isAdmin() ? " В· Admin" : ""}</small>
           </div>
         </div>
         <label>${tr("nickname")}<input id="profileNameInput" type="text" maxlength="24" value="${safeName}" /></label>
@@ -1002,6 +1031,28 @@ function showProfileMenu() {
   document.querySelector("#passwordForm")?.addEventListener("submit", changePassword);
 }
 
+const legalPages = {
+  terms: ["Terms of Service", "VERS casino is a social casino and entertainment product. VERS Coins have no real-world monetary value and cannot be withdrawn, exchanged, sold, transferred for money, crypto, gift cards, NFTs, skins, goods, or prizes. Users must be 18+."],
+  privacy: ["Privacy Policy", "We use account information to provide profiles, Coin Balance, purchase records, and support. Contact support@verscasino.com for privacy requests."],
+  refund: ["Refund Policy", "Purchases are for VERS Coins entertainment credits only. Payments for Coins may be non-refundable once credited, unless required by law."],
+  responsible: ["Responsible Play", "VERS is for entertainment only. Set personal limits, take breaks, and do not treat social casino play as a way to earn value or prizes."],
+  age: ["Age Policy", "VERS casino is intended only for users 18 years of age or older."],
+  contact: ["Contact", "Support email: support@verscasino.com"],
+};
+
+function showLegalPage(pageId) {
+  const page = legalPages[pageId] || legalPages.terms;
+  openUtility(
+    page[0],
+    `
+      <div class="legal-copy">
+        <p>${page[1]}</p>
+        <p>VERS Coins are entertainment credits only. They cannot be redeemed for money, crypto, gift cards, NFTs, skins, goods, services, or prizes.</p>
+      </div>
+    `,
+  );
+}
+
 async function saveProfileMenu(event) {
   event.preventDefault();
   const displayName = document.querySelector("#profileNameInput").value.trim() || "Player";
@@ -1014,7 +1065,7 @@ async function saveProfileMenu(event) {
   try {
     if (supabaseClient && state.user) await saveProfile();
     updateAccountUi();
-    toast(state.lang === "en" ? "Profile saved" : "Профиль сохранен");
+    toast(state.lang === "en" ? "Profile saved" : "РџСЂРѕС„РёР»СЊ СЃРѕС…СЂР°РЅРµРЅ");
     els.utilityDialog.close();
   } catch (error) {
     toast(error.message || "Profile save failed");
@@ -1024,26 +1075,26 @@ async function saveProfileMenu(event) {
 async function changePassword(event) {
   event.preventDefault();
   if (!supabaseClient || !state.user) {
-    toast(state.lang === "en" ? "Sign in first" : "Сначала войдите в аккаунт");
+    toast(state.lang === "en" ? "Sign in first" : "РЎРЅР°С‡Р°Р»Р° РІРѕР№РґРёС‚Рµ РІ Р°РєРєР°СѓРЅС‚");
     return;
   }
   const password = document.querySelector("#newPasswordInput").value;
-  if (!password || password.length < 6) return toast(state.lang === "en" ? "Minimum 6 characters" : "Минимум 6 символов");
+  if (!password || password.length < 6) return toast(state.lang === "en" ? "Minimum 6 characters" : "РњРёРЅРёРјСѓРј 6 СЃРёРјРІРѕР»РѕРІ");
   const { error } = await supabaseClient.auth.updateUser({ password });
   if (error) return toast(error.message);
-  toast(state.lang === "en" ? "Password changed" : "Пароль изменен");
+  toast(state.lang === "en" ? "Password changed" : "РџР°СЂРѕР»СЊ РёР·РјРµРЅРµРЅ");
   els.utilityDialog.close();
 }
 
 function setAuthMode(mode) {
   state.authMode = mode;
   const signup = mode === "signup";
-  els.authTitle.textContent = signup ? "Создать аккаунт" : "Вход в VERS casino";
+  els.authTitle.textContent = signup ? "РЎРѕР·РґР°С‚СЊ Р°РєРєР°СѓРЅС‚" : "Р’С…РѕРґ РІ VERS casino";
   els.authCopy.textContent = signup
-    ? "Создайте аккаунт, чтобы баланс сохранялся между устройствами."
-    : "Войдите, чтобы баланс и профиль сохранялись между устройствами.";
-  els.authSubmit.textContent = signup ? "Создать аккаунт" : "Войти";
-  els.authToggle.textContent = signup ? "У меня уже есть аккаунт" : "Создать аккаунт";
+    ? "РЎРѕР·РґР°Р№С‚Рµ Р°РєРєР°СѓРЅС‚, С‡С‚РѕР±С‹ Р±Р°Р»Р°РЅСЃ СЃРѕС…СЂР°РЅСЏР»СЃСЏ РјРµР¶РґСѓ СѓСЃС‚СЂРѕР№СЃС‚РІР°РјРё."
+    : "Р’РѕР№РґРёС‚Рµ, С‡С‚РѕР±С‹ Р±Р°Р»Р°РЅСЃ Рё РїСЂРѕС„РёР»СЊ СЃРѕС…СЂР°РЅСЏР»РёСЃСЊ РјРµР¶РґСѓ СѓСЃС‚СЂРѕР№СЃС‚РІР°РјРё.";
+  els.authSubmit.textContent = signup ? "РЎРѕР·РґР°С‚СЊ Р°РєРєР°СѓРЅС‚" : "Р’РѕР№С‚Рё";
+  els.authToggle.textContent = signup ? "РЈ РјРµРЅСЏ СѓР¶Рµ РµСЃС‚СЊ Р°РєРєР°СѓРЅС‚" : "РЎРѕР·РґР°С‚СЊ Р°РєРєР°СѓРЅС‚";
   els.displayNameRow.classList.toggle("is-hidden", !signup);
   els.authPassword.autocomplete = signup ? "new-password" : "current-password";
 }
@@ -1178,7 +1229,7 @@ function localizeGame(game) {
   return { ...game, ...(gameText[state.lang]?.[game.id] || {}) };
 }
 
-function addWin(gameTitle, amount, icon = "VC") {
+function addWin(gameTitle, amount, icon = "COIN") {
   if (amount <= 0) return;
   const names = ["Nova", "Zero7", "Pulse", "Vlad", "Jet", "Runa", "Ace", "Spark"];
   state.recentWins.unshift([
@@ -1200,7 +1251,7 @@ function settleRound({ won, multiplier, message, game }) {
     addWin(game.title, payout, game.symbol);
   }
   els.roundMessage.textContent = message;
-  toast(won ? `Выигрыш ${format(payout)} VC` : "Раунд завершен без выигрыша");
+  toast(won ? `Р’С‹РёРіСЂС‹С€ ${format(payout)} Coins` : "Р Р°СѓРЅРґ Р·Р°РІРµСЂС€РµРЅ Р±РµР· РІС‹РёРіСЂС‹С€Р°");
 }
 
 function recordProfileRound(payout = 0) {
@@ -1217,7 +1268,7 @@ function recordProfileRound(payout = 0) {
 
 function chargeBet(customBet = state.bet) {
   if (state.balance < customBet) {
-    toast("Недостаточно виртуальных кредитов. Пополните демо-баланс.");
+    toast("Not enough VERS Coins. Open Coin Shop to buy Coins.");
     return false;
   }
   setBalance(state.balance - customBet);
@@ -1231,8 +1282,8 @@ function renderRecentWins() {
         <div class="win-item">
           <span class="win-avatar">${icon}</span>
           <span>
-            <strong>${player} · ${game}</strong>
-            <small>VC ${format(amount)}</small>
+            <strong>${player} В· ${game}</strong>
+            <small>Coins ${format(amount)}</small>
           </span>
         </div>
       `,
@@ -1259,38 +1310,16 @@ function renderProviderSlots() {
     )
     .join("");
   els.providerSlotsGrid.querySelectorAll("[data-provider-slot]").forEach((button) => {
-    button.addEventListener("click", () => openProviderSlot(button.dataset.providerSlot));
+    button.addEventListener("click", () => {
+      const card = providerSlots.find((item) => item.id === button.dataset.providerSlot);
+      if (card) selectGame(card.gameId, { scroll: true, hash: `game-${card.id}` });
+    });
   });
 }
 
 function openProviderSlot(slotId) {
   const slot = providerSlots.find((item) => item.id === slotId);
-  if (!slot) return;
-  const launchUrl = window.VELORA_PROVIDER_LAUNCH_URLS?.[slot.id];
-  els.slotLauncherTitle.textContent = slot.title;
-
-  if (launchUrl) {
-    els.slotLauncherContent.innerHTML = `
-      <iframe title="${slot.title}" src="${launchUrl}" allow="fullscreen; autoplay" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    `;
-  } else {
-    els.slotLauncherContent.innerHTML = `
-      <div class="slot-launch-empty" style="--slot-accent:${slot.accent}; --slot-glow:${slot.glow}">
-        <span>${slot.symbol}</span>
-        <strong>${slot.title}</strong>
-        <p>Этот слот готов запускаться внутри казино, но официальный launch URL еще не настроен. Pragmatic Play не разрешает встраивать публичные demo-страницы на чужом домене: нужен provider/aggregator API, tokenized game session и whitelist домена.</p>
-        <div class="launch-checklist">
-          <i>1. Договор с Pragmatic Play или агрегатором</i>
-          <i>2. Backend endpoint для game launch</i>
-          <i>3. Домен vvversss.github.io/casino в whitelist</i>
-          <i>4. Launch URL добавить в VELORA_PROVIDER_LAUNCH_URLS</i>
-        </div>
-        <a href="${slot.demoUrl}" target="_blank" rel="noopener noreferrer">Официальная demo-страница</a>
-      </div>
-    `;
-  }
-
-  els.slotLauncherDialog.showModal();
+  if (slot) selectGame(slot.gameId, { scroll: true, hash: `game-${slot.id}` });
 }
 
 function getSlotTheme() {
@@ -1326,7 +1355,11 @@ function makeSlotGrid(theme) {
 }
 
 function setSlotBet(value) {
-  state.slotEngine.bet = clamp(Math.round(Number(value) || 1000), 100, 50000);
+  const adminMax = Number(state.slotEngine.settings.maxBet || 1000000000);
+  const requested = Math.round(Number(value) || 1);
+  if (requested < 1) toast("Minimum bet is 1 Coin");
+  if (requested > state.balance) toast("Bet cannot exceed Coin Balance");
+  state.slotEngine.bet = clamp(requested, 1, Math.min(adminMax, state.balance || adminMax));
   localStorage.setItem("velora-slot-bet", String(state.slotEngine.bet));
   if (els.slotBetInput) els.slotBetInput.value = state.slotEngine.bet;
 }
@@ -1347,6 +1380,10 @@ async function loadSlotSettingsRemote() {
   state.slotEngine.settings = {
     rtp: Number(data.target_rtp || state.slotEngine.settings.rtp),
     volatility: data.volatility || state.slotEngine.settings.volatility,
+    maxBet: Number(data.max_bet || state.slotEngine.settings.maxBet || 1000000000),
+    maxWin: Number(data.max_win || state.slotEngine.settings.maxWin || 5000000),
+    bonusFrequency: Number(data.bonus_frequency || state.slotEngine.settings.bonusFrequency || 5),
+    freeSpinCap: Number(data.free_spins_max_win || state.slotEngine.settings.freeSpinCap || 25000000),
   };
   localStorage.setItem("velora-slot-settings", JSON.stringify(state.slotEngine.settings));
 }
@@ -1357,6 +1394,10 @@ async function saveSlotSettingsRemote() {
     id: "global",
     target_rtp: state.slotEngine.settings.rtp,
     volatility: state.slotEngine.settings.volatility,
+    max_bet: state.slotEngine.settings.maxBet,
+    max_win: state.slotEngine.settings.maxWin,
+    bonus_frequency: state.slotEngine.settings.bonusFrequency,
+    free_spins_max_win: state.slotEngine.settings.freeSpinCap,
     updated_by: state.user.id,
   });
 }
@@ -1370,6 +1411,10 @@ function renderSlotEngine() {
   if (els.slotRtpInput) els.slotRtpInput.value = state.slotEngine.settings.rtp;
   if (els.slotRtpValue) els.slotRtpValue.textContent = `${Number(state.slotEngine.settings.rtp).toFixed(1).replace(".0", "")}%`;
   if (els.slotVolatilitySelect) els.slotVolatilitySelect.value = state.slotEngine.settings.volatility;
+  if (els.slotMaxBetInput) els.slotMaxBetInput.value = state.slotEngine.settings.maxBet || 1000000000;
+  if (els.slotMaxWinInput) els.slotMaxWinInput.value = state.slotEngine.settings.maxWin || 5000000;
+  if (els.slotBonusFrequencyInput) els.slotBonusFrequencyInput.value = state.slotEngine.settings.bonusFrequency || 5;
+  if (els.slotFreeSpinCapInput) els.slotFreeSpinCapInput.value = state.slotEngine.settings.freeSpinCap || 25000000;
   els.slotEngine.style.setProperty("--slot-theme-accent", theme.accent);
   els.slotEngine.style.setProperty("--slot-theme-reel", theme.reel);
   if (!state.slotEngine.spinning && !state.slotEngine.lastWin) els.slotStatus.textContent = tr("slot.ready");
@@ -1381,10 +1426,13 @@ function renderSlotEngine() {
 function updateAdminControls() {
   const allowed = isAdmin();
   els.slotAdminToggle.classList.toggle("is-locked", !allowed);
-  els.slotAdminToggle.textContent = allowed ? tr("slot.admin") : `${tr("slot.admin")} 🔒`;
+  els.slotAdminToggle.textContent = allowed ? tr("slot.admin") : `${tr("slot.admin")} рџ”’`;
   if (!allowed) els.slotAdminPanel.hidden = true;
   els.slotRtpInput.disabled = !allowed;
   els.slotVolatilitySelect.disabled = !allowed;
+  [els.slotMaxBetInput, els.slotMaxWinInput, els.slotBonusFrequencyInput, els.slotFreeSpinCapInput].forEach((input) => {
+    if (input) input.disabled = !allowed;
+  });
 }
 
 function renderSlotIcon(symbol) {
@@ -1440,7 +1488,7 @@ function updateSlotMeters() {
   els.slotCascade = document.querySelector("#slotCascade");
   els.slotMultiplier = document.querySelector("#slotMultiplier");
   els.slotFreeSpins = document.querySelector("#slotFreeSpins");
-  els.slotWinDisplay.textContent = `${format(state.slotEngine.lastWin)} VC`;
+  els.slotWinDisplay.textContent = `${format(state.slotEngine.lastWin)} Coins`;
   els.slotSpinBtn.disabled = state.slotEngine.spinning;
 }
 
@@ -1515,17 +1563,17 @@ async function playSlotRound({ free = false } = {}) {
     safety += 1;
     const result = evaluateSlotWins(state.slotEngine.grid, theme);
     if (!scatterAwarded && result.scatters >= 4) {
-      state.slotEngine.freeSpins += result.scatters >= 5 ? 12 : 8;
+      state.slotEngine.freeSpins += result.scatters >= 5 ? 12 : 10;
       scatterAwarded = true;
     }
     if (!result.winningIndexes.length) break;
     state.slotEngine.cascade += 1;
     const multiplier = getCascadeMultiplier(result.multipliers, free);
     const rtpScale = clamp(Number(state.slotEngine.settings.rtp || 94) / 94, 0.84, 1.08);
-    const cascadeWin = bet * result.baseMultiplier * multiplier * rtpScale;
+    const cascadeWin = Math.min(bet * result.baseMultiplier * multiplier * rtpScale, Number(state.slotEngine.settings.maxWin || 5000000));
     totalWin += cascadeWin;
     state.slotEngine.lastWin = totalWin;
-    els.slotStatus.textContent = `${tr("slot.cascade")} ${state.slotEngine.cascade}: ${format(cascadeWin)} VC`;
+    els.slotStatus.textContent = `${tr("slot.cascade")} ${state.slotEngine.cascade}: ${format(cascadeWin)} Coins`;
     renderSlotGrid(result.winningIndexes);
     updateSlotMeters();
     await sleep(520);
@@ -1540,16 +1588,34 @@ async function playSlotRound({ free = false } = {}) {
     addWin(theme.name, state.slotEngine.lastWin, theme.badge.slice(0, 2));
   }
   recordProfileRound(state.slotEngine.lastWin);
-  els.slotStatus.textContent = state.slotEngine.lastWin > 0 ? `${tr("slot.win")} ${format(state.slotEngine.lastWin)} VC` : tr("slot.noWin");
+  els.slotStatus.textContent = state.slotEngine.lastWin > 0 ? `${tr("slot.win")} ${format(state.slotEngine.lastWin)} Coins` : tr("slot.noWin");
   updateSlotMeters();
   await sleep(520);
 }
 
 async function runSlotFreeSpins() {
+  if (state.slotEngine.freeSpins > 0) {
+    state.slotEngine.freeSpinSessionWin = 0;
+    openUtility("10 FREE SPINS WON", `<div class="big-win-card"><strong>Bonus mode unlocked</strong><p>Free spins start automatically. Remaining spins are shown on the slot panel.</p></div>`);
+    await sleep(900);
+    if (els.utilityDialog.open) els.utilityDialog.close();
+  }
   while (state.slotEngine.freeSpins > 0) {
+    const before = state.slotEngine.lastWin;
     state.slotEngine.freeSpins -= 1;
     updateSlotMeters();
     await playSlotRound({ free: true });
+    state.slotEngine.freeSpinSessionWin = Math.min(
+      state.slotEngine.freeSpinSessionWin + Math.max(0, state.slotEngine.lastWin - before),
+      Number(state.slotEngine.settings.freeSpinCap || 25000000),
+    );
+  }
+  if (state.slotEngine.freeSpinSessionWin > 0) {
+    openUtility(
+      "Free Spins Summary",
+      `<div class="big-win-card"><strong>${format(state.slotEngine.freeSpinSessionWin)} Coins</strong><p>Final Coin Balance: ${format(state.balance)} Coins</p><button type="button" data-continue-summary>Continue</button></div>`,
+    );
+    document.querySelector("[data-continue-summary]")?.addEventListener("click", () => els.utilityDialog.close());
   }
   state.slotEngine.multiplier = 1;
   updateSlotMeters();
@@ -1557,10 +1623,6 @@ async function runSlotFreeSpins() {
 
 async function spinSlot() {
   if (state.slotEngine.spinning) return;
-  if (state.walletMode !== "demo") {
-    toast(tr("slot.realBlocked"));
-    return;
-  }
   state.slotEngine.spinning = true;
   updateSlotMeters();
   try {
@@ -1596,25 +1658,27 @@ function renderGames() {
   if (state.sort === "name") list.sort((a, b) => localizeGame(a).title.localeCompare(localizeGame(b).title));
 
   els.gamesGrid.innerHTML = list
-    .map(
-      (game) => `
+    .map((baseGame) => {
+      const game = localizeGame(baseGame);
+      const onlineText = state.lang === "en" ? "playing" : "играет";
+      return `
         <article class="game-card ${game.id === state.activeGame ? "is-active" : ""}" style="--card-glow:${game.color}55; --card-border:${game.border}">
-          <button type="button" data-game="${game.id}" aria-label="Выбрать игру ${game.title}">
+          <button type="button" data-game="${game.id}" aria-label="${state.lang === "en" ? "Select game" : "Выбрать игру"} ${game.title}">
             <div class="game-visual">
               <span class="game-symbol">${game.symbol}</span>
             </div>
             <div class="game-info">
               <strong>${game.title}</strong>
-              <span><i class="online-dot"></i>${game.online.toLocaleString("ru-RU")} играет</span>
+              <span><i class="online-dot"></i>${game.online.toLocaleString(state.lang === "en" ? "en-US" : "ru-RU")} ${onlineText}</span>
             </div>
           </button>
         </article>
-      `,
-    )
+      `;
+    })
     .join("");
 
   els.gamesGrid.querySelectorAll("[data-game]").forEach((btn) => {
-    btn.addEventListener("click", () => selectGame(btn.dataset.game));
+    btn.addEventListener("click", () => selectGame(btn.dataset.game, { scroll: true, hash: `game-${btn.dataset.game}` }));
   });
 }
 
@@ -1630,13 +1694,15 @@ function selectFilter(filter) {
   renderGames();
 }
 
-function selectGame(gameId) {
-  if (state.crash.running) return toast("Сначала завершите Crash-раунд.");
+function selectGame(gameId, options = {}) {
+  if (state.crash.running) return toast("РЎРЅР°С‡Р°Р»Р° Р·Р°РІРµСЂС€РёС‚Рµ Crash-СЂР°СѓРЅРґ.");
   state.activeGame = gameId;
   state.mines.active = false;
   state.mines.locked = false;
   renderActiveGame();
   renderGames();
+  if (options.hash) history.replaceState(null, "", `#${options.hash}`);
+  if (options.scroll) document.querySelector("#activeGameSection")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function renderActiveGame() {
@@ -1646,7 +1712,7 @@ function renderActiveGame() {
   els.playBtn.textContent = game.action;
   els.playBtn.disabled = false;
   els.cashoutBtn.classList.add("is-hidden");
-  els.roundMessage.textContent = state.lang === "en" ? "Ready for bet." : "Готово к ставке.";
+  els.roundMessage.textContent = state.lang === "en" ? "Ready for bet." : "Р“РѕС‚РѕРІРѕ Рє СЃС‚Р°РІРєРµ.";
   els.gameBoard.className = "game-board";
 
   const renderers = {
@@ -1666,54 +1732,54 @@ function renderActiveGame() {
 function renderControls(gameId) {
   const controls = {
     plinko: `
-      <h3 class="dynamic-title">Риск</h3>
+      <h3 class="dynamic-title">Р РёСЃРє</h3>
       <div class="control-grid">
-        ${["low", "medium", "high"].map((risk) => `<button class="control-pill ${state.risk === risk ? "is-selected" : ""}" type="button" data-risk="${risk}">${risk === "low" ? "Низкий" : risk === "medium" ? "Средний" : "Высокий"}</button>`).join("")}
+        ${["low", "medium", "high"].map((risk) => `<button class="control-pill ${state.risk === risk ? "is-selected" : ""}" type="button" data-risk="${risk}">${risk === "low" ? "РќРёР·РєРёР№" : risk === "medium" ? "РЎСЂРµРґРЅРёР№" : "Р’С‹СЃРѕРєРёР№"}</button>`).join("")}
       </div>
       <div class="range-row">
-        <label>Рядов <strong>${state.rows}</strong></label>
+        <label>Р СЏРґРѕРІ <strong>${state.rows}</strong></label>
         <input id="rowsRange" type="range" min="8" max="24" step="2" value="${state.rows}" />
       </div>
     `,
     roulette: `
-      <h3 class="dynamic-title">Цвет</h3>
+      <h3 class="dynamic-title">Р¦РІРµС‚</h3>
       <div class="control-grid">
-        <button class="control-pill ${state.rouletteChoice === "red" ? "is-selected" : ""}" type="button" data-roulette="red">Красный x2</button>
-        <button class="control-pill ${state.rouletteChoice === "black" ? "is-selected" : ""}" type="button" data-roulette="black">Черный x2</button>
-        <button class="control-pill ${state.rouletteChoice === "green" ? "is-selected" : ""}" type="button" data-roulette="green">Зеро x14</button>
+        <button class="control-pill ${state.rouletteChoice === "red" ? "is-selected" : ""}" type="button" data-roulette="red">РљСЂР°СЃРЅС‹Р№ x2</button>
+        <button class="control-pill ${state.rouletteChoice === "black" ? "is-selected" : ""}" type="button" data-roulette="black">Р§РµСЂРЅС‹Р№ x2</button>
+        <button class="control-pill ${state.rouletteChoice === "green" ? "is-selected" : ""}" type="button" data-roulette="green">Р—РµСЂРѕ x14</button>
       </div>
     `,
     dice: `
-      <h3 class="dynamic-title">Условие</h3>
+      <h3 class="dynamic-title">РЈСЃР»РѕРІРёРµ</h3>
       <div class="control-grid">
-        <button class="control-pill ${state.diceMode === "over" ? "is-selected" : ""}" type="button" data-dice-mode="over">Выше</button>
-        <button class="control-pill ${state.diceMode === "under" ? "is-selected" : ""}" type="button" data-dice-mode="under">Ниже</button>
+        <button class="control-pill ${state.diceMode === "over" ? "is-selected" : ""}" type="button" data-dice-mode="over">Р’С‹С€Рµ</button>
+        <button class="control-pill ${state.diceMode === "under" ? "is-selected" : ""}" type="button" data-dice-mode="under">РќРёР¶Рµ</button>
         <button class="control-pill" type="button" data-dice-mode="fair">50/50</button>
       </div>
       <div class="range-row">
-        <label>Цель <strong>${state.diceTarget}</strong></label>
+        <label>Р¦РµР»СЊ <strong>${state.diceTarget}</strong></label>
         <input id="diceTarget" type="range" min="20" max="80" step="1" value="${state.diceTarget}" />
       </div>
     `,
     crash: `
       <h3 class="dynamic-title">Crash</h3>
-      <p class="control-note">После старта кнопка «Забрать» фиксирует текущий множитель. Если график упадет раньше, ставка сгорает.</p>
+      <p class="control-note">РџРѕСЃР»Рµ СЃС‚Р°СЂС‚Р° РєРЅРѕРїРєР° В«Р—Р°Р±СЂР°С‚СЊВ» С„РёРєСЃРёСЂСѓРµС‚ С‚РµРєСѓС‰РёР№ РјРЅРѕР¶РёС‚РµР»СЊ. Р•СЃР»Рё РіСЂР°С„РёРє СѓРїР°РґРµС‚ СЂР°РЅСЊС€Рµ, СЃС‚Р°РІРєР° СЃРіРѕСЂР°РµС‚.</p>
     `,
     mines: `
       <h3 class="dynamic-title">Mines</h3>
-      <p class="control-note">Открой безопасные клетки, затем забери банк. Две клетки скрывают мину.</p>
+      <p class="control-note">РћС‚РєСЂРѕР№ Р±РµР·РѕРїР°СЃРЅС‹Рµ РєР»РµС‚РєРё, Р·Р°С‚РµРј Р·Р°Р±РµСЂРё Р±Р°РЅРє. Р”РІРµ РєР»РµС‚РєРё СЃРєСЂС‹РІР°СЋС‚ РјРёРЅСѓ.</p>
     `,
     blackjack: `
       <h3 class="dynamic-title">Blackjack</h3>
-      <p class="control-note">Быстрая демо-раздача: игрок против дилера, банк выплачивается при лучшей руке до 21.</p>
+      <p class="control-note">Р‘С‹СЃС‚СЂР°СЏ РґРµРјРѕ-СЂР°Р·РґР°С‡Р°: РёРіСЂРѕРє РїСЂРѕС‚РёРІ РґРёР»РµСЂР°, Р±Р°РЅРє РІС‹РїР»Р°С‡РёРІР°РµС‚СЃСЏ РїСЂРё Р»СѓС‡С€РµР№ СЂСѓРєРµ РґРѕ 21.</p>
     `,
     slots: `
-      <h3 class="dynamic-title">Слоты</h3>
-      <p class="control-note">Две одинаковые иконки дают x1.8, три одинаковые x10, три семерки x50.</p>
+      <h3 class="dynamic-title">РЎР»РѕС‚С‹</h3>
+      <p class="control-note">Р”РІРµ РѕРґРёРЅР°РєРѕРІС‹Рµ РёРєРѕРЅРєРё РґР°СЋС‚ x1.8, С‚СЂРё РѕРґРёРЅР°РєРѕРІС‹Рµ x10, С‚СЂРё СЃРµРјРµСЂРєРё x50.</p>
     `,
     wheel: `
-      <h3 class="dynamic-title">Колесо</h3>
-      <p class="control-note">Сегменты выплачивают разные множители. Чем выше сектор, тем реже он выпадает.</p>
+      <h3 class="dynamic-title">РљРѕР»РµСЃРѕ</h3>
+      <p class="control-note">РЎРµРіРјРµРЅС‚С‹ РІС‹РїР»Р°С‡РёРІР°СЋС‚ СЂР°Р·РЅС‹Рµ РјРЅРѕР¶РёС‚РµР»Рё. Р§РµРј РІС‹С€Рµ СЃРµРєС‚РѕСЂ, С‚РµРј СЂРµР¶Рµ РѕРЅ РІС‹РїР°РґР°РµС‚.</p>
     `,
   };
 
@@ -1776,9 +1842,9 @@ function localizeDynamicControls(gameId) {
     const label = els.dynamicControls.querySelector(".range-row label");
     if (label) label.innerHTML = `Target <strong>${state.diceTarget}</strong>`;
   }
-  if (gameId === "crash" && note) note.textContent = "After start, the Cash out button locks the current multiplier. If the curve crashes first, the bet is lost.";
-  if (gameId === "mines" && note) note.textContent = "Open safe tiles, then cash out the bank. Two hidden tiles contain mines.";
-  if (gameId === "blackjack" && note) note.textContent = "Fast demo hand: player against dealer. The bank pays the better hand up to 21.";
+  if (gameId === "crash" && note) note.textContent = "After start, Collect locks the current Coin multiplier. If the curve crashes first, the round ends.";
+  if (gameId === "mines" && note) note.textContent = "Open safe tiles, then collect the current Coin win. Two hidden tiles contain mines.";
+  if (gameId === "blackjack" && note) note.textContent = "Fast social-casino hand: player against dealer. The bank pays the better hand up to 21 in Coins.";
   if (gameId === "slots" && note) {
     if (title) title.textContent = "Slots";
     note.textContent = "Two matching icons pay x1.8, three matching icons pay x10, and three sevens pay x50.";
@@ -1800,7 +1866,7 @@ function renderPlinko(resultIndex = null, multiplier = null) {
     </div>
   `;
   if (multiplier) {
-    els.roundMessage.textContent = `Шар попал в сектор x${multiplier}.`;
+    els.roundMessage.textContent = `РЁР°СЂ РїРѕРїР°Р» РІ СЃРµРєС‚РѕСЂ x${multiplier}.`;
   }
 }
 
@@ -1822,7 +1888,7 @@ function playPlinko() {
     settleRound({
       won: multiplier >= 1,
       multiplier,
-      message: multiplier >= 1 ? `Попадание x${multiplier}. Выплата начислена.` : `Попадание x${multiplier}. В этот раз без прибыли.`,
+      message: multiplier >= 1 ? `РџРѕРїР°РґР°РЅРёРµ x${multiplier}. Р’С‹РїР»Р°С‚Р° РЅР°С‡РёСЃР»РµРЅР°.` : `РџРѕРїР°РґР°РЅРёРµ x${multiplier}. Р’ СЌС‚РѕС‚ СЂР°Р· Р±РµР· РїСЂРёР±С‹Р»Рё.`,
       game,
     });
     maybeAutoPlay();
@@ -1846,7 +1912,7 @@ function renderSlots(symbols = ["?", "?", "?"]) {
 function playSlots() {
   const game = getActiveGame();
   if (!chargeBet()) return;
-  const symbols = ["7", "◆", "★", "●", "♠", "✦"];
+  const symbols = ["7", "в—†", "в…", "в—Џ", "в™ ", "вњ¦"];
   const roll = Array.from({ length: 3 }, () => symbols[randomInt(0, symbols.length - 1)]);
   renderSlots(roll);
   const counts = roll.reduce((acc, symbol) => {
@@ -1858,19 +1924,19 @@ function playSlots() {
   settleRound({
     won: multiplier > 0,
     multiplier,
-    message: multiplier > 0 ? `Комбинация ${roll.join(" ")} дала x${multiplier}.` : `Комбинация ${roll.join(" ")} не сыграла.`,
+    message: multiplier > 0 ? `РљРѕРјР±РёРЅР°С†РёСЏ ${roll.join(" ")} РґР°Р»Р° x${multiplier}.` : `РљРѕРјР±РёРЅР°С†РёСЏ ${roll.join(" ")} РЅРµ СЃС‹РіСЂР°Р»Р°.`,
     game,
   });
   maybeAutoPlay();
 }
 
-function renderRoulette(result = "—") {
+function renderRoulette(result = "вЂ”") {
   els.gameBoard.className = "game-board roulette-board";
   els.gameBoard.innerHTML = `
     <div class="roulette-wheel" style="transform: rotate(${randomInt(0, 360)}deg)"><span>${result}</span></div>
     <div>
-      <strong>${state.rouletteChoice === "red" ? "Красный" : state.rouletteChoice === "black" ? "Черный" : "Зеро"}</strong>
-      <p>Текущая ставка на цвет</p>
+      <strong>${state.rouletteChoice === "red" ? "РљСЂР°СЃРЅС‹Р№" : state.rouletteChoice === "black" ? "Р§РµСЂРЅС‹Р№" : "Р—РµСЂРѕ"}</strong>
+      <p>РўРµРєСѓС‰Р°СЏ СЃС‚Р°РІРєР° РЅР° С†РІРµС‚</p>
     </div>
   `;
 }
@@ -1886,17 +1952,17 @@ function playRoulette() {
   settleRound({
     won: result === state.rouletteChoice,
     multiplier,
-    message: result === state.rouletteChoice ? `Выпал ${labelColor(result)}. Ставка сыграла.` : `Выпал ${labelColor(result)}. Цвет не совпал.`,
+    message: result === state.rouletteChoice ? `Р’С‹РїР°Р» ${labelColor(result)}. РЎС‚Р°РІРєР° СЃС‹РіСЂР°Р»Р°.` : `Р’С‹РїР°Р» ${labelColor(result)}. Р¦РІРµС‚ РЅРµ СЃРѕРІРїР°Р».`,
     game,
   });
   maybeAutoPlay();
 }
 
 function labelColor(color) {
-  return color === "red" ? "красный" : color === "black" ? "черный" : "зеро";
+  return color === "red" ? "РєСЂР°СЃРЅС‹Р№" : color === "black" ? "С‡РµСЂРЅС‹Р№" : "Р·РµСЂРѕ";
 }
 
-function renderDice(roll = "—") {
+function renderDice(roll = "вЂ”") {
   els.gameBoard.className = "game-board dice-board";
   els.gameBoard.innerHTML = `
     <span class="die-face">${roll}</span>
@@ -1918,7 +1984,7 @@ function playDice() {
   settleRound({
     won,
     multiplier,
-    message: won ? `Выпало ${roll}. Коэффициент x${multiplier}.` : `Выпало ${roll}. Условие не выполнено.`,
+    message: won ? `Р’С‹РїР°Р»Рѕ ${roll}. РљРѕСЌС„С„РёС†РёРµРЅС‚ x${multiplier}.` : `Р’С‹РїР°Р»Рѕ ${roll}. РЈСЃР»РѕРІРёРµ РЅРµ РІС‹РїРѕР»РЅРµРЅРѕ.`,
     game,
   });
   maybeAutoPlay();
@@ -1929,7 +1995,7 @@ function renderCrash(multiplier = 1) {
   els.gameBoard.innerHTML = `
     <span class="crash-multiplier">${multiplier.toFixed(2)}x</span>
     <span class="crash-line"></span>
-    <span class="rocket" aria-hidden="true">▲</span>
+    <span class="rocket" aria-hidden="true">в–І</span>
   `;
 }
 
@@ -1947,7 +2013,7 @@ function playCrash() {
   };
   els.playBtn.disabled = true;
   els.cashoutBtn.classList.remove("is-hidden");
-  els.roundMessage.textContent = "Множитель растет. Забирай вовремя.";
+  els.roundMessage.textContent = "РњРЅРѕР¶РёС‚РµР»СЊ СЂР°СЃС‚РµС‚. Р—Р°Р±РёСЂР°Р№ РІРѕРІСЂРµРјСЏ.";
   state.crash.timer = setInterval(() => {
     state.crash.multiplier = Number((state.crash.multiplier + random(0.06, 0.17)).toFixed(2));
     renderCrash(state.crash.multiplier);
@@ -1957,8 +2023,8 @@ function playCrash() {
       recordProfileRound(0);
       els.playBtn.disabled = false;
       els.cashoutBtn.classList.add("is-hidden");
-      els.roundMessage.textContent = `Краш на x${state.crash.bustAt}. Ставка сгорела.`;
-      toast("Crash: не успели забрать");
+      els.roundMessage.textContent = `РљСЂР°С€ РЅР° x${state.crash.bustAt}. РЎС‚Р°РІРєР° СЃРіРѕСЂРµР»Р°.`;
+      toast("Crash: РЅРµ СѓСЃРїРµР»Рё Р·Р°Р±СЂР°С‚СЊ");
       maybeAutoPlay();
     }
   }, 190);
@@ -1974,21 +2040,21 @@ function cashoutCrash() {
   recordProfileRound(payout);
   setBalance(state.balance + payout);
   addWin(game.title, payout, game.symbol);
-  els.roundMessage.textContent = `Вы забрали x${state.crash.multiplier.toFixed(2)}.`;
+  els.roundMessage.textContent = `Р’С‹ Р·Р°Р±СЂР°Р»Рё x${state.crash.multiplier.toFixed(2)}.`;
   els.playBtn.disabled = false;
   els.cashoutBtn.classList.add("is-hidden");
-  toast(`Crash выплата ${format(payout)} VC`);
+  toast(`Crash РІС‹РїР»Р°С‚Р° ${format(payout)} Coins`);
 }
 
 function renderBlackjack(player = [10, 7], dealer = [9, 0]) {
   els.gameBoard.className = "game-board blackjack-board";
   els.gameBoard.innerHTML = `
     <div>
-      <strong>Игрок</strong>
+      <strong>РРіСЂРѕРє</strong>
       <div class="card-hand">${player.map((card) => `<span class="play-card">${card || "?"}</span>`).join("")}</div>
     </div>
     <div>
-      <strong>Дилер</strong>
+      <strong>Р”РёР»РµСЂ</strong>
       <div class="card-hand">${dealer.map((card) => `<span class="play-card">${card || "?"}</span>`).join("")}</div>
     </div>
   `;
@@ -2018,15 +2084,15 @@ function playBlackjack() {
   if (push) {
     recordProfileRound(0);
     setBalance(state.balance + state.bet);
-    els.roundMessage.textContent = `Пуш: ${pv} против ${dv}. Ставка возвращена.`;
-    toast("Blackjack: возврат ставки");
+    els.roundMessage.textContent = `РџСѓС€: ${pv} РїСЂРѕС‚РёРІ ${dv}. РЎС‚Р°РІРєР° РІРѕР·РІСЂР°С‰РµРЅР°.`;
+    toast("Blackjack: РІРѕР·РІСЂР°С‚ СЃС‚Р°РІРєРё");
     maybeAutoPlay();
     return;
   }
   settleRound({
     won,
     multiplier: playerBlackjack ? 2.5 : 2,
-    message: won ? `Игрок ${pv}, дилер ${dv}. Победа.` : `Игрок ${pv}, дилер ${dv}. Раунд дилера.`,
+    message: won ? `РРіСЂРѕРє ${pv}, РґРёР»РµСЂ ${dv}. РџРѕР±РµРґР°.` : `РРіСЂРѕРє ${pv}, РґРёР»РµСЂ ${dv}. Р Р°СѓРЅРґ РґРёР»РµСЂР°.`,
     game,
   });
   maybeAutoPlay();
@@ -2038,7 +2104,7 @@ function renderMines() {
     const isOpened = state.mines.opened.includes(index);
     const isMine = state.mines.mineIndexes.includes(index);
     const visibleClass = isOpened ? (isMine ? "is-mine" : "is-safe") : "";
-    const label = isOpened ? (isMine ? "×" : "✓") : "";
+    const label = isOpened ? (isMine ? "Г—" : "вњ“") : "";
     return `<button class="mine-tile ${visibleClass}" type="button" data-tile="${index}" ${state.mines.active && !state.mines.locked ? "" : "disabled"}>${label}</button>`;
   }).join("");
 
@@ -2059,8 +2125,8 @@ function playMines() {
       opened: [],
       locked: false,
     };
-    els.playBtn.textContent = "Забрать";
-    els.roundMessage.textContent = "Открывайте клетки или забирайте текущий банк.";
+    els.playBtn.textContent = "Р—Р°Р±СЂР°С‚СЊ";
+    els.roundMessage.textContent = "РћС‚РєСЂС‹РІР°Р№С‚Рµ РєР»РµС‚РєРё РёР»Рё Р·Р°Р±РёСЂР°Р№С‚Рµ С‚РµРєСѓС‰РёР№ Р±Р°РЅРє.";
     renderMines();
     return;
   }
@@ -2075,15 +2141,15 @@ function openMineTile(index) {
     state.mines.active = false;
     state.mines.opened = [...new Set([...state.mines.opened, ...state.mines.mineIndexes])];
     recordProfileRound(0);
-    els.playBtn.textContent = "Начать";
-    els.roundMessage.textContent = "Мина открыта. Раунд завершен.";
-    toast("Mines: ставка сгорела");
+    els.playBtn.textContent = "РќР°С‡Р°С‚СЊ";
+    els.roundMessage.textContent = "РњРёРЅР° РѕС‚РєСЂС‹С‚Р°. Р Р°СѓРЅРґ Р·Р°РІРµСЂС€РµРЅ.";
+    toast("Mines: СЃС‚Р°РІРєР° СЃРіРѕСЂРµР»Р°");
     renderMines();
     maybeAutoPlay();
     return;
   }
   const multiplier = getMinesMultiplier();
-  els.roundMessage.textContent = `Безопасно. Текущий коэффициент x${multiplier.toFixed(2)}.`;
+  els.roundMessage.textContent = `Р‘РµР·РѕРїР°СЃРЅРѕ. РўРµРєСѓС‰РёР№ РєРѕСЌС„С„РёС†РёРµРЅС‚ x${multiplier.toFixed(2)}.`;
   renderMines();
   if (state.mines.opened.length === 7) collectMines();
 }
@@ -2094,7 +2160,7 @@ function getMinesMultiplier() {
 
 function collectMines() {
   if (!state.mines.active || state.mines.opened.length === 0) {
-    toast("Сначала откройте хотя бы одну безопасную клетку.");
+    toast("РЎРЅР°С‡Р°Р»Р° РѕС‚РєСЂРѕР№С‚Рµ С…РѕС‚СЏ Р±С‹ РѕРґРЅСѓ Р±РµР·РѕРїР°СЃРЅСѓСЋ РєР»РµС‚РєСѓ.");
     return;
   }
   const game = getActiveGame();
@@ -2105,9 +2171,9 @@ function collectMines() {
   addWin(game.title, payout, game.symbol);
   state.mines.active = false;
   state.mines.locked = true;
-  els.playBtn.textContent = "Начать";
-  els.roundMessage.textContent = `Вы забрали x${multiplier.toFixed(2)}.`;
-  toast(`Mines выплата ${format(payout)} VC`);
+  els.playBtn.textContent = "РќР°С‡Р°С‚СЊ";
+  els.roundMessage.textContent = `Р’С‹ Р·Р°Р±СЂР°Р»Рё x${multiplier.toFixed(2)}.`;
+  toast(`Mines РІС‹РїР»Р°С‚Р° ${format(payout)} Coins`);
   renderMines();
   maybeAutoPlay();
 }
@@ -2135,7 +2201,7 @@ function playWheel() {
     settleRound({
       won: multiplier >= 1,
       multiplier,
-      message: multiplier >= 1 ? `Колесо остановилось на x${multiplier}.` : `Колесо остановилось на x${multiplier}.`,
+      message: multiplier >= 1 ? `РљРѕР»РµСЃРѕ РѕСЃС‚Р°РЅРѕРІРёР»РѕСЃСЊ РЅР° x${multiplier}.` : `РљРѕР»РµСЃРѕ РѕСЃС‚Р°РЅРѕРІРёР»РѕСЃСЊ РЅР° x${multiplier}.`,
       game,
     });
     maybeAutoPlay();
@@ -2160,7 +2226,7 @@ function maybeAutoPlay() {
   if (!els.autoPlay.checked || state.activeGame === "crash" || state.activeGame === "mines") return;
   if (state.lastMultiplier >= Number(els.autoStop.value || 0)) {
     els.autoPlay.checked = false;
-    toast(`Авто-игра остановлена на x${state.lastMultiplier}`);
+    toast(`РђРІС‚Рѕ-РёРіСЂР° РѕСЃС‚Р°РЅРѕРІР»РµРЅР° РЅР° x${state.lastMultiplier}`);
     return;
   }
   const rounds = Number(els.autoRounds.value);
@@ -2208,6 +2274,9 @@ function bindEvents() {
   els.cashierBtn.addEventListener("click", showCashier);
   els.settingsBtn.addEventListener("click", showSettings);
   els.demoModeBtn.addEventListener("click", attemptRealMode);
+  document.querySelectorAll("[data-legal]").forEach((button) => {
+    button.addEventListener("click", () => showLegalPage(button.dataset.legal));
+  });
   els.utilityClose.addEventListener("click", () => els.utilityDialog.close());
   els.slotLauncherClose.addEventListener("click", () => {
     els.slotLauncherDialog.close();
@@ -2233,7 +2302,7 @@ function bindEvents() {
   });
   els.slotAdminToggle.addEventListener("click", () => {
     if (!isAdmin()) {
-      toast(state.lang === "en" ? "Admin access required" : "Нужен доступ администратора");
+      toast(state.lang === "en" ? "Admin access required" : "РќСѓР¶РµРЅ РґРѕСЃС‚СѓРї Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°");
       return;
     }
     els.slotAdminPanel.hidden = !els.slotAdminPanel.hidden;
@@ -2250,6 +2319,17 @@ function bindEvents() {
     state.slotEngine.grid = makeSlotGrid(getSlotTheme());
     saveSlotSettings();
     renderSlotEngine();
+  });
+  [els.slotMaxBetInput, els.slotMaxWinInput, els.slotBonusFrequencyInput, els.slotFreeSpinCapInput].forEach((input) => {
+    input?.addEventListener("change", () => {
+      if (!isAdmin()) return;
+      state.slotEngine.settings.maxBet = Number(els.slotMaxBetInput.value) || 1000000000;
+      state.slotEngine.settings.maxWin = Number(els.slotMaxWinInput.value) || 5000000;
+      state.slotEngine.settings.bonusFrequency = Number(els.slotBonusFrequencyInput.value) || 5;
+      state.slotEngine.settings.freeSpinCap = Number(els.slotFreeSpinCapInput.value) || 25000000;
+      saveSlotSettings();
+      setSlotBet(state.slotEngine.bet);
+    });
   });
   els.authOpenBtn.addEventListener("click", () => {
     if (!supabaseClient) {

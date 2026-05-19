@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VERS casino - demo casino</title>
+    <title>VERS casino - social casino</title>
     <link rel="preload" href="assets/casino-table-art.png" as="image" />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -77,9 +77,9 @@
         </div>
 
         <div class="demo-card">
-          <button id="demoModeBtn" class="demo-toggle" type="button" aria-label="Переключить режим счета"><span></span></button>
-          <strong>Демо-режим</strong>
-          <small id="modeText">Все игры используют только виртуальные кредиты.</small>
+          <button id="demoModeBtn" class="demo-toggle" type="button" aria-label="VERS Coins information"><span></span></button>
+          <strong>VERS Coins</strong>
+          <small id="modeText">Entertainment credits only. No cash value.</small>
         </div>
       </aside>
 
@@ -97,10 +97,10 @@
               RU
             </button>
             <section class="wallet" aria-label="Виртуальный кошелек">
-              <span class="coin">VC</span>
+              <span class="coin">COIN</span>
               <div>
                 <output id="balance">100 000.00</output>
-                <small id="walletModeLabel">Демо-баланс · виртуальные кредиты</small>
+                <small id="walletModeLabel">Coin Balance · entertainment credits</small>
               </div>
             </section>
             <section id="accountChip" class="account-chip" aria-label="Аккаунт">
@@ -117,7 +117,7 @@
         </header>
 
         <section class="play-layout">
-          <article class="game-stage" aria-label="Игровая зона">
+          <article id="activeGameSection" class="game-stage" aria-label="Game area">
             <div class="stage-art" aria-hidden="true"></div>
             <div class="stage-content">
               <div class="game-heading">
@@ -135,7 +135,7 @@
             <div class="panel-section">
               <div class="section-head">
                 <h2>Ставка</h2>
-                <span>VC</span>
+                <span>Coins</span>
               </div>
               <div class="bet-stepper">
                 <button id="decreaseBet" type="button" aria-label="Уменьшить ставку">−</button>
@@ -172,7 +172,7 @@
             </div>
 
             <button id="playBtn" class="play-button" type="button">Бросить шар</button>
-            <button id="cashoutBtn" class="cashout-button is-hidden" type="button">Забрать</button>
+            <button id="cashoutBtn" class="cashout-button is-hidden" type="button">Collect</button>
           </aside>
         </section>
 
@@ -189,7 +189,7 @@
             <div>
               <small>HTML5 Engine</small>
               <h2>VERS Mega Ways</h2>
-              <p>6 reels, cascading wins, free spins, multipliers and Supabase wallet sync with virtual VC credits.</p>
+              <p>6 reels, cascading wins, free spins, multipliers and VERS Coins entertainment balance.</p>
             </div>
             <div class="slot-theme-picker">
               <label>
@@ -210,7 +210,7 @@
               <div class="slot-topline">
                 <span id="slotThemeBadge">OLYMPUS</span>
                 <strong id="slotStatus">Ready for spin</strong>
-                <span id="slotWinDisplay">0.00 VC</span>
+                <span id="slotWinDisplay">0.00 Coins</span>
               </div>
               <div id="slotGrid" class="slot-grid" aria-live="polite"></div>
               <div class="slot-meter-row">
@@ -222,8 +222,8 @@
 
             <aside class="slot-controls" aria-label="Slot controls">
               <label class="slot-control-field">
-                Bet VC
-                <input id="slotBetInput" type="number" min="100" max="50000" step="100" value="1000" />
+                Bet Coins
+                <input id="slotBetInput" type="number" min="1" max="1000000000" step="1" value="1000" />
               </label>
               <div class="slot-bet-row">
                 <button type="button" data-slot-bet="500">500</button>
@@ -252,19 +252,35 @@
                     <option value="high">High</option>
                   </select>
                 </label>
-                <small>Demo-side controls for virtual credits. Use protected backend rules before any regulated launch.</small>
+                <label>
+                  Max bet
+                  <input id="slotMaxBetInput" type="number" min="1" max="1000000000" value="1000000000" />
+                </label>
+                <label>
+                  Max win
+                  <input id="slotMaxWinInput" type="number" min="1" value="5000000" />
+                </label>
+                <label>
+                  Bonus frequency
+                  <input id="slotBonusFrequencyInput" type="number" min="1" max="25" value="5" />
+                </label>
+                <label>
+                  Free spins cap
+                  <input id="slotFreeSpinCapInput" type="number" min="1" value="25000000" />
+                </label>
+                <small>Admin-only entertainment economy controls. Payment confirmations must happen on a trusted backend.</small>
               </div>
             </aside>
           </div>
         </section>
 
-        <section class="provider-slots" aria-label="Настоящие слоты Pragmatic Play">
+        <section class="provider-slots" aria-label="Featured VERS games">
           <div class="provider-head">
             <div>
-              <h2>Pragmatic Play slots</h2>
-              <p>Официальные демо-страницы провайдера открываются в новой вкладке.</p>
+              <h2>Featured VERS games</h2>
+              <p>All games run directly inside VERS casino using VERS Coins for entertainment only.</p>
             </div>
-            <span>Real provider demos</span>
+            <span>Internal games</span>
           </div>
           <div id="providerSlotsGrid" class="provider-slots-grid"></div>
         </section>
@@ -305,6 +321,15 @@
 
           <div id="gamesGrid" class="games-grid"></div>
         </section>
+
+        <footer class="legal-footer" aria-label="Legal information">
+          <button type="button" data-legal="terms">Terms of Service</button>
+          <button type="button" data-legal="privacy">Privacy Policy</button>
+          <button type="button" data-legal="refund">Refund Policy</button>
+          <button type="button" data-legal="responsible">Responsible Play</button>
+          <button type="button" data-legal="age">Age Policy</button>
+          <button type="button" data-legal="contact">Contact</button>
+        </footer>
       </main>
 
       <div id="toast" class="toast" role="status" aria-live="polite"></div>

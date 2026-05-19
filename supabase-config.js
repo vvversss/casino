@@ -3,8 +3,17 @@ window.VELORA_SUPABASE = {
   publishableKey: "sb_publishable_cvBytbL36qswV3vJmsvKSw_Wozk46SB",
 };
 
-window.VELORA_PROVIDER_LAUNCH_URLS = {
-  // Fill these with official iframe launch URLs from Pragmatic Play or your aggregator.
-  // Example:
-  // "sweet-bonanza-2500": "https://provider-launch-url.example/game-session-token",
+window.VERS_ENABLE_TEST_PAYMENTS = false;
+
+window.VERS_PAYMENT_CONFIG = {
+  // Public checkout links or publishable keys only. Never put Stripe secret keys,
+  // crypto private keys, or webhook secrets in frontend code.
+  stripePaymentLinks: {
+    // starter: "https://buy.stripe.com/...",
+  },
+  cryptoPaymentLinks: {
+    // starter: "https://commerce.coinbase.com/checkout/...",
+  },
+  // Real confirmation must be handled by a trusted backend webhook or
+  // Supabase Edge Function that verifies the provider event before crediting Coins.
 };

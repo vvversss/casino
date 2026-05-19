@@ -91,9 +91,19 @@ create table if not exists public.slot_engine_settings (
   id text primary key default 'global',
   target_rtp numeric(5, 2) not null default 94.00 check (target_rtp between 86 and 98),
   volatility text not null default 'medium' check (volatility in ('low', 'medium', 'high')),
+  max_bet numeric(20, 2) not null default 1000000000 check (max_bet >= 1),
+  max_win numeric(20, 2) not null default 5000000 check (max_win >= 1),
+  bonus_frequency integer not null default 5 check (bonus_frequency between 1 and 25),
+  free_spins_max_win numeric(20, 2) not null default 25000000 check (free_spins_max_win >= 1),
   updated_by uuid references auth.users(id),
   updated_at timestamptz not null default now()
 );
+
+alter table public.slot_engine_settings
+  add column if not exists max_bet numeric(20, 2) not null default 1000000000 check (max_bet >= 1),
+  add column if not exists max_win numeric(20, 2) not null default 5000000 check (max_win >= 1),
+  add column if not exists bonus_frequency integer not null default 5 check (bonus_frequency between 1 and 25),
+  add column if not exists free_spins_max_win numeric(20, 2) not null default 25000000 check (free_spins_max_win >= 1);
 
 alter table public.slot_engine_settings enable row level security;
 
@@ -133,3 +143,61 @@ on conflict (id) do nothing;
 
 grant select on public.slot_engine_settings to authenticated;
 grant insert, update, delete on public.slot_engine_settings to authenticated;
+
+create table if not exists public.coin_purchases (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users(id) on delete cascade,
+  provider text not null check (provider in ('stripe', 'crypto', 'manual')),
+  package_id text not null,
+  coins numeric(20, 2) not null check (coins > 0),
+  amount_usd numeric(12, 2) not null check (amount_usd >= 0),
+  status text not null default 'pending' check (status in ('pending', 'paid', 'failed', 'refunded')),
+  provider_payment_id text,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+alter table public.coin_purchases enable row level security;
+
+drop trigger if exists coin_purchases_set_updated_at on public.coin_purchases;
+create trigger coin_purchases_set_updated_at
+before update on public.coin_purchases
+for each row execute function private.set_updated_at();
+
+drop policy if exists "Users can read own coin purchases" on public.coin_purchases;
+create policy "Users can read own coin purchases"
+on public.coin_purchases
+for select
+to authenticated
+using ((select auth.uid()) = user_id);
+
+drop policy if exists "Users can create pending coin purchases" on public.coin_purchases;
+create policy "Users can create pending coin purchases"
+on public.coin_purchases
+for insert
+to authenticated
+with check ((select auth.uid()) = user_id and status = 'pending');
+
+drop policy if exists "Admins can manage all coin purchases" on public.coin_purchases;
+create policy "Admins can manage all coin purchases"
+on public.coin_purchases
+for all
+to authenticated
+using (
+  exists (
+    select 1 from public.casino_profiles p
+    where p.id = (select auth.uid()) and p.is_admin = true
+  )
+)
+with check (
+  exists (
+    select 1 from public.casino_profiles p
+    where p.id = (select auth.uid()) and p.is_admin = true
+  )
+);
+
+grant select, insert on public.coin_purchases to authenticated;
+grant update (status, provider_payment_id, updated_at) on public.coin_purchases to authenticated;
+
+-- Coin Balance should be credited only by trusted backend/admin logic after
+-- verifying payment provider webhooks, for example in a Supabase Edge Function.

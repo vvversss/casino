@@ -1127,6 +1127,34 @@ kbd {
   min-width: 0;
 }
 
+.legal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 22px 0 8px;
+  padding: 16px;
+  border-top: 1px solid rgba(118, 152, 158, 0.18);
+}
+
+.legal-footer button {
+  border: 1px solid rgba(118, 152, 158, 0.24);
+  border-radius: 7px;
+  background: rgba(8, 18, 24, 0.62);
+  color: #b9cace;
+  min-height: 36px;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.legal-copy {
+  display: grid;
+  gap: 12px;
+  color: #d8ebed;
+  line-height: 1.55;
+}
+
 .provider-slots {
   margin-top: 18px;
 }
@@ -2152,7 +2180,7 @@ kbd {
 }
 
 .cashier-panel {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .cashier-panel article,
@@ -2212,6 +2240,44 @@ kbd {
   background: linear-gradient(180deg, var(--lime), #6adc19);
   color: #102500;
   padding: 0 16px;
+  font-weight: 950;
+}
+
+.coin-shop-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.coin-shop article {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(247, 201, 75, 0.18), transparent 42%),
+    rgba(8, 18, 24, 0.78);
+}
+
+.big-win-card {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  padding: 20px;
+  border: 1px solid rgba(247, 201, 75, 0.36);
+  border-radius: var(--radius);
+  background: radial-gradient(circle at 50% 0%, rgba(247, 201, 75, 0.2), transparent 45%), rgba(8, 18, 24, 0.8);
+  text-align: center;
+}
+
+.big-win-card strong {
+  color: var(--gold);
+  font-size: 28px;
+}
+
+.big-win-card button {
+  min-height: 42px;
+  border: 0;
+  border-radius: 7px;
+  background: linear-gradient(180deg, var(--lime), #6adc19);
+  color: #102500;
+  padding: 0 18px;
   font-weight: 950;
 }
 
