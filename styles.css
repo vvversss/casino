@@ -2180,7 +2180,7 @@ kbd {
 }
 
 .cashier-panel {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
 .cashier-panel article,
@@ -2245,7 +2245,7 @@ kbd {
 
 .coin-shop-actions {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 8px;
 }
 
@@ -2253,6 +2253,12 @@ kbd {
   background:
     radial-gradient(circle at 50% 0%, rgba(247, 201, 75, 0.18), transparent 42%),
     rgba(8, 18, 24, 0.78);
+}
+
+.coin-shop small {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.4;
 }
 
 .big-win-card {

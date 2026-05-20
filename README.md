@@ -1,7 +1,10 @@
-# Velora Play
+# VERS casino
 
-Fully static demo casino interface with virtual credits only. No real-money payments,
-accounts, deposits, withdrawals, or third-party gambling integrations are included.
+Static social casino frontend for VERS Coins entertainment credits.
+
+VERS Coins have no real-world monetary value. They cannot be withdrawn,
+exchanged, sold, transferred, or redeemed for money, crypto, gift cards, NFTs,
+skins, goods, services, or prizes.
 
 ## Run locally
 
@@ -18,8 +21,8 @@ If you need to reconnect Pages manually:
 3. Set Source to `Deploy from a branch`.
 4. Select branch `gh-pages` and folder `/ (root)`.
 
-The site uses only relative local assets, so it works under either a root domain or
-a repository subpath such as `https://username.github.io/repository-name/`.
+The site uses only relative local assets, so it works under either a root domain
+or a repository subpath such as `https://username.github.io/repository-name/`.
 
 ## Supabase Auth setup
 
@@ -33,5 +36,62 @@ To enable accounts in a fresh Supabase project:
 4. Set Site URL to `https://vvversss.github.io/casino/`.
 5. Add `https://vvversss.github.io/casino/` to Redirect URLs.
 
-Use a publishable key only in `supabase-config.js`. Never expose a service role key
-in this static frontend.
+Use a publishable key only in `supabase-config.js`. Never expose a service role
+key in this static frontend.
+
+## Stripe Checkout setup
+
+Stripe payments are handled by Supabase Edge Functions. Do not put
+`STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, or `SUPABASE_SERVICE_ROLE_KEY` in
+frontend files.
+
+Before deploying functions, run the latest `supabase-schema.sql` in the Supabase
+SQL Editor so `stripe_coin_purchases` and the service-role credit RPC exist.
+
+Required Supabase secrets:
+
+```bash
+STRIPE_SECRET_KEY=<new Stripe secret key>
+STRIPE_WEBHOOK_SECRET=<Stripe webhook signing secret>
+SITE_URL=https://vvversss.github.io/casino/
+SUPABASE_URL=https://PROJECT_REF.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=...
+```
+
+Set secrets in the Supabase Dashboard under Edge Function Secrets, or with the
+CLI:
+
+```bash
+supabase secrets set STRIPE_SECRET_KEY=<new Stripe secret key>
+supabase secrets set STRIPE_WEBHOOK_SECRET=<Stripe webhook signing secret>
+supabase secrets set SITE_URL=https://vvversss.github.io/casino/
+supabase secrets set SUPABASE_URL=https://PROJECT_REF.supabase.co
+supabase secrets set SUPABASE_SERVICE_ROLE_KEY=...
+```
+
+Deploy Edge Functions:
+
+```bash
+supabase functions deploy create-stripe-checkout
+supabase functions deploy stripe-webhook
+```
+
+Add this webhook endpoint in Stripe Dashboard:
+
+```text
+https://PROJECT_REF.supabase.co/functions/v1/stripe-webhook
+```
+
+Listen to:
+
+```text
+checkout.session.completed
+```
+
+Payment flow:
+
+1. The frontend calls `create-stripe-checkout` for an authenticated user.
+2. The Edge Function creates a pending `stripe_coin_purchases` row.
+3. Stripe Checkout collects payment.
+4. Stripe calls `stripe-webhook`.
+5. The webhook verifies the Stripe signature and credits Coins exactly once.

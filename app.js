@@ -965,37 +965,75 @@ function showCashier() {
                 <strong>${pack.label}</strong>
                 <p>$${pack.amount.toFixed(2)} · VERS Coins entertainment credits</p>
                 <div class="coin-shop-actions">
-                  <button type="button" data-buy-coins="${pack.id}" data-provider="stripe">Stripe</button>
+                  <button type="button" data-buy-coins="${pack.id}" data-provider="stripe">Buy with Stripe</button>
                   <button type="button" data-buy-coins="${pack.id}" data-provider="crypto">Crypto</button>
                 </div>
+                <small>Cards, Apple Pay, and Google Pay may be available through Stripe Checkout.</small>
               </article>
             `,
           )
           .join("")}
       </div>
-      <p class="utility-note">${tr("shellNote")}</p>
+      <p class="utility-note">VERS Coins have no cash value and cannot be withdrawn.</p>
     `,
   );
   document.querySelectorAll("[data-buy-coins]").forEach((button) => {
-    button.addEventListener("click", () => startCoinPurchase(button.dataset.buyCoins, button.dataset.provider));
+    button.addEventListener("click", () => startCoinPurchase(button.dataset.buyCoins, button.dataset.provider, button));
   });
 }
 
-function startCoinPurchase(packageId, provider) {
+async function startCoinPurchase(packageId, provider, button) {
   const pack = coinPackages.find((item) => item.id === packageId);
   if (!pack) return;
-  const links = provider === "stripe" ? paymentConfig.stripePaymentLinks : paymentConfig.cryptoPaymentLinks;
-  const checkoutUrl = links?.[packageId];
-  if (checkoutUrl) {
-    window.open(checkoutUrl, "_blank", "noopener,noreferrer");
+
+  if (provider !== "stripe") {
+    const checkoutUrl = paymentConfig.cryptoPaymentLinks?.[packageId];
+    if (checkoutUrl) {
+      window.open(checkoutUrl, "_blank", "noopener,noreferrer");
+      return;
+    }
+    toast("Crypto payment placeholder: configure a provider and verify purchases with a backend webhook.");
     return;
   }
+
+  if (!supabaseClient) {
+    toast("Supabase is not configured yet.");
+    return;
+  }
+
+  if (!state.user) {
+    toast(state.lang === "en" ? "Sign in first" : "Сначала войдите в аккаунт");
+    setAuthMode("signin");
+    els.authDialog.showModal();
+    return;
+  }
+
   if (window.VERS_ENABLE_TEST_PAYMENTS) {
     setBalance(state.balance + pack.coins);
     toast(`${pack.label} added for development testing`);
     return;
   }
-  toast("Payment placeholder: configure a provider link and verify purchases with a backend webhook.");
+
+  const previousText = button?.textContent;
+  if (button) {
+    button.disabled = true;
+    button.textContent = state.lang === "en" ? "Opening..." : "Открываем...";
+  }
+
+  try {
+    const { data, error } = await supabaseClient.functions.invoke("create-stripe-checkout", {
+      body: { package_id: packageId },
+    });
+    if (error) throw error;
+    if (!data?.url) throw new Error("Stripe Checkout URL was not returned");
+    window.location.href = data.url;
+  } catch (error) {
+    toast(error.message || "Could not start Stripe Checkout");
+    if (button) {
+      button.disabled = false;
+      button.textContent = previousText;
+    }
+  }
 }
 
 function showProfileMenu() {
@@ -1162,6 +1200,28 @@ async function applySession(session) {
 
   updateAccountUi();
   updateAdminControls();
+}
+
+async function handlePaymentReturn() {
+  const url = new URL(window.location.href);
+  const payment = url.searchParams.get("payment");
+  if (!payment) return;
+
+  url.searchParams.delete("payment");
+  window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+
+  if (payment === "success") {
+    toast("Payment received. Coins will appear after confirmation.");
+    if (supabaseClient) {
+      const { data } = await supabaseClient.auth.getSession();
+      if (data.session) await applySession(data.session);
+    }
+    return;
+  }
+
+  if (payment === "cancel") {
+    toast(state.lang === "en" ? "Payment cancelled." : "Оплата отменена.");
+  }
 }
 
 async function handleAuthSubmit(event) {
@@ -2370,6 +2430,7 @@ async function init() {
   setAuthMode("signin");
   updateModeUi();
   await loadSession();
+  await handlePaymentReturn();
 }
 
 init();

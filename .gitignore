@@ -4,3 +4,5 @@ qa-visual-check.mjs
 .DS_Store
 Thumbs.db
 *.log
+supabase/functions/.env
+supabase/functions/.env.*
