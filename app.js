@@ -1004,6 +1004,7 @@ async function startCoinPurchase(packageId, provider, button) {
   if (!state.user) {
     toast(state.lang === "en" ? "Sign in first" : "Сначала войдите в аккаунт");
     setAuthMode("signin");
+    if (els.utilityDialog.open) els.utilityDialog.close();
     els.authDialog.showModal();
     return;
   }
