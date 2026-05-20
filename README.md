@@ -98,6 +98,7 @@ Payment flow:
 
 ## Stripe test purchase
 
-Coin Shop includes `100 Coins Test` for `$0.50`, which is the practical minimum
-USD test amount for Stripe Checkout. A `$0.01` USD item is below Stripe's minimum
-charge amount and is rejected before checkout.
+Coin Shop includes `100 Coins Test` for `$1.00`. The Stripe account settles
+through PLN, so lower USD amounts can convert below Stripe's 200 grosz minimum
+and be rejected before checkout. A `$0.01` USD item is also below Stripe's
+minimum charge amount.
