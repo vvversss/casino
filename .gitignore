@@ -6,3 +6,4 @@ Thumbs.db
 *.log
 supabase/functions/.env
 supabase/functions/.env.*
+supabase/.temp/
