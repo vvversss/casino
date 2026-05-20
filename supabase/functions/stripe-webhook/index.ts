@@ -14,6 +14,65 @@ function jsonResponse(body: Record<string, unknown>, status = 200): Response {
   });
 }
 
+function errorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  if (typeof error === "object" && error && "message" in error) {
+    return String((error as { message?: unknown }).message || "Unknown error");
+  }
+  return String(error || "Unknown error");
+}
+
+async function fallbackCreditPurchase(
+  supabaseAdmin: ReturnType<typeof createClient>,
+  purchaseId: string,
+  stripeSessionId: string | null,
+  paymentIntent: string | null,
+) {
+  const { data: purchase, error: purchaseError } = await supabaseAdmin
+    .from("stripe_coin_purchases")
+    .select("id,user_id,coins,status")
+    .eq("id", purchaseId)
+    .maybeSingle();
+
+  if (purchaseError) throw purchaseError;
+  if (!purchase) throw new Error(`Purchase ${purchaseId} was not found`);
+  if (purchase.status === "paid") return { purchase, alreadyPaid: true };
+  if (purchase.status !== "pending") {
+    throw new Error(`Purchase ${purchaseId} is ${purchase.status}, not pending`);
+  }
+
+  const { data: profile, error: profileError } = await supabaseAdmin
+    .from("casino_profiles")
+    .select("balance")
+    .eq("id", purchase.user_id)
+    .maybeSingle();
+
+  if (profileError) throw profileError;
+  if (!profile) throw new Error(`Casino profile ${purchase.user_id} was not found`);
+
+  const nextBalance = Number(profile.balance || 0) + Number(purchase.coins || 0);
+  const { error: balanceError } = await supabaseAdmin
+    .from("casino_profiles")
+    .update({ balance: nextBalance })
+    .eq("id", purchase.user_id);
+
+  if (balanceError) throw balanceError;
+
+  const { error: paidError } = await supabaseAdmin
+    .from("stripe_coin_purchases")
+    .update({
+      status: "paid",
+      stripe_session_id: stripeSessionId,
+      stripe_payment_intent: paymentIntent,
+    })
+    .eq("id", purchase.id)
+    .eq("status", "pending");
+
+  if (paidError) throw paidError;
+
+  return { purchase, alreadyPaid: false };
+}
+
 Deno.serve(async (req) => {
   if (req.method !== "POST") return new Response("Method not allowed", { status: 405 });
 
@@ -82,15 +141,47 @@ Deno.serve(async (req) => {
     auth: { persistSession: false },
   });
 
-  const { error } = await supabaseAdmin.rpc("credit_stripe_coin_purchase", {
+  const { data: creditRows, error } = await supabaseAdmin.rpc("credit_stripe_coin_purchase", {
     p_purchase_id: purchaseId,
     p_stripe_session_id: stripeSessionId,
     p_stripe_payment_intent: paymentIntent,
   });
 
   if (error) {
-    console.error("Could not credit Stripe coin purchase", error);
-    return new Response("Could not credit purchase", { status: 500 });
+    console.error("Could not credit Stripe coin purchase through RPC", error);
+
+    try {
+      const fallbackResult = await fallbackCreditPurchase(
+        supabaseAdmin,
+        purchaseId,
+        stripeSessionId,
+        paymentIntent,
+      );
+
+      console.log("Stripe purchase credited through fallback", fallbackResult);
+      return jsonResponse({
+        received: true,
+        credited: true,
+        fallback: true,
+        purchase_id: purchaseId,
+        already_paid: fallbackResult.alreadyPaid,
+      });
+    } catch (fallbackError) {
+      console.error("Could not credit Stripe coin purchase through fallback", fallbackError);
+      return jsonResponse(
+        {
+          error: "Could not credit purchase",
+          rpc_error: errorMessage(error),
+          fallback_error: errorMessage(fallbackError),
+        },
+        500,
+      );
+    }
+  }
+
+  if (!creditRows || creditRows.length === 0) {
+    console.log("Stripe purchase was already paid or not pending", { purchaseId });
+    return jsonResponse({ received: true, credited: false, already_processed: true, purchase_id: purchaseId });
   }
 
   return jsonResponse({ received: true, credited: true, purchase_id: purchaseId });
