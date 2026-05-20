@@ -427,6 +427,7 @@ const gameText = {
 };
 
 const coinPackages = [
+  { id: "coins_test_50c", coins: 100, amount: 0.5, label: "100 Coins Test" },
   { id: "coins_10k", coins: 10000, amount: 4.99, label: "10,000 Coins" },
   { id: "coins_50k", coins: 50000, amount: 14.99, label: "50,000 Coins" },
   { id: "coins_100k", coins: 100000, amount: 24.99, label: "100,000 Coins" },

@@ -95,3 +95,9 @@ Payment flow:
 3. Stripe Checkout collects payment.
 4. Stripe calls `stripe-webhook`.
 5. The webhook verifies the Stripe signature and credits Coins exactly once.
+
+## Stripe test purchase
+
+Coin Shop includes `100 Coins Test` for `$0.50`, which is the practical minimum
+USD test amount for Stripe Checkout. A `$0.01` USD item is below Stripe's minimum
+charge amount and is rejected before checkout.
