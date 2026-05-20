@@ -604,6 +604,24 @@ const escapeHtml = (value) =>
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
+async function getEdgeFunctionErrorMessage(error) {
+  const context = error?.context;
+  if (context instanceof Response) {
+    try {
+      const payload = await context.clone().json();
+      if (payload?.error) return payload.error;
+    } catch {
+      try {
+        const text = await context.clone().text();
+        if (text) return text;
+      } catch {
+        // Fall through to the generic message below.
+      }
+    }
+  }
+  return error?.message || "Edge Function request failed";
+}
+
 function saveState() {
   if (!state.user) {
     localStorage.setItem("velora-balance", String(state.balance));
@@ -1025,10 +1043,11 @@ async function startCoinPurchase(packageId, provider, button) {
     const { data, error } = await supabaseClient.functions.invoke("create-stripe-checkout", {
       body: { package_id: packageId },
     });
-    if (error) throw error;
+    if (error) throw new Error(await getEdgeFunctionErrorMessage(error));
     if (!data?.url) throw new Error("Stripe Checkout URL was not returned");
     window.location.href = data.url;
   } catch (error) {
+    console.error(error);
     toast(error.message || "Could not start Stripe Checkout");
     if (button) {
       button.disabled = false;
