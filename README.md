@@ -86,6 +86,7 @@ Listen to:
 
 ```text
 checkout.session.completed
+payment_intent.succeeded
 ```
 
 Payment flow:
@@ -95,6 +96,10 @@ Payment flow:
 3. Stripe Checkout collects payment.
 4. Stripe calls `stripe-webhook`.
 5. The webhook verifies the Stripe signature and credits Coins exactly once.
+
+If Stripe returns `Invalid Stripe signature`, copy the `whsec_...` signing
+secret from the exact webhook endpoint in Stripe Dashboard and save it as
+`STRIPE_WEBHOOK_SECRET`, then redeploy `stripe-webhook` with `--no-verify-jwt`.
 
 ## Stripe test purchase
 

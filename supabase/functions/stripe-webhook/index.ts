@@ -7,6 +7,13 @@ const stripe = new Stripe(getRequiredEnv("STRIPE_SECRET_KEY"), {
   httpClient: Stripe.createFetchHttpClient(),
 });
 
+function jsonResponse(body: Record<string, unknown>, status = 200): Response {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { "Content-Type": "application/json" },
+  });
+}
+
 Deno.serve(async (req) => {
   if (req.method !== "POST") return new Response("Method not allowed", { status: 405 });
 
@@ -26,18 +33,41 @@ Deno.serve(async (req) => {
     );
   } catch (error) {
     console.error("Stripe webhook signature verification failed", error);
-    return new Response("Invalid signature", { status: 400 });
+    return jsonResponse(
+      {
+        error:
+          "Invalid Stripe signature. Set STRIPE_WEBHOOK_SECRET to the whsec_ signing secret from this exact Stripe webhook endpoint.",
+      },
+      400,
+    );
   }
 
-  if (event.type !== "checkout.session.completed") {
-    return new Response(JSON.stringify({ received: true, ignored: event.type }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
+  console.log("Stripe event:", event.type);
+
+  let metadata: Stripe.Metadata | null = null;
+  let stripeSessionId: string | null = null;
+  let paymentIntent: string | null = null;
+
+  if (event.type === "checkout.session.completed") {
+    const session = event.data.object as Stripe.Checkout.Session;
+    metadata = session.metadata || {};
+    stripeSessionId = session.id;
+    paymentIntent =
+      typeof session.payment_intent === "string"
+        ? session.payment_intent
+        : session.payment_intent?.id || null;
+  } else if (event.type === "payment_intent.succeeded") {
+    const intent = event.data.object as Stripe.PaymentIntent;
+    metadata = intent.metadata || {};
+    paymentIntent = intent.id;
+  } else {
+    return jsonResponse({ received: true, ignored: event.type });
   }
 
-  const session = event.data.object as Stripe.Checkout.Session;
-  const metadata = session.metadata || {};
+  if (!metadata) return jsonResponse({ error: "Missing Stripe metadata" }, 400);
+
+  console.log("Stripe metadata:", metadata);
+
   const purchaseId = metadata.purchase_id;
   const userId = metadata.user_id;
   const packageId = metadata.package_id;
@@ -48,18 +78,13 @@ Deno.serve(async (req) => {
     return new Response("Missing purchase metadata", { status: 400 });
   }
 
-  const paymentIntent =
-    typeof session.payment_intent === "string"
-      ? session.payment_intent
-      : session.payment_intent?.id || null;
-
   const supabaseAdmin = createClient(getRequiredEnv("SUPABASE_URL"), getServiceRoleKey(), {
     auth: { persistSession: false },
   });
 
   const { error } = await supabaseAdmin.rpc("credit_stripe_coin_purchase", {
     p_purchase_id: purchaseId,
-    p_stripe_session_id: session.id,
+    p_stripe_session_id: stripeSessionId,
     p_stripe_payment_intent: paymentIntent,
   });
 
@@ -68,8 +93,5 @@ Deno.serve(async (req) => {
     return new Response("Could not credit purchase", { status: 500 });
   }
 
-  return new Response(JSON.stringify({ received: true }), {
-    status: 200,
-    headers: { "Content-Type": "application/json" },
-  });
+  return jsonResponse({ received: true, credited: true, purchase_id: purchaseId });
 });
