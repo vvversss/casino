@@ -102,6 +102,12 @@ Deno.serve(async (req) => {
       },
     });
 
+    console.log("Session:", session);
+
+    if (!session.url) {
+      throw new Error(`Stripe Checkout Session was created without a URL. Session id: ${session.id || "unknown"}`);
+    }
+
     const { error: updateError } = await supabaseAdmin
       .from("stripe_coin_purchases")
       .update({ stripe_session_id: session.id })
